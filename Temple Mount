@@ -78,7 +78,73 @@ bbw-temple-site/
 </body>
 </html>
              # Landing page
-├── validate.html           # Key validation
+├── validate.html
+# Key validation<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Validate Key | BBW Temple</title>
+  <link rel="stylesheet" href="assets/style.css" />
+  <script src="assets/script.js" defer></script>
+  <style>
+    body {
+      background: #111;
+      color: #fff;
+      font-family: 'Segoe UI', sans-serif;
+      text-align: center;
+      padding: 2em;
+    }
+    input, button {
+      padding: 1em;
+      margin: 1em;
+      font-size: 1em;
+      border-radius: 5px;
+      border: none;
+    }
+    button {
+      background: #ff69b4;
+      color: #000;
+      cursor: pointer;
+    }
+    #result {
+      margin-top: 2em;
+      font-weight: bold;
+    }
+  </style>
+</head>
+<body>
+  <h1>Validate Your Subscriber Key</h1>
+  <p>Enter your $30 ritual key to unlock encrypted signals and BBW access.</p>
+
+  <input type="text" id="keyInput" placeholder="Enter your key..." />
+  <button onclick="validateKey()">Validate</button>
+
+  <div id="result"></div>
+
+  <script>
+    async function validateKey() {
+      const key = document.getElementById('keyInput').value;
+      const resultDiv = document.getElementById('result');
+
+      try {
+        const res = await fetch('https://workspace.charlesbuchana2.repl.co/validate-key', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({ key })
+        });
+        const data = await res.json();
+        resultDiv.textContent = data.status === 'success'
+          ? '✅ Key is valid. Welcome to the temple.'
+          : '❌ Invalid key. Try again or contact support.';
+      } catch (err) {
+        resultDiv.textContent = '⚠️ Server error. Try again later.';
+      }
+    }
+  </script>
+</body>
+</html>
+
 ├── intake.html             # Talent intake
 ├── match.html              # Matchmaking UI
 ├── affiliate.html          # Affiliate dashboard
