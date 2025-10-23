@@ -397,8 +397,89 @@ bbw-temple-site/
   </script>
 </body>
 </html>
+├── affiliate.html
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Affiliate Dashboard | BBW Temple</title>
+  <link rel="stylesheet" href="assets/style.css" />
+  <script src="assets/script.js" defer></script>
+  <style>
+    body {
+      background: #111;
+      color: #fff;
+      font-family: 'Segoe UI', sans-serif;
+      text-align: center;
+      padding: 2em;
+    }
+    form {
+      max-width: 500px;
+      margin: auto;
+      display: flex;
+      flex-direction: column;
+      gap: 1em;
+    }
+    input, button {
+      padding: 1em;
+      font-size: 1em;
+      border-radius: 5px;
+      border: none;
+    }
+    button {
+      background: #ff69b4;
+      color: #000;
+      cursor: pointer;
+    }
+    #result {
+      margin-top: 2em;
+      font-weight: bold;
+    }
+  </style>
+</head>
+<body>
+  <h1>Affiliate Dashboard</h1>
+  <p>Track your referrals. Earn commissions. Feed the flame.</p>
 
-├── affiliate.html         
+  <form id="affiliateForm">
+    <input type="text" name="affiliateId" placeholder="Your affiliate ID" required />
+    <input type="text" name="referralCode" placeholder="Referral code used" />
+    <input type="number" name="clicks" placeholder="Clicks received" />
+    <input type="number" name="conversions" placeholder="Conversions earned" />
+    <button type="submit">Submit Tracking</button>
+  </form>
+
+  <div id="result"></div>
+
+  <script>
+    document.getElementById('affiliateForm').addEventListener('submit', async (e) => {
+      e.preventDefault();
+      const form = e.target;
+      const data = {
+        affiliateId: form.affiliateId.value,
+        referralCode: form.referralCode.value,
+        clicks: parseInt(form.clicks.value),
+        conversions: parseInt(form.conversions.value)
+      };
+
+      try {
+        const res = await fetch('https://workspace.charlesbuchana2.repl.co/track-affiliate', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify(data)
+        });
+        const result = await res.json();
+        document.getElementById('result').textContent = result.status === 'success'
+          ? '✅ Tracking submitted. Commissions updated.'
+          : '❌ Submission failed. Try again or contact support.';
+      } catch (err) {
+        document.getElementById('result').textContent = '⚠️ Server error. Try again later.';
+      }
+    });
+  </script>
+</body>
+</html>
 ├── signals.html           
 ├── meme-pack.html         
 ├── contact.html            
