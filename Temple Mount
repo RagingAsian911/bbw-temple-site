@@ -1,5 +1,83 @@
 bbw-temple-site/
-├── index.html              # Landing page
+├── index.html 
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>BBW Temple + Crypto Oracle</title>
+  <link rel="stylesheet" href="assets/style.css" />
+  <script src="assets/script.js" defer></script>
+  <style>
+    body {
+      margin: 0;
+      font-family: 'Segoe UI', sans-serif;
+      background: url('assets/memes/temple-bg.jpg') no-repeat center center fixed;
+      background-size: cover;
+      color: #fff;
+      text-align: center;
+    }
+    nav {
+      background: rgba(0,0,0,0.7);
+      padding: 1em;
+    }
+    nav a {
+      color: #ff69b4;
+      margin: 0 1em;
+      text-decoration: none;
+      font-weight: bold;
+    }
+    .hero {
+      padding: 5em 2em;
+      background: rgba(0,0,0,0.6);
+    }
+    .hero h1 {
+      font-size: 2.5em;
+      margin-bottom: 0.5em;
+    }
+    .hero p {
+      font-size: 1.2em;
+      margin-bottom: 2em;
+    }
+    .cta-button {
+      background: #ff69b4;
+      color: #000;
+      padding: 1em 2em;
+      border: none;
+      font-size: 1em;
+      cursor: pointer;
+      border-radius: 5px;
+    }
+    footer {
+      background: rgba(0,0,0,0.8);
+      padding: 1em;
+      font-size: 0.9em;
+    }
+  </style>
+</head>
+<body>
+  <nav>
+    <a href="validate.html">Validate Key</a>
+    <a href="intake.html">Talent Intake</a>
+    <a href="match.html">Matchmaking</a>
+    <a href="affiliate.html">Affiliate</a>
+    <a href="signals.html">Signals</a>
+    <a href="meme-pack.html">Meme Pack</a>
+    <a href="contact.html">Contact</a>
+  </nav>
+
+  <section class="hero">
+    <h1>Unlock Devotion. Trade Like an Oracle.</h1>
+    <p>Encrypted signals. BBW talent. $30 unlocks the flame.</p>
+    <a href="validate.html"><button class="cta-button">Enter the Temple</button></a>
+  </section>
+
+  <footer>
+    &copy; 2025 Charles Buchanan. Ritual code on <a href="https://github.com/charlesbuchanan/bbw-temple-site" style="color:#ff69b4;">GitHub</a>.
+  </footer>
+</body>
+</html>
+             # Landing page
 ├── validate.html           # Key validation
 ├── intake.html             # Talent intake
 ├── match.html              # Matchmaking UI
