@@ -77,9 +77,9 @@ bbw-temple-site/
   </footer>
 </body>
 </html>
-             # Landing page
+            
 ├── validate.html
-# Key validation<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
@@ -145,13 +145,105 @@ bbw-temple-site/
 </body>
 </html>
 
-├── intake.html             # Talent intake
-├── match.html              # Matchmaking UI
-├── affiliate.html          # Affiliate dashboard
-├── signals.html            # Subscriber archive
-├── meme-pack.html          # Meme downloads
-├── contact.html            # Contact form
+├── intake.html
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Talent Intake | BBW Temple</title>
+  <link rel="stylesheet" href="assets/style.css" />
+  <script src="assets/script.js" defer></script>
+  <style>
+    body {
+      background: #111;
+      color: #fff;
+      font-family: 'Segoe UI', sans-serif;
+      text-align: center;
+      padding: 2em;
+    }
+    form {
+      max-width: 500px;
+      margin: auto;
+      display: flex;
+      flex-direction: column;
+      gap: 1em;
+    }
+    input, textarea, button {
+      padding: 1em;
+      font-size: 1em;
+      border-radius: 5px;
+      border: none;
+    }
+    button {
+      background: #ff69b4;
+      color: #000;
+      cursor: pointer;
+    }
+    #result {
+      margin-top: 2em;
+      font-weight: bold;
+    }
+  </style>
+</head>
+<body>
+  <h1>Talent Intake Form</h1>
+  <p>Enter the temple. Encrypt your presence. Begin the ritual.</p>
+
+  <form id="intakeForm">
+    <input type="text" name="name" placeholder="Your name" required />
+    <input type="text" name="location" placeholder="Your location" required />
+    <input type="text" name="tags" placeholder="Emotional tags (comma-separated)" />
+    <textarea name="interests" placeholder="Your interests, rituals, and offerings..." rows="4"></textarea>
+    <input type="email" name="contact" placeholder="Contact email or encrypted handle" required />
+    <button type="submit">Submit</button>
+  </form>
+
+  <div id="result"></div>
+
+  <script>
+    document.getElementById('intakeForm').addEventListener('submit', async (e) => {
+      e.preventDefault();
+      const form = e.target;
+      const data = {
+        name: form.name.value,
+        location: form.location.value,
+        tags: form.tags.value.split(',').map(tag => tag.trim()),
+        interests: form.interests.value,
+        contact: form.contact.value
+      };
+
+      try {
+        const res = await fetch('https://workspace.charlesbuchana2.repl.co/intake-talent', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify(data)
+        });
+        const result = await res.json();
+        document.getElementById('result').textContent = result.status === 'success'
+          ? '✅ Intake received. You are now part of the temple.'
+          : '❌ Submission failed. Try again or contact support.';
+      } catch (err) {
+        document.getElementById('result').textContent = '⚠️ Server error. Try again later.';
+      }
+    });
+  </script>
+</body>
+</html>
+├── match.html             
+├── affiliate.html         
+├── signals.html           
+├── meme-pack.html         
+├── contact.html            
 ├── assets/
 │   ├── style.css
 │   ├── script.js
 │   └── memes/
+# Matchmaking UI
+# Affiliate dashboard
+# Subscriber archive 
+# Meme downloads
+# Contact form
+# Landing page
+# Key validation
+# Talent intake
