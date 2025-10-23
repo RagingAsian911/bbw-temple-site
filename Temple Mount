@@ -741,7 +741,16 @@ footer {
   font-size: 0.9em;
 }
 │   ├── script.js
-│   └── memes/
+// Shared logic placeholder
+console.log("BBW Temple scripts loaded.");
+
+│   └── assets/memes/
+├── meme1.jpg
+├── meme2.jpg
+├── meme3.jpg
+├── meme4.jpg
+├── meme-pack.zip
+/
 # Matchmaking UI
 # Affiliate dashboard
 # Subscriber archive 
