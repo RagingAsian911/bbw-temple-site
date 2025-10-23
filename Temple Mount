@@ -480,7 +480,87 @@ bbw-temple-site/
   </script>
 </body>
 </html>
-├── signals.html           
+├── signals.html<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Subscriber Archive | BBW Temple</title>
+  <link rel="stylesheet" href="assets/style.css" />
+  <script src="assets/script.js" defer></script>
+  <style>
+    body {
+      background: #111;
+      color: #fff;
+      font-family: 'Segoe UI', sans-serif;
+      text-align: center;
+      padding: 2em;
+    }
+    input, button {
+      padding: 1em;
+      font-size: 1em;
+      border-radius: 5px;
+      border: none;
+      margin: 0.5em;
+    }
+    button {
+      background: #ff69b4;
+      color: #000;
+      cursor: pointer;
+    }
+    #archive {
+      margin-top: 2em;
+      text-align: left;
+      max-width: 600px;
+      margin-left: auto;
+      margin-right: auto;
+      background: #222;
+      padding: 1em;
+      border-radius: 8px;
+    }
+  </style>
+</head>
+<body>
+  <h1>Subscriber Archive</h1>
+  <p>Enter your key to unlock encrypted signals and sacred scrolls.</p>
+
+  <input type="text" id="keyInput" placeholder="Enter your subscriber key..." />
+  <button onclick="fetchArchive()">Unlock Archive</button>
+
+  <div id="archive"></div>
+
+  <script>
+    async function fetchArchive() {
+      const key = document.getElementById('keyInput').value;
+      const archiveDiv = document.getElementById('archive');
+
+      try {
+        const res = await fetch('https://workspace.charlesbuchana2.repl.co/validate-key', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({ key })
+        });
+        const data = await res.json();
+
+        if (data.status === 'success') {
+          archiveDiv.innerHTML = `
+            <h3>🔥 Encrypted Signals</h3>
+            <ul>
+              <li>BTC/ETH: Long @ 0.0625 — Target 0.0690</li>
+              <li>APE/USDT: Short @ 1.48 — Target 1.22</li>
+              <li>Scroll Drop: “The Oracle’s Flame” — PDF download coming soon</li>
+            </ul>
+          `;
+        } else {
+          archiveDiv.textContent = '❌ Invalid key. Access denied.';
+        }
+      } catch (err) {
+        archiveDiv.textContent = '⚠️ Server error. Try again later.';
+      }
+    }
+  </script>
+</body>
+</html>
 ├── meme-pack.html         
 ├── contact.html            
 ├── assets/
