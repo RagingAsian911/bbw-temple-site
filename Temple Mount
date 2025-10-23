@@ -480,7 +480,8 @@ bbw-temple-site/
   </script>
 </body>
 </html>
-├── signals.html<!DOCTYPE html>
+├── signals.html
+<!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
@@ -561,7 +562,57 @@ bbw-temple-site/
   </script>
 </body>
 </html>
-├── meme-pack.html         
+├── meme-pack.html
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Meme Pack | BBW Temple</title>
+  <link rel="stylesheet" href="assets/style.css" />
+  <script src="assets/script.js" defer></script>
+  <style>
+    body {
+      background: #111;
+      color: #fff;
+      font-family: 'Segoe UI', sans-serif;
+      text-align: center;
+      padding: 2em;
+    }
+    .meme-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 1em;
+      margin-top: 2em;
+    }
+    .meme-grid img {
+      width: 100%;
+      border-radius: 8px;
+      border: 2px solid #ff69b4;
+    }
+    a.download {
+      display: block;
+      margin-top: 1em;
+      color: #ff69b4;
+      font-weight: bold;
+      text-decoration: underline;
+    }
+  </style>
+</head>
+<body>
+  <h1>Meme Pack Vol. 1</h1>
+  <p>Download viral scrolls. Spread the flame. Feed the affiliate engine.</p>
+
+  <div class="meme-grid">
+    <img src="assets/memes/meme1.jpg" alt="Meme 1" />
+    <img src="assets/memes/meme2.jpg" alt="Meme 2" />
+    <img src="assets/memes/meme3.jpg" alt="Meme 3" />
+    <img src="assets/memes/meme4.jpg" alt="Meme 4" />
+  </div>
+
+  <a class="download" href="assets/memes/meme-pack.zip" download>Download Full Pack (.zip)</a>
+</body>
+</html>
 ├── contact.html            
 ├── assets/
 │   ├── style.css
