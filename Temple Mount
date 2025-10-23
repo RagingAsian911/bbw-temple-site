@@ -1,0 +1,13 @@
+bbw-temple-site/
+├── index.html              # Landing page
+├── validate.html           # Key validation
+├── intake.html             # Talent intake
+├── match.html              # Matchmaking UI
+├── affiliate.html          # Affiliate dashboard
+├── signals.html            # Subscriber archive
+├── meme-pack.html          # Meme downloads
+├── contact.html            # Contact form
+├── assets/
+│   ├── style.css
+│   ├── script.js
+│   └── memes/
