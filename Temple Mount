@@ -77,7 +77,6 @@ bbw-temple-site/
   </footer>
 </body>
 </html>
-            
 ├── validate.html
 <!DOCTYPE html>
 <html lang="en">
@@ -145,8 +144,7 @@ bbw-temple-site/
 </body>
 </html>
 
-├── intake.html
-<!DOCTYPE html>
+├── intake.html<!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
@@ -230,7 +228,176 @@ bbw-temple-site/
   </script>
 </body>
 </html>
-├── match.html             
+├── match.html
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Talent Intake | BBW Temple</title>
+  <link rel="stylesheet" href="assets/style.css" />
+  <script src="assets/script.js" defer></script>
+  <style>
+    body {
+      background: #111;
+      color: #fff;
+      font-family: 'Segoe UI', sans-serif;
+      text-align: center;
+      padding: 2em;
+    }
+    form {
+      max-width: 500px;
+      margin: auto;
+      display: flex;
+      flex-direction: column;
+      gap: 1em;
+    }
+    input, textarea, button {
+      padding: 1em;
+      font-size: 1em;
+      border-radius: 5px;
+      border: none;
+    }
+    button {
+      background: #ff69b4;
+      color: #000;
+      cursor: pointer;
+    }
+    #result {
+      margin-top: 2em;
+      font-weight: bold;
+    }
+  </style>
+</head>
+<body>
+  <h1>Talent Intake Form</h1>
+  <p>Enter the temple. Encrypt your presence. Begin the ritual.</p>
+
+  <form id="intakeForm">
+    <input type="text" name="name" placeholder="Your name" required />
+    <input type="text" name="location" placeholder="Your location" required />
+    <input type="text" name="tags" placeholder="Emotional tags (comma-separated)" />
+    <textarea name="interests" placeholder="Your interests, rituals, and offerings..." rows="4"></textarea>
+    <input type="email" name="contact" placeholder="Contact email or encrypted handle" required />
+    <button type="submit">Submit</button>
+  </form>
+
+  <div id="result"></div>
+
+  <script>
+    document.getElementById('intakeForm').addEventListener('submit', async (e) => {
+      e.preventDefault();
+      const form = e.target;
+      const data = {
+        name: form.name.value,
+        location: form.location.value,
+        tags: form.tags.value.split(',').map(tag => tag.trim()),
+        interests: form.interests.value,
+        contact: form.contact.value
+      };
+
+      try {
+        const res = await fetch('https://workspace.charlesbuchana2.repl.co/intake-talent', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify(data)
+        });
+        const result = await res.json();
+        document.getElementById('result').textContent = result.status === 'success'
+          ? '✅ Intake received. You are now part of the temple.'
+          : '❌ Submission failed. Try again or contact support.';
+      } catch (err) {
+        document.getElementById('result').textContent = '⚠️ Server error. Try again later.';
+      }
+    });
+  </script>
+</body>
+</html><!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Matchmaking | BBW Temple</title>
+  <link rel="stylesheet" href="assets/style.css" />
+  <script src="assets/script.js" defer></script>
+  <style>
+    body {
+      background: #111;
+      color: #fff;
+      font-family: 'Segoe UI', sans-serif;
+      text-align: center;
+      padding: 2em;
+    }
+    form {
+      max-width: 500px;
+      margin: auto;
+      display: flex;
+      flex-direction: column;
+      gap: 1em;
+    }
+    input, select, button {
+      padding: 1em;
+      font-size: 1em;
+      border-radius: 5px;
+      border: none;
+    }
+    button {
+      background: #ff69b4;
+      color: #000;
+      cursor: pointer;
+    }
+    #result {
+      margin-top: 2em;
+      font-weight: bold;
+    }
+  </style>
+</head>
+<body>
+  <h1>Matchmaking Portal</h1>
+  <p>Filter by emotional resonance. Connect with sovereign talent.</p>
+
+  <form id="matchForm">
+    <input type="text" name="subscriberKey" placeholder="Your subscriber key" required />
+    <input type="text" name="tags" placeholder="Desired emotional tags (comma-separated)" />
+    <select name="location">
+      <option value="">Any location</option>
+      <option value="US">United States</option>
+      <option value="EU">Europe</option>
+      <option value="ASIA">Asia</option>
+    </select>
+    <button type="submit">Find Matches</button>
+  </form>
+
+  <div id="result"></div>
+
+  <script>
+    document.getElementById('matchForm').addEventListener('submit', async (e) => {
+      e.preventDefault();
+      const form = e.target;
+      const data = {
+        subscriberKey: form.subscriberKey.value,
+        tags: form.tags.value.split(',').map(tag => tag.trim()),
+        location: form.location.value
+      };
+
+      try {
+        const res = await fetch('https://workspace.charlesbuchana2.repl.co/matchmake', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify(data)
+        });
+        const result = await res.json();
+        document.getElementById('result').textContent = result.status === 'success'
+          ? `✅ Matches found: ${result.matches.length}`
+          : '❌ No matches found or invalid key.';
+      } catch (err) {
+        document.getElementById('result').textContent = '⚠️ Server error. Try again later.';
+      }
+    });
+  </script>
+</body>
+</html>
+
 ├── affiliate.html         
 ├── signals.html           
 ├── meme-pack.html         
