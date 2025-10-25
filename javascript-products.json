@@ -1,0 +1,26 @@
+<script>
+fetch('products.json')
+  .then(response => response.json())
+  .then(products => {
+    const container = document.getElementById('products-container');
+    products.forEach(product => {
+      const card = document.createElement('div');
+      card.className = 'product-card';
+      card.innerHTML = `
+        <img src="${product.image}" alt="${product.name}">
+        <h3>${product.name}</h3>
+        <p>${product.description}</p>
+        <p style="color:#ffd700;">$${product.price} ${product.currency}</p>
+        <button onclick="addToCart('${product.id}')">Add to Cart</button>
+      `;
+      container.appendChild(card);
+    });
+  });
+
+const cart = [];
+
+function addToCart(productId) {
+  cart.push(productId);
+  alert(`Added ${productId} to cart`);
+}
+</script>
