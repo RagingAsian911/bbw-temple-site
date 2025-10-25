@@ -47,3 +47,7 @@ app.post('/webhook', async (req, res) => {
 })
 
 app.listen(3000, () => console.log('Webhook listening on port 3000'))
+const client = new Client({
+  token: process.env.BOTPRESS_PAT,
+  ...
+})
