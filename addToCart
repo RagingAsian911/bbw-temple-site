@@ -1,0 +1,7 @@
+function addToCart(productId) {
+  const cart = JSON.parse(localStorage.getItem('oracleCart') || '[]');
+  cart.push(productId);
+  localStorage.setItem('oracleCart', JSON.stringify(cart));
+  alert(`Added ${productId} to cart`);
+}
+<a href="checkout.html" class="button">Go to Checkout</a>
