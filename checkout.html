@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Checkout - Oracle Vault</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <h2 style="text-align:center; color:#ffd700;">Your Cart</h2>
+  <div id="cart-summary" style="padding:2rem;"></div>
+  <button onclick="submitOrder()" style="margin:2rem auto; display:block;">Complete Purchase</button>
+
+  <script>
+    const cart = JSON.parse(localStorage.getItem('oracleCart') || '[]');
+
+    fetch('products.json')
+      .then(res => res.json())
+      .then(products => {
+        const summary = document.getElementById('cart-summary');
+        let total = 0;
+        cart.forEach(id => {
+          const item = products.find(p => p.id === id);
+          if (item) {
+            total += parseFloat(item.price);
+            summary.innerHTML += `<p style="color:#ccc;">${item.name} - $${item.price}</p>`;
+          }
+        });
+        summary.innerHTML += `<hr><p style="color:#ffd700;">Total: $${total.toFixed(2)}</p>`;
+      });
+
+    function submitOrder() {
+      alert("Order submitted! (This is a demo)");
+      localStorage.removeItem('oracleCart');
+    }
+  </script>
+</body>
+</html>
