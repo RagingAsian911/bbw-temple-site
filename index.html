@@ -1,0 +1,6 @@
+// Example: ?ref=partner123
+const urlParams = new URLSearchParams(window.location.search);
+const ref = urlParams.get('ref');
+if (ref) {
+  localStorage.setItem('oracleAffiliate', ref);
+}
