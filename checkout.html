@@ -42,7 +42,25 @@
     function submitOrder() {
       alert("Order submitted! (This is a demo)");
       localStorage.removeItem('oracleCart');
-    }
+    }function submitOrder() {
+  const name = document.getElementById('name').value;
+  const email = document.getElementById('email').value;
+  const address = document.getElementById('address').value;
+  const affiliate = localStorage.getItem('oracleAffiliate') || 'none';
+
+  console.log({
+    name,
+    email,
+    address,
+    cart,
+    discount,
+    affiliate
+  });
+
+  alert("Order submitted! (This is a demo)");
+  localStorage.removeItem('oracleCart');
+}
+
   </script>
 </body>
 </html>
