@@ -1,0 +1,20 @@
+<section id="products" style="background-color:#0a0a23; padding:2rem;">
+  <h2 style="color:#ffd700; text-align:center;">Top Products</h2>
+  <div style="display:flex; justify-content:center; gap:2rem; flex-wrap:wrap;">
+    <div style="background:#1a1a2e; padding:1rem; border-radius:10px; width:200px; text-align:center;">
+      <img src="images/product1.jpg" alt="Product 1" style="width:100%; border-radius:5px;">
+      <h3 style="color:#ffd700;">AI Signal Tracker</h3>
+      <p style="color:#ccc;">Real-time crypto predictions powered by affiliate AI.</p>
+    </div>
+    <div style="background:#1a1a2e; padding:1rem; border-radius:10px; width:200px; text-align:center;">
+      <img src="images/product2.jpg" alt="Product 2" style="width:100%; border-radius:5px;">
+      <h3 style="color:#ffd700;">Oracle Merch Pack</h3>
+      <p style="color:#ccc;">Premium branded gear for crypto evangelists.</p>
+    </div>
+    <div style="background:#1a1a2e; padding:1rem; border-radius:10px; width:200px; text-align:center;">
+      <img src="images/product3.jpg" alt="Product 3" style="width:100%; border-radius:5px;">
+      <h3 style="color:#ffd700;">Affiliate Vault Access</h3>
+      <p style="color:#ccc;">Unlock monetization tools and private signals.</p>
+    </div>
+  </div>
+</section>
