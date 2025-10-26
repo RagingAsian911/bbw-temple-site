@@ -1,0 +1,24 @@
+name: Shopify Theme Sync
+
+on:
+  push:
+    branches: [main]
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repo
+        uses: actions/checkout@v3
+
+      - name: Install Shopify CLI
+        run: |
+          npm install -g @shopify/cli @shopify/theme
+
+      - name: Authenticate & Push Theme
+        env:
+          SHOPIFY_STORE: ${{ https://admin.shopify.com/store/wv9ik4-y2?no_redirect=true }}
+          SHOPIFY_PASSWORD: ${{Anthony1976$911$ }}
+          SHOPIFY_THEME_ID: ${{152452890865 }}
+        run: |
+          shopify theme push --store=$SHOPIFY_STORE --password=$SHOPIFY_PASSWORD --theme-id=$SHOPIFY_THEME_ID
