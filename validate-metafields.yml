@@ -1,0 +1,46 @@
+name: Metafield Schema Validator
+
+on:
+  push:
+    paths:
+      - 'config/settings_schema.json'
+
+jobs:
+  validate_metafields:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repo
+        uses: actions/checkout@v3
+
+      - name: Validate Metafield Schema
+        run: |
+          echo "🔍 Validating metafield schema..."
+          REQUIRED_KEYS=("name" "namespace" "key" "type" "label")
+          FILE="config/settings_schema.json"
+          for key in "${REQUIRED_KEYS[@]}"; do
+            if ! grep -q "\"$key\"" "$FILE"; then
+              echo "❌ Missing required key: $key"
+              exit 1
+            fi
+          done
+
+          # Validate emotional_tags type
+          if ! grep -q '"key": "emotional_tags"' "$FILE" || ! grep -q '"type": "list.single_line_text"' "$FILE"; then
+            echo "❌ emotional_tags metafield is misaligned or mistyped"
+            exit 1
+          fi
+
+          # Validate dating_archetype type
+          if ! grep -q '"key": "dating_archetype"' "$FILE" || ! grep -q '"type": "single_line_text"' "$FILE"; then
+            echo "❌ dating_archetype metafield is misaligned or mistyped"
+            exit 1
+          fi
+
+          # Validate remix_intent type
+          if ! grep -q '"key": "remix_intent"' "$FILE" || ! grep -q '"type": "single_line_text"' "$FILE"; then
+            echo "❌ remix_intent metafield is misaligned or mistyped"
+            exit 1
+          fi
+
+          echo "✅ Metafield schema is aligned and valid."
+

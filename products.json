@@ -1,0 +1,26 @@
+[
+  {
+    "id": "product1",
+    "name": "AI Signal Tracker",
+    "description": "Real-time crypto predictions powered by affiliate AI.",
+    "image": "images/product1.jpg",
+    "price": "49.00",
+    "currency": "USD"
+  },
+  {
+    "id": "product2",
+    "name": "Oracle Merch Pack",
+    "description": "Premium branded gear for crypto evangelists.",
+    "image": "images/product2.jpg",
+    "price": "29.00",
+    "currency": "USD"
+  },
+  {
+    "id": "product3",
+    "name": "Affiliate Vault Access",
+    "description": "Unlock monetization tools and private signals.",
+    "image": "images/product3.jpg",
+    "price": "99.00",
+    "currency": "USD"
+  }
+]

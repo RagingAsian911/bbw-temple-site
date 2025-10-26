@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Oracle Vault</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body style="margin:0; font-family:sans-serif; background:#0a0a23; color:#fff;">
+
+  <header style="display:flex; justify-content:space-between; align-items:center; padding:1rem 2rem; background:#111;">
+    <h1 style="color:#ffd700;">Oracle Vault</h1>
+    <nav>
+      <a href="#products" style="color:#ffd700; margin-left:1rem;">Products</a>
+      <a href="#contact" style="color:#ffd700; margin-left:1rem;">Contact</a>
+    </nav>
+  </header>
+
+  <section style="text-align:center; padding:4rem 2rem;">
+    <h2 style="color:#ffd700;">Predict Future Value with Affiliate-AI-Powered Monetization</h2>
+    <p style="color:#ccc;">Upgrade your crypto toolkit with products and resources designed by Charles Leopolz.</p>
+    <a href="#products" style="display:inline-block; margin-top:1rem; padding:0.75rem 1.5rem; background:#ffd700; color:#000; border-radius:5px;">GET STARTED</a>
+  </section>
+
+  <!-- Product Cards -->
+  <!-- Paste product card HTML here -->
+
+  <footer style="text-align:center; padding:2rem; background:#111;">
+    <p style="color:#777;">© 2025 Oracle Vault. All rights reserved.</p>
+  </footer>
+
+</body>
+</html>

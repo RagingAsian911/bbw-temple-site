@@ -1,0 +1,18 @@
+{
+  "name": "Emotional Tags",
+  "namespace": "custom",
+  "key": "emotional_tags",
+  "type": "list.single_line_text",
+  "label": "Emotional Tags",
+  "default": [],
+  "description": "Tags like Slow Burn, Fast Spark, Scroll-Based Intimacy, etc."
+}
+{
+  "name": "Dating Archetype",
+  "namespace": "custom",
+  "key": "dating_archetype",
+  "type": "single_line_text",
+  "label": "Dating Archetype",
+  "default": "",
+  "description": "Cryptic Lover, Sovereign Flame, Emotional Hacker, etc."
+}

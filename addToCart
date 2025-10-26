@@ -1,0 +1,26 @@
+function addToCart(productId) {
+  const cart = JSON.parse(localStorage.getItem('oracleCart') || '[]');
+  cart.push(productId);
+  localStorage.setItem('oracleCart', JSON.stringify(cart));
+  alert(`Added ${productId} to cart`);
+}function updateCartSummary() {
+  fetch('products.json')
+    .then(res => res.json())
+    .then(products => {
+      const summary = document.getElementById('cart-summary');
+      summary.innerHTML = '';
+      let total = 0;
+      cart.forEach(id => {
+        const item = products.find(p => p.id === id);
+        if (item) {
+          total += parseFloat(item.price);
+          summary.innerHTML += `<p style="color:#ccc;">${item.name} - $${item.price}</p>`;
+        }
+      });
+      const discountAmount = total * discount;
+      const finalTotal = total - discountAmount;
+      summary.innerHTML += `<hr><p style="color:#ffd700;">Total: $${finalTotal.toFixed(2)}</p>`;
+    });
+}
+
+<a href="checkout.html" class="button">Go to Checkout</a>

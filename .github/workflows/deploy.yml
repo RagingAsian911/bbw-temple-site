@@ -1,0 +1,48 @@
+name: Deploy Crypto Store
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v3
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v3
+        with:
+          node-version: '18'
+
+      - name: Install dependencies
+        run: npm install
+
+      - name: Build Oracle Vault storefront
+        run: npm run build
+
+      - name: Inject PayPal ID into checkout.html
+        run: |
+          echo "Injecting PayPal ID @BBWTEMPLECRYPTO..."
+          sed -i 's/YOUR_CLIENT_ID/@BBWTEMPLECRYPTO/g' checkout.html
+
+      - name: Deploy to GitHub Pages
+        uses: peaceiris/actions-gh-pages@v3
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          publish_dir: ./dist
+      - name: Trigger bot webhook
+        run: |
+          echo "Triggering bot webhook for product sync..."
+          curl -X POST https://your-bot-endpoint.com/webhook \
+            -H "Content-Type: application/json" \
+            -d '{
+              "event": "sync",
+              "source": "deploy",
+              "tag": "@BBWTEMPLECRYPTO",
+              "products": "products.json",
+              "checkout": "checkout.html"
+            }'

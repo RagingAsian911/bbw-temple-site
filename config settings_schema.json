@@ -1,0 +1,37 @@
+[
+  {
+    "name": "Emotional Tags",
+    "namespace": "custom",
+    "key": "emotional_tags",
+    "type": "list.single_line_text",
+    "label": "Emotional Tags"
+  },
+  {
+    "name": "Dating Archetype",
+    "namespace": "custom",
+    "key": "dating_archetype",
+    "type": "single_line_text",
+    "label": "Dating Archetype"
+  },
+  {
+    "name": "Remix Tags",
+    "namespace": "custom",
+    "key": "remix_tags",
+    "type": "list.single_line_text",
+    "label": "Remix Tags"
+  },
+  {
+    "name": "Remix Source",
+    "namespace": "custom",
+    "key": "remix_source",
+    "type": "single_line_text",
+    "label": "Remix Source"
+  },
+  {
+    "name": "Remix Intent",
+    "namespace": "custom",
+    "key": "remix_intent",
+    "type": "single_line_text",
+    "label": "Remix Intent"
+  }
+]

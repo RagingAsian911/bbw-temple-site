@@ -1,0 +1,4 @@
+cd path/to/bbw-temple-site
+git status
+git commit -m "feat: sealed Ünsal install bundle"
+git push origin main

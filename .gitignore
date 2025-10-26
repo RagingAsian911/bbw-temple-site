@@ -55,3 +55,8 @@ This scroll tracks all ritual actions across the BBW Temple system.
 - All force-pushes must be logged with intent
 - Deleted branches must be noted with reason
 - Emotional scrolls require dual review
+# .gitignore
+.env
+secrets.json
+wallet-config.yml
+private-scrolls/

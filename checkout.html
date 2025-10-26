@@ -1,0 +1,96 @@
+<h3 style="color:#ffd700;">Shipping Info</h3>
+<form id="shipping-form" style="max-width:400px; margin:0 auto; text-align:left;">
+  <label style="color:#ccc;">Full Name</label><br>
+  <input type="text" id="name" required style="width:100%; margin-bottom:1rem;"><br>
+
+  <label style="color:#ccc;">Email</label><br>
+  <input type="email" id="email" required style="width:100%; margin-bottom:1rem;"><br>
+
+  <label style="color:#ccc;">Address</label><br>
+  <textarea id="address" required style="width:100%; margin-bottom:1rem;"></textarea><br>
+</form>
+
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Checkout - Oracle Vault</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <h2 style="text-align:center; color:#ffd700;">Your Cart</h2>
+  <div id="cart-summary" style="padding:2rem;"></div>
+  <button onclick="submitOrder()" style="margin:2rem auto; display:block;">Complete Purchase</button>
+<div id="paypal-button-container"></div>
+
+<script src="https://www.paypal.com/sdk/js?client-id=@BBWTEMPLECRYPTO&currency=USD"></script>
+
+<div id="paypal-button-container"></div>
+<script>
+  paypal.Buttons({
+    createOrder: function(data, actions) {
+      return actions.order.create({
+        purchase_units: [{
+          amount: {
+            value: '49.99' // Replace with dynamic product price
+          }
+        }]
+      });
+    },
+    onApprove: function(data, actions) {
+      return actions.order.capture().then(function(details) {
+        alert('Transaction completed by ' + details.payer.name.given_name);
+        // Optional: Trigger bot or redirect
+      });
+    }
+  }).render('#paypal-button-container');
+</script>
+
+  <script>
+    const cart = JSON.parse(localStorage.getItem('oracleCart') || '[]');
+
+    fetch('products.json')
+      .then(res => res.json())
+      .then(products => {
+        const summary = document.getElementById('cart-summary');
+        let total = 0;
+        cart.forEach(id => {
+          const item = products.find(p => p.id === id);
+          if (item) {
+            total += parseFloat(item.price);
+            summary.innerHTML += `<p style="color:#ccc;">${item.name} - $${item.price}</p>`;
+          }
+        });
+        summary.innerHTML += `<hr><p style="color:#ffd700;">Total: $${total.toFixed(2)}</p>`;
+      });
+
+    function submitOrder() {
+      alert("Order submitted! (This is a demo)");
+      localStorage.removeItem('oracleCart');
+    }function submitOrder() {
+  const name = document.getElementById('name').value;
+  const email = document.getElementById('email').value;
+  const address = document.getElementById('address').value;
+  const affiliate = localStorage.getItem('oracleAffiliate') || 'none';
+
+  console.log({
+    name,
+    email,
+    address,
+    cart,
+    discount,
+    affiliate
+  });
+
+  alert("Order submitted! (This is a demo)");
+  localStorage.removeItem('oracleCart');
+}
+
+  </script>
+</body>
+</html>
+function getAffiliateId() {
+  const match = document.cookie.match(/affiliate_id=([^;]+)/);
+  return match ? match[1] : null;
+}
+const affiliateId = getAffiliateId();
+// Send affiliateId with order or webhook

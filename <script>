@@ -1,0 +1,13 @@
+let discount = 0;
+
+function applyCoupon() {
+  const code = document.getElementById('coupon').value.trim().toUpperCase();
+  if (code === 'VAULT10') {
+    discount = 0.10;
+    document.getElementById('discount-msg').textContent = '10% discount applied!';
+    updateCartSummary();
+  } else {
+    discount = 0;
+    document.getElementById('discount-msg').textContent = 'Invalid code.';
+  }
+}
