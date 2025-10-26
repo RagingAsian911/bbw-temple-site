@@ -1,0 +1,9 @@
+{
+  "name": "Emotional Tags",
+  "namespace": "custom",
+  "key": "emotional_tags",
+  "type": "list.single_line_text",
+  "label": "Emotional Tags",
+  "default": [],
+  "description": "Tags like Slow Burn, Fast Spark, Scroll-Based Intimacy, etc."
+}
