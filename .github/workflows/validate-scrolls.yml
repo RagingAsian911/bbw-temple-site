@@ -1,0 +1,3 @@
+git add .
+git commit -m "chore: added scroll validator for emotional tags"
+git push origin main
