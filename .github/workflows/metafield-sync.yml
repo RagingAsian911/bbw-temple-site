@@ -1,0 +1,24 @@
+name: Metafield Sync
+
+on:
+  push:
+    paths:
+      - 'config/settings_schema.json'
+
+jobs:
+  sync_metafields:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repo
+        uses: actions/checkout@v3
+
+      - name: Install Shopify CLI
+        run: |
+          npm install -g @shopify/cli @shopify/theme
+
+      - name: Apply Metafields
+        env:
+          SHOPIFY_STORE: ${{ secrets.SHOPIFY_STORE }}
+          SHOPIFY_PASSWORD: ${{ secrets.SHOPIFY_PASSWORD }}
+        run: |
+          shopify metafield set --store=$SHOPIFY_STORE --password=$SHOPIFY_PASSWORD --file=config/settings_schema.json
