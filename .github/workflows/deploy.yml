@@ -21,8 +21,28 @@ jobs:
       - name: Install dependencies
         run: npm install
 
-      - name: Build project
-        run: npm run build
+      - name: Build Oracle Vault storefront
+        run: |
+          echo "Building Oracle Vault storefront for @BBWTEMPLECRYPTO..."
+          npm run build
+
+      - name: Sync product catalog
+        run: |
+          echo "Syncing products.json and javascript-products.json..."
+          cp products.json ./dist/
+          cp javascript-products.json ./dist/
+
+      - name: Sync PayPal checkout files
+        run: |
+          echo "Syncing PayPal checkout files..."
+          cp checkout.html ./dist/
+
+      - name: Trigger bot webhook
+        run: |
+          echo "Triggering bot webhook for product sync..."
+          curl -X POST https://your-bot-endpoint.com/webhook \
+            -H "Content-Type: application/json" \
+            -d '{"event":"sync","source":"deploy","tag":"@BBWTEMPLECRYPTO"}'
 
       - name: Deploy to GitHub Pages
         uses: peaceiris/actions-gh-pages@v3
