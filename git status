@@ -1,2 +1,4 @@
+git add
 git commit -m "feat: sealed Ünsal install bundle with scrolls, schema, workflows, and docs"
+ .
 git push origin main
