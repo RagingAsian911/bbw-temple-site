@@ -1,0 +1,17 @@
+name: Liquid Scroll Validator
+
+on:
+  push:
+    paths:
+      - '**/*.liquid'
+
+jobs:
+  validate:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repo
+        uses: actions/checkout@v3
+
+      - name: Validate Liquid Syntax
+        run: |
+          find . -name "*.liquid" -exec liquid-linter {} \;
