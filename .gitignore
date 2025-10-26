@@ -39,3 +39,19 @@ Thumbs.db
 node_modules/
 __pycache__/
 .bundle/
+# 🧾 Contributor Audit Log
+
+This scroll tracks all ritual actions across the BBW Temple system.
+
+## 🔥 Ritual Events
+
+| Date       | Contributor     | Action              | Branch         | Notes                      |
+|------------|-----------------|---------------------|----------------|----------------------------|
+| 2025-10-26 | RagingAsian911  | Verified commit     | main           | Sealed Ünsal install bundle |
+| 2025-10-26 | Charles-Buchanan| Scroll inspection   | main           | Verified schema and docs   |
+
+## 🧙 Guidelines
+
+- All force-pushes must be logged with intent
+- Deleted branches must be noted with reason
+- Emotional scrolls require dual review
