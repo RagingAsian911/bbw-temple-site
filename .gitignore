@@ -16,3 +16,26 @@ _site/
 # counterproductive to check this file into the repository.
 # Details at https://github.com/github/pages-gem/issues/768
 Gemfile.lock
+# 🔐 Ritual Privacy Shield
+
+# Secrets and keys
+.env
+secrets.json
+wallet-config.yml
+
+# Ritual drafts and private scrolls
+private-scrolls/
+*.draft.liquid
+
+# System clutter
+.DS_Store
+Thumbs.db
+
+# Logs and temp
+*.log
+*.tmp
+
+# Node / Python / Ruby
+node_modules/
+__pycache__/
+.bundle/
