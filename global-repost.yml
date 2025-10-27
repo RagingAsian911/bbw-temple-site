@@ -1,0 +1,35 @@
+name: Global Repost Console
+on:
+  workflow_dispatch:
+    inputs:
+      trigger:
+        description: 'Choose your ritual act'
+        required: true
+        type: choice
+        options:
+          - broadcast_store_link
+          - post_scroll
+          - email_blast
+          - affiliate_magnet
+          - talent_beacon
+          - geo_wave
+          - time_pulse
+      platform:
+        description: 'Target platform (optional)'
+        required: false
+        default: 'twitter'
+      region:
+        description: 'Target region/language (optional)'
+        required: false
+        default: 'global'
+jobs:
+  execute:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Fetch Ritual Scroll
+        run: |
+          curl -O https://raw.githubusercontent.com/YOUR_USERNAME/YOUR_REPO/main/scrolls/${{ github.event.inputs.trigger }}.md
+      - name: Post to Platform
+        run: |
+          curl -X POST https://api.${{ github.event.inputs.platform }}.com/post \
+          -d "message=$(cat ${{ github.event.inputs.trigger }}.md)"
