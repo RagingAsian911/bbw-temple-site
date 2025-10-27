@@ -1,3 +1,5 @@
+<script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
+
 <script>
   async function loadForecastScroll() {
     const response = await fetch('forecast.md');
