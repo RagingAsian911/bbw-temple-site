@@ -1,0 +1,10 @@
+Component	Location	Triggered By	
+oracle-loop.yml	.github/workflows/	Manual or every 6 hours	
+forecast.md	Root	Auto-generated	
+affiliate_scroll.pdf	/downloads/	Attached to email scroll	
+inject-forecast.js	/docs/index.html	GitHub Pages homepage	
+send_forecast_email.py	/scripts/	Triggered by workflow	
+Shopify metafields	Shopify Admin	Updated via GitHub	
+YouTube description	Manual paste	Includes all ritual links	
+WhatsApp & Telegram	Embedded links	In homepage + email scroll	
+Talent Intake Form	/forms/	Linked in homepage
