@@ -38,3 +38,20 @@ All contributors must declare emotional tone and intent.
 ## 🛡️ Merge Rules
 - PRs required for all changes
 - Charles reviews all onboarding logic
+<div class="talent-dashboard">
+  <h2>Temple Contributors</h2>
+  <ul id="contributors"></ul>
+</div>
+
+<script>
+  fetch('talent-console/schema/metafields.json')
+    .then(res => res.json())
+    .then(data => {
+      const list = document.getElementById('contributors');
+      data.contributors.forEach(t => {
+        const li = document.createElement('li');
+        li.innerHTML = `<strong>${t.name}</strong> — ${t.emotion_tag}<br>Joined: ${t.join_date}`;
+        list.appendChild(li);
+      });
+    });
+</script>
