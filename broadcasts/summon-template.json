@@ -1,0 +1,9 @@
+{
+  "template": {
+    "title": "Contributor Summon Broadcast",
+    "tone": "ceremonial",
+    "fields": ["name", "role", "emotion_tag", "rituals"],
+    "format": "markdown",
+    "example": "**Summoning:** Arielle\n🔮 Role: Emotional Cartographer\nRituals: mapping tone shifts, calibrating contributor aura"
+  }
+}
