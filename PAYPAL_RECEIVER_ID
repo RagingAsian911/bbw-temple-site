@@ -1,0 +1,2 @@
+env:
+  PAYPAL_RECEIVER_ID: ${{ secrets.PAYPAL_RECEIVER_ID }}
