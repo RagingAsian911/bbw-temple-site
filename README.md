@@ -20,4 +20,7 @@ A sovereign Shopify ritual system blending emotional tagging, affiliate onboardi
 1. Clone this repo:
    ```bash
    git clone https://github.com/RagingAsian911/bbw-temple-site.git
+# BBW Temple Talent Console
+
+Sovereign backend for contributor onboarding, emotional tagging, and ritual broadcasts. Powered by branded flows and AI matching.
 
