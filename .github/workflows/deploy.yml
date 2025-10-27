@@ -68,3 +68,11 @@ mv dashboard.html docs/
 git add docs/dashboard.html
 git commit -m "Add contributor dashboard"
 git push origin main
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Upload to GitHub Pages
+        uses: actions/upload-pages-artifact@v1
+        with:
+          path: './public'
