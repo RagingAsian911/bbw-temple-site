@@ -1,0 +1,56 @@
+[
+  {
+    "namespace": "talent",
+    "key": "emotional_tags",
+    "type": "list.single_line_text",
+    "description": "Emotional archetypes (e.g. soft dom, cryptic healer)"
+  },
+  {
+    "namespace": "talent",
+    "key": "consent_matrix",
+    "type": "json",
+    "description": "Acts, boundaries, preferences"
+  },
+  {
+    "namespace": "talent",
+    "key": "availability",
+    "type": "single_line_text",
+    "description": "Availability calendar or time blocks"
+  },
+  {
+    "namespace": "talent",
+    "key": "portfolio_links",
+    "type": "list.url",
+    "description": "External links to video, photo, or social"
+  },
+  {
+    "namespace": "talent",
+    "key": "revenue_goal",
+    "type": "single_line_text",
+    "description": "Talent’s income target or bundle preference"
+  },
+  {
+    "namespace": "talent",
+    "key": "match_score",
+    "type": "number_integer",
+    "description": "AI-calculated compatibility score"
+  },
+  {
+    "namespace": "talent",
+    "key": "scene_suggestion",
+    "type": "single_line_text",
+    "description": "Suggested scene archetype"
+  },
+  {
+    "namespace": "talent",
+    "key": "contract_signed",
+    "type": "boolean",
+    "description": "Affiliate agreement status"
+  },
+  {
+    "namespace": "talent",
+    "key": "paypal_setup",
+    "type": "boolean",
+    "description": "Payment readiness"
+  }
+]
