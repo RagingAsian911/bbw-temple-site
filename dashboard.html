@@ -46,15 +46,64 @@
   </table>
 
   <script>
-    async function loadContributors() {
-      const files = ['charles.json', 'ragingasian911.json', 'unsal.json']; // Add more as needed
-      const contributors = [];
+  async function loadContributors() {
+    const files = ['charles.json', 'ragingasian911.json', 'unsal.json']; // Add more as needed
+    const contributors = [];
 
-      for (const file of files) {
-        const res = await fetch(`logs/talent/${file}`);
-        const data = await res.json();
-        contributors.push(data);
+    for (const file of files) {
+      const res = await fetch(`logs/talent/${file}`);
+      const data = await res.json();
+      contributors.push(data);
+    }
+
+    // Clear previous table
+    const tbody = document.querySelector('#contributorTable tbody');
+    tbody.innerHTML = '';
+
+    contributors.forEach(c => {
+      const row = document.createElement('tr');
+      row.innerHTML = `
+        <td>${c.name}</td>
+        <td>${c.role}</td>
+        <td>${c.tag}</td>
+        <td>${c.joined}</td>
+      `;
+      tbody.appendChild(row);
+    });
+
+    // Chart data
+    const tagCounts = {};
+    contributors.forEach(c => {
+      tagCounts[c.tag] = (tagCounts[c.tag] || 0) + 1;
+    });
+
+    const ctx = document.getElementById('tagChart').getContext('2d');
+    if (window.tagChart) window.tagChart.destroy(); // Reset chart
+    window.tagChart = new Chart(ctx, {
+      type: 'bar',
+      data: {
+        labels: Object.keys(tagCounts),
+        datasets: [{
+          label: 'Contributors per Emotional Tag',
+          data: Object.values(tagCounts),
+          backgroundColor: ['#ff4500', '#00ced1', '#9370db', '#ffd700']
+        }]
+      },
+      options: {
+        plugins: {
+          legend: { display: false }
+        },
+        scales: {
+          y: { beginAtZero: true }
+        }
       }
+    });
+  }
+
+  loadContributors();
+  setInterval(loadContributors, 30000); // Refresh every 30 seconds
+</script>
+
 
       // Populate table
       const tbody = document.querySelector('#contributorTable tbody');
