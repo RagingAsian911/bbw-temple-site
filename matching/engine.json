@@ -1,0 +1,5 @@
+Rule ID	Purpose	Logic Type	Notes
+match_emotion	Emotional tone affinity	Similarity match	Uses tag clustering
+match_rituals	Shared onboarding rituals	Array intersection	Requires at least one overlap
+match_location	Proximity-based pairing	Geo radius filter	50-mile default radius
+match_verified	Filter out unverified contributors	Boolean filter	Ensures protocol compliance
