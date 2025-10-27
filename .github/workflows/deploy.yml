@@ -26,8 +26,9 @@ jobs:
 
       - name: Inject PayPal ID into checkout.html
         run: |
-          echo "Injecting PayPal ID @BBWTEMPLECRYPTO..."
-          sed -i 's/YOUR_CLIENT_ID/@BBWTEMPLECRYPTO/g' checkout.html
+       env:
+  PAYPAL_RECEIVER_ID: ${{ secrets.PAYPAL_RECEIVER_ID }}
+
 
       - name: Deploy to GitHub Pages
         uses: peaceiris/actions-gh-pages@v3
