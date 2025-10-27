@@ -3,3 +3,4 @@
 🤖 Signal Bot: @IQWAYNE_BOT (Telegram)  
 💰 Buy Crypto via Telegram Wallet: https://t.me/wallet?profile  
 📜 Claim your Forecast Scroll: https://github.com/BBW-Temple-AI-Matchmaking
+affiliate_scroll.pdf
