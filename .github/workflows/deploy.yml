@@ -63,3 +63,8 @@ jobs:
 
       - name: Seal Invocation
         run: echo "🔥 Final Invocation triggered for v1.0.0-OneDrop"
+mkdir docs
+mv dashboard.html docs/
+git add docs/dashboard.html
+git commit -m "Add contributor dashboard"
+git push origin main
