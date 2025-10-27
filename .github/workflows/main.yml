@@ -17,8 +17,9 @@ jobs:
 
       - name: Route PayPal Checkout
         run: |
-          echo "💸 Routing PayPal transactions to @BBWTEMPLECRYPTO"
-          echo "PAYPAL_RECEIVER_ID=@BBWTEMPLECRYPTO" >> $GITHUB_ENV
+   env:
+  PAYPAL_RECEIVER_ID: ${{ secrets.PAYPAL_RECEIVER_ID }}
+
 
       - name: Confirm Archive
         run: echo "📜 README.md sealed. License embedded. Ritual tag v1.0.0-OneDrop confirmed."
