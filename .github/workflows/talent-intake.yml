@@ -2,6 +2,22 @@ name: Talent Console Intake
 
 on:
   workflow_dispatch:
+    inputs:
+      stage_name:
+        description: "Contributor alias or stage name"
+        required: true
+      role:
+        description: "Role (Performer, Director, Editor, Affiliate)"
+        required: true
+      portfolio:
+        description: "Portfolio or social link"
+        required: true
+      emotional_tag:
+        description: "Emotional tag (🔥, 💎, 🧿, 📜)"
+        required: true
+      consent:
+        description: "Consent to archive (true/false)"
+        required: true
 
 jobs:
   intake:
@@ -10,10 +26,17 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v3
 
-      - name: Log Talent Intake
+      - name: Log Contributor Intake
         run: |
           mkdir -p logs/talent
-          echo "{ \"name\": \"${{ github.actor }}\", \"role\": \"Performer\", \"joined\": \"$(date)\", \"tag\": \"🔥\" }" > logs/talent/${{ github.actor }}.json
+          echo "{ \
+            \"name\": \"${{ github.event.inputs.stage_name }}\", \
+            \"role\": \"${{ github.event.inputs.role }}\", \
+            \"portfolio\": \"${{ github.event.inputs.portfolio }}\", \
+            \"tag\": \"${{ github.event.inputs.emotional_tag }}\", \
+            \"consent\": \"${{ github.event.inputs.consent }}\", \
+            \"joined\": \"$(date)\" \
+          }" > logs/talent/${{ github.actor }}.json
 
       - name: Push to Secure Branch
         run: |
