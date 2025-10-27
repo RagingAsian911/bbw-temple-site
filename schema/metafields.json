@@ -30,3 +30,35 @@
     }
   ]
 }
+{
+  "contributors": [
+    {
+      "id": "temple_001",
+      "name": "Arielle",
+      "role": "Emotional Cartographer",
+      "emotion_tag": "🔮 intuitive",
+      "join_date": "2025-10-27",
+      "rituals": ["mapping tone shifts", "calibrating contributor aura"],
+      "verified": true,
+      "profile": {
+        "location": "Brooklyn, NY",
+        "avatar": "https://temple-assets.com/avatars/arielle.png",
+        "bio": "Draws emotional maps for onboarding flows and contributor resonance."
+      }
+    },
+    {
+      "id": "temple_002",
+      "name": "Juno",
+      "role": "Flow Sentinel",
+      "emotion_tag": "⚡ assertive",
+      "join_date": "2025-10-26",
+      "rituals": ["validating webhook triggers", "guarding branded logic"],
+      "verified": true,
+      "profile": {
+        "location": "Oakland, CA",
+        "avatar": "https://temple-assets.com/avatars/juno.png",
+        "bio": "Ensures all flows respect Charles’ branded sovereignty and emotional tone."
+      }
+    }
+  ]
+}
