@@ -73,3 +73,27 @@ jobs:
       - name: Confirm broadcast template
         run: |
           jq . talent-console/broadcasts/summon-template.json
+name: Talent Intake Sync
+
+on:
+  push:
+    paths:
+      - 'talent-console/schema/metafields.json'
+      - 'talent-console/matching/engine.json'
+      - 'talent-console/broadcasts/summon-template.json'
+
+jobs:
+  sync:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repo
+        uses: actions/checkout@v3
+
+      - name: Validate metafields
+        run: jq . talent-console/schema/metafields.json
+
+      - name: Validate matching engine
+        run: jq . talent-console/matching/engine.json
+
+      - name: Confirm broadcast template
+        run: jq . talent-console/broadcasts/summon-template.json
