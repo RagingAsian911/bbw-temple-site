@@ -2,3 +2,9 @@ cd path/to/bbw-temple-site
 git status
 git commit -m "feat: sealed Ünsal install bundle"
 git push origin main
+jobs:
+  sync:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Install Shopify CLI
+        run: npm install -g @shopify/cli
