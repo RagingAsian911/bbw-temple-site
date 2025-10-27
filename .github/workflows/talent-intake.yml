@@ -18,6 +18,15 @@ on:
       consent:
         description: "Consent to archive (true/false)"
         required: true
+jobs:
+  validate:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Install jq
+        run: sudo apt-get update && sudo apt-get install -y jq
+
+      - name: Validate metafields
+        run: jq . talent-console/schema/metafields.json
 
 jobs:
   intake:
