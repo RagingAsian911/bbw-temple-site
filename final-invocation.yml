@@ -12,9 +12,6 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v3
 
-      - name: Validate Sovereign Modules
-        run: echo "🔮 Modules sealed: Crypto Oracle, AI Temple, BBW Sites, Emotional Tagging, Contributor Intake"
-
       - name: Emotional Tagging Schema
         run: |
           echo "🧠 Emotional Tagging Activated"
@@ -23,11 +20,14 @@ jobs:
 
       - name: Contributor Intake Flow
         run: |
-          echo "🧾 Validating contributor identity..."
-          echo "CONTRIBUTOR_ID=${{ github.actor }}"
-          echo "INTAKE_LOG=logs/contributors/${{ github.actor }}.json" >> $GITHUB_ENV
           mkdir -p logs/contributors
           echo "{ \"id\": \"${{ github.actor }}\", \"joined\": \"$(date)\" }" > logs/contributors/${{ github.actor }}.json
 
-      - name: Confirm Archive
-        run: echo "📜 README.md sealed. License embedded. Ritual tag v1.0.0-OneDrop confirmed."
+      - name: Push Contributor Log to Secure Branch
+        run: |
+          git config --global user.name "TempleBot"
+          git config --global user.email "templebot@users.noreply.github.com"
+          git checkout -b temple-logs
+          git add logs/contributors/${{ github.actor }}.json
+          git commit -m "Add contributor log for ${{ github.actor }}"
+          git push origin temple-logs --force
