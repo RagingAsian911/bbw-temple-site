@@ -2,3 +2,7 @@ git add .
 git commit -m "feat: installed BBW Temple + AI Matchmaking Temple system"
 git push origin main
 git add . git commit -m “feat: added [your feature]” git push origin feat/your-feature-name
+- name: Route PayPal Checkout
+  run: |
+    echo "💸 Routing PayPal transactions to @BBWTEMPLECRYPTO"
+    echo "PAYPAL_RECEIVER_ID=@BBWTEMPLECRYPTO" >> $GITHUB_ENV
