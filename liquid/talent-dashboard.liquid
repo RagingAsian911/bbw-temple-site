@@ -1,0 +1,12 @@
+{% assign talents = shop.metafields.talent_console %}
+<div class="talent-dashboard">
+  <h2>Temple Contributors</h2>
+  <ul>
+    {% for talent in talents %}
+      <li>
+        <strong>{{ talent.name }}</strong> — {{ talent.emotion_tag }}
+        <br>Joined: {{ talent.join_date }}
+      </li>
+    {% endfor %}
+  </ul>
+</div>
