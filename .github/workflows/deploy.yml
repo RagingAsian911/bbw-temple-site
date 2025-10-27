@@ -46,3 +46,19 @@ jobs:
               "products": "products.json",
               "checkout": "checkout.html"
             }'
+name: Final Invocation
+
+on:
+  push:
+    tags:
+      - 'v1.0.0-OneDrop'
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v3
+
+      - name: Seal Invocation
+        run: echo "🔥 Final Invocation triggered for v1.0.0-OneDrop"
