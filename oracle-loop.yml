@@ -1,0 +1,30 @@
+name: Crypto Oracle 24-Hour Loop
+
+on:
+  schedule:
+    - cron: '0 */6 * * *'  # Runs every 6 hours
+  workflow_dispatch:      # Manual trigger
+
+jobs:
+  forecast-scroll:
+    runs-on: ubuntu-latest
+    steps:
+      - name: 🔥 Pull Forecast Script
+        uses: actions/checkout@v3
+
+      - name: 🧬 Parse Oracle Stream
+        run: |
+          curl https://api.your-signal-source.com/888-feed > signals.json
+          python parse_signals.py signals.json
+
+      - name: 📜 Generate Forecast Scroll
+        run: |
+          python generate_scroll.py --source signals.json --output forecast.md
+
+      - name: 🚀 Push to BBW Temple
+        run: |
+          git config user.name "Charles Buchanan"
+          git config user.email "charles@bbwtemple.com"
+          git add forecast.md
+          git commit -m "🪬 Oracle Forecast Update"
+          git push
