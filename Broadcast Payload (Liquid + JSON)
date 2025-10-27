@@ -1,0 +1,12 @@
+{
+  "broadcast": {
+    "type": "scene_summon",
+    "tone": "mythic",
+    "audience_filter": {
+      "emotional_tags": ["soft dom", "cryptic healer"],
+      "availability": "weekend",
+      "contract_signed": true
+    },
+    "message": "The Temple calls. A new bundle stirs. You are summoned to the Moonlight Chamber. Confirm your readiness."
+  }
+}
