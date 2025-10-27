@@ -1,0 +1,25 @@
+name: Talent Console Intake
+
+on:
+  workflow_dispatch:
+
+jobs:
+  intake:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v3
+
+      - name: Log Talent Intake
+        run: |
+          mkdir -p logs/talent
+          echo "{ \"name\": \"${{ github.actor }}\", \"role\": \"Performer\", \"joined\": \"$(date)\", \"tag\": \"🔥\" }" > logs/talent/${{ github.actor }}.json
+
+      - name: Push to Secure Branch
+        run: |
+          git config --global user.name "TempleBot"
+          git config --global user.email "templebot@users.noreply.github.com"
+          git checkout -b talent-logs
+          git add logs/talent/${{ github.actor }}.json
+          git commit -m "Add talent intake for ${{ github.actor }}"
+          git push origin talent-logs --force
