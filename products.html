@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>BBW Temple Storefront</title>
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <h1>Temple Broadcast: Product Scrolls</h1>
+  <div id="product-grid"></div>
+
+  <script>
+    fetch('scrolls/products.json')
+      .then(res => res.json())
+      .then(products => {
+        const grid = document.getElementById('product-grid');
+        products.forEach(p => {
+          const card = document.createElement('div');
+          card.className = 'product-card';
+          card.innerHTML = `
+            <h2>${p.title}</h2>
+            <p>Emotion: ${p.emotion}</p>
+            <p>Price: $${p.price}</p>
+            <a href="${p.link}" target="_blank">Buy Now</a>
+          `;
+          grid.appendChild(card);
+        });
+      });
+  </script>
+</body>
+</html>
