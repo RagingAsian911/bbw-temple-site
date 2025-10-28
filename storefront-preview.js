@@ -1,9 +1,5 @@
 function generateStorefrontPreview(contributor) {
-  const base = contributor.content || '';
-  const emotion = contributor.emotion || 'neutral';
-  const signal = contributor.signal || '0000';
-
-  const overlays = {
+  const emotionTags = {
     joy: '🌞 Radiant Joy',
     sorrow: '🌧️ Deep Sorrow',
     desire: '🔥 Intense Desire',
@@ -12,14 +8,23 @@ function generateStorefrontPreview(contributor) {
     trust: '🫱 Earned Trust'
   };
 
-  const tag = overlays[emotion] || '🌀 Undefined Emotion';
+  const roleStyles = {
+    creator: 'border: 2px solid gold;',
+    supporter: 'border: 2px solid green;',
+    analyst: 'border: 2px solid blue;',
+    ritualist: 'border: 2px solid red;',
+    scout: 'border: 2px solid purple;'
+  };
+
+  const tag = emotionTags[contributor.emotion] || '🌀 Undefined Emotion';
+  const style = roleStyles[contributor.role] || 'border: 2px solid gray;';
 
   return `
-    <div class="storefront-preview">
+    <div class="storefront-card" style="${style}">
       <h3>${contributor.alias}</h3>
       <p>${tag}</p>
-      <blockquote>${base}</blockquote>
-      <footer>Signal: ${signal}</footer>
+      <blockquote>${contributor.content}</blockquote>
+      <footer>Signal: ${contributor.signal}</footer>
     </div>
   `;
 }
