@@ -26,3 +26,4 @@ git commit -m "BBW Temple v1.0.0-OneDrop — Final Invocation"
 git push origin main
 git tag v1.0.0-OneDrop
 git push origin v1.0.0-OneDrop
+git remote set-url origin https://github.com/RagingAsian911/bbw-temple.git
