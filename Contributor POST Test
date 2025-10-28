@@ -1,0 +1,9 @@
+const axios = require('axios');
+
+axios.post('https://api.oraclesignal.site/logs/talent', {
+  name: 'Test User',
+  role: 'Designer',
+  emotion: 'Curious'
+})
+.then(res => console.log('✅ Success:', res.status, res.data))
+.catch(err => console.error('❌ Failed:', err.response?.status, err.response?.data));
