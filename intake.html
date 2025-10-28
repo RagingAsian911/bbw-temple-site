@@ -2,46 +2,25 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <title>Join the Temple Signal</title>
+  <title>Contributor Intake</title>
 </head>
 <body>
-  <h1>Contributor Intake</h1>
-  <form id="intake-form">
-    <input type="text" name="name" placeholder="Your Name" required />
-    <input type="text" name="role" placeholder="Your Role" required />
-    <select name="emotion" required>
-      <option value="">Select Emotion</option>
-      <option value="Focused">Focused</option>
-      <option value="Curious">Curious</option>
-      <option value="Resilient">Resilient</option>
-      <option value="Restless">Restless</option>
-    </select>
-    <button type="submit">Broadcast</button>
+  <h1>Join the Temple</h1>
+  <form action="https://api.oraclesignal.site/logs/talent" method="POST">
+    <label>Name: <input type="text" name="name" required /></label><br />
+    <label>Role: <input type="text" name="role" required /></label><br />
+    <label>Emotion:
+      <select name="emotion" required>
+        <option value="Curious">Curious</option>
+        <option value="Focused">Focused</option>
+        <option value="Resilient">Resilient</option>
+        <option value="Restless">Restless</option>
+        <option value="Inspired">Inspired</option>
+        <option value="Sovereign">Sovereign</option>
+      </select>
+    </label><br />
+    <button type="submit">Submit</button>
   </form>
-
-  <script>
-    document.getElementById('intake-form').addEventListener('submit', async (e) => {
-      e.preventDefault();
-      const form = e.target;
-      const data = {
-        name: form.name.value,
-        role: form.role.value,
-        emotion: form.emotion.value
-      };
-
-      const res = await fetch('https://api.oraclesignal.site/logs/talent', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify(data)
-      });
-
-      if (res.ok) {
-        alert('Signal received. Contributor logged.');
-        form.reset();
-      } else {
-        alert('Broadcast failed.');
-      }
-    });
-  </script>
 </body>
 </html>
+
