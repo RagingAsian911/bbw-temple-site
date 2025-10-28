@@ -1,0 +1,15 @@
+function analyzeContributors(data) {
+  const emotions = {};
+  const roles = {};
+
+  data.forEach(entry => {
+    emotions[entry.emotion] = (emotions[entry.emotion] || 0) + 1;
+    roles[entry.role] = (roles[entry.role] || 0) + 1;
+  });
+
+  return {
+    emotionDistribution: emotions,
+    roleDistribution: roles,
+    totalContributors: data.length
+  };
+}
