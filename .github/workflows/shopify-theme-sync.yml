@@ -12,5 +12,8 @@ jobs:
       - name: Checkout repo
         uses: actions/checkout@v3
 
+      - name: Ensure script is executable
+        run: chmod +x unsal.bundle.sh
+
       - name: Run Ünsal Bundle
-        run: bash unsal.bundle.sh
+        run: ./unsal.bundle.sh
