@@ -1,3 +1,16 @@
- git add .github/workflows/shopify-theme-sync.yml
-git commit -m "Restore Shopify theme sync workflow"
-git push origin main
+name: Shopify Theme Sync
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  sync:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repo
+        uses: actions/checkout@v3
+
+      - name: Run Ünsal Bundle
+        run: bash unsal.bundle.sh
