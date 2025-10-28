@@ -1,25 +1,22 @@
-Key-based access, emotional matching
-<script>
-  async function loadSignals() {
-    const res = await fetch('/logs/contributors');
-    const data = await res.json();
+async function loadSignals() {
+  const res = await fetch('/logs/contributors');
+  const data = await res.json();
 
-    const container = document.getElementById('signal-container');
-    container.innerHTML = '';
+  const container = document.getElementById('signal-container');
+  container.innerHTML = '';
 
-    data.forEach(entry => {
-      const div = document.createElement('div');
-      div.className = 'signal';
-      div.innerHTML = `
-        <strong>${entry.alias}</strong><br>
-        Emotion: ${entry.emotion}<br>
-        Role: ${entry.role}<br>
-        Signal: ${entry.signal}<br>
-        Timestamp: ${entry.timestamp}
-      `;
-      container.appendChild(div);
-    });
-  }
+  data.forEach(entry => {
+    const div = document.createElement('div');
+    div.className = 'signal';
+    div.innerHTML = `
+      <strong>${entry.alias}</strong><br>
+      Emotion: ${entry.emotion}<br>
+      Role: ${entry.role}<br>
+      Signal: ${entry.signal}<br>
+      Timestamp: ${entry.timestamp}
+    `;
+    container.appendChild(div);
+  });
+}
 
-  window.onload = loadSignals;
-</script>
+window.onload = loadSignals;
