@@ -10,7 +10,7 @@
   <div id="product-grid"></div>
 
   <script>
-    fetch('scrolls/products.json')
+    fetch('/scrolls/products.json')
       .then(res => res.json())
       .then(products => {
         const grid = document.getElementById('product-grid');
@@ -21,7 +21,15 @@
             <h2>${p.title}</h2>
             <p>Emotion: ${p.emotion}</p>
             <p>Price: $${p.price}</p>
-            <a href="${p.link}" target="_blank">Buy Now</a>
+            <form action="https://www.paypal.com/cgi-bin/webscr" method="post" target="_blank">
+              <input type="hidden" name="cmd" value="_xclick">
+              <input type="hidden" name="business" value="${p.paypal}">
+              <input type="hidden" name="item_name" value="${p.title}">
+              <input type="hidden" name="amount" value="${p.price}">
+              <input type="hidden" name="currency_code" value="USD">
+              <input type="submit" value="Buy with PayPal">
+            </form>
+            <button onclick="window.location.href='${p.stripe}'">Buy with Stripe</button>
           `;
           grid.appendChild(card);
         });
@@ -29,3 +37,4 @@
   </script>
 </body>
 </html>
+
