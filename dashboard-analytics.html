@@ -1,0 +1,44 @@
+<canvas id="emotionChart"></canvas>
+<canvas id="roleChart"></canvas>
+
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+<script>
+  async function loadAnalytics() {
+    const res = await fetch('/logs/contributors');
+    const data = await res.json();
+
+    const emotions = {};
+    const roles = {};
+
+    data.forEach(entry => {
+      emotions[entry.emotion] = (emotions[entry.emotion] || 0) + 1;
+      roles[entry.role] = (roles[entry.role] || 0) + 1;
+    });
+
+    new Chart(document.getElementById('emotionChart'), {
+      type: 'bar',
+      data: {
+        labels: Object.keys(emotions),
+        datasets: [{
+          label: 'Emotion Distribution',
+          data: Object.values(emotions),
+          backgroundColor: '#FF4500'
+        }]
+      }
+    });
+
+    new Chart(document.getElementById('roleChart'), {
+      type: 'pie',
+      data: {
+        labels: Object.keys(roles),
+        datasets: [{
+          label: 'Role Distribution',
+          data: Object.values(roles),
+          backgroundColor: ['#FFD700', '#32CD32', '#1E90FF', '#FF69B4', '#8A2BE2']
+        }]
+      }
+    });
+  }
+
+  window.onload = loadAnalytics;
+</script>
