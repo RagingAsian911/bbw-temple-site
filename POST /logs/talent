@@ -8,6 +8,10 @@ app.use(bodyParser.json());
 app.post('/logs/talent', (req, res) => {
   const { alias, emotion, role, signal } = req.body;
 
+  if (!alias || !emotion || !role || !signal) {
+    return res.status(400).send('Missing fields');
+  }
+
   const entry = {
     alias,
     emotion,
