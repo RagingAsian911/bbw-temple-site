@@ -29,3 +29,47 @@ function renderOverlay(entry) {
     </div>
   `;
 }
+<select id="emotion-filter">
+  <option value="">All Emotions</option>
+  <option value="joy">Joy</option>
+  <option value="sorrow">Sorrow</option>
+  <option value="desire">Desire</option>
+  <option value="pride">Pride</option>
+  <option value="fear">Fear</option>
+  <option value="trust">Trust</option>
+</select>
+
+<select id="role-filter">
+  <option value="">All Roles</option>
+  <option value="creator">Creator</option>
+  <option value="supporter">Supporter</option>
+  <option value="analyst">Analyst</option>
+  <option value="ritualist">Ritualist</option>
+  <option value="scout">Scout</option>
+</select>
+
+<script>
+  async function loadSignals() {
+    const res = await fetch('/logs/contributors');
+    const data = await res.json();
+
+    const emotion = document.getElementById('emotion-filter').value;
+    const role = document.getElementById('role-filter').value;
+
+    const filtered = data.filter(entry => {
+      return (!emotion || entry.emotion === emotion) &&
+             (!role || entry.role === role);
+    });
+
+    const container = document.getElementById('signal-container');
+    container.innerHTML = '';
+
+    filtered.forEach(entry => {
+      container.innerHTML += renderOverlay(entry);
+    });
+  }
+
+  document.getElementById('emotion-filter').onchange = loadSignals;
+  document.getElementById('role-filter').onchange = loadSignals;
+  window.onload = loadSignals;
+</script>
