@@ -13,5 +13,13 @@ function generateRemixPreview(contributor) {
   };
 
   const tag = overlays[emotion] || '🌀 Undefined Emotion';
-  return `${tag}\n\n${base}\n\n[Signal: ${signal}]`;
+
+  return `
+    <div class="remix-preview">
+      <h3>${contributor.alias}</h3>
+      <p>${tag}</p>
+      <blockquote>${base}</blockquote>
+      <footer>Signal: ${signal}</footer>
+    </div>
+  `;
 }
