@@ -1,0 +1,40 @@
+{
+  "emotions": [
+    {
+      "name": "joy",
+      "tag": "🌞 Radiant Joy",
+      "color": "#FFD700",
+      "description": "Signals warmth, optimism, and creative energy"
+    },
+    {
+      "name": "sorrow",
+      "tag": "🌧️ Deep Sorrow",
+      "color": "#708090",
+      "description": "Signals reflection, loss, and emotional depth"
+    },
+    {
+      "name": "desire",
+      "tag": "🔥 Intense Desire",
+      "color": "#FF4500",
+      "description": "Signals passion, drive, and focused ambition"
+    },
+    {
+      "name": "pride",
+      "tag": "🦁 Sovereign Pride",
+      "color": "#8A2BE2",
+      "description": "Signals strength, legacy, and branded control"
+    },
+    {
+      "name": "fear",
+      "tag": "🌫️ Lingering Fear",
+      "color": "#2F4F4F",
+      "description": "Signals caution, vulnerability, and hidden signal"
+    },
+    {
+      "name": "trust",
+      "tag": "🫱 Earned Trust",
+      "color": "#32CD32",
+      "description": "Signals loyalty, connection, and contributor bond"
+    }
+  ]
+}
