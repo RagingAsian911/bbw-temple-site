@@ -1,58 +1,14 @@
-name: Deploy Crypto Store
+name: Deploy to GitHub Pages
 
 on:
   push:
     branches:
       - main
 
-jobs:
-  deploy:
-    runs-on: ubuntu-latest
-
-    steps:
-      - name: Checkout repository
-        uses: actions/checkout@v3
-
-      - name: Set up Node.js
-        uses: actions/setup-node@v3
-        with:
-          node-version: '18'
-
-      - name: Install dependencies
-        run: npm install
-
-      - name: Build Oracle Vault storefront
-        run: npm run build
-
-      - name: Inject PayPal ID into checkout.html
-        run: |
-       env:
-  PAYPAL_RECEIVER_ID: ${{ secrets.PAYPAL_RECEIVER_ID }}
-
-
-      - name: Deploy to GitHub Pages
-        uses: peaceiris/actions-gh-pages@v3
-        with:
-          github_token: ${{ secrets.GITHUB_TOKEN }}
-          publish_dir: ./dist
-      - name: Trigger bot webhook
-        run: |
-          echo "Triggering bot webhook for product sync..."
-          curl -X POST https://your-bot-endpoint.com/webhook \
-            -H "Content-Type: application/json" \
-            -d '{
-              "event": "sync",
-              "source": "deploy",
-              "tag": "@BBWTEMPLECRYPTO",
-              "products": "products.json",
-              "checkout": "checkout.html"
-            }'
-name: Final Invocation
-
-on:
-  push:
-    tags:
-      - 'v1.0.0-OneDrop'
+permissions:
+  contents: read
+  pages: write
+  id-token: write
 
 jobs:
   deploy:
@@ -61,18 +17,14 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v3
 
-      - name: Seal Invocation
-        run: echo "🔥 Final Invocation triggered for v1.0.0-OneDrop"
-mkdir docs
-mv dashboard.html docs/
-git add docs/dashboard.html
-git commit -m "Add contributor dashboard"
-git push origin main
-jobs:
-  deploy:
-    runs-on: ubuntu-latest
-    steps:
-      - name: Upload to GitHub Pages
-        uses: actions/upload-pages-artifact@v1
+      - name: Setup Pages
+        uses: actions/configure-pages@v3
+
+      - name: Upload artifact
+        uses: actions/upload-pages-artifact@v2
         with:
-          path: './public'
+          path: docs
+
+      - name: Deploy to GitHub Pages
+        uses: actions/deploy-pages@v2
+'
