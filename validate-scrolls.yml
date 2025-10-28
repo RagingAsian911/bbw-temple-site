@@ -1,28 +1,22 @@
-name: Scroll Validator
+name: Validate Scrolls
 
 on:
   push:
     paths:
-      - '**/*.liquid'
+      - 'scrolls/**'
+      - '.github/workflows/validate-scrolls.yml'
 
 jobs:
-  validate_scrolls:
+  validate:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout repo
         uses: actions/checkout@v3
 
-      - name: Run Emotional Tag Validator
+      - name: Validate JSON scrolls
         run: |
-          find . -name "*.liquid" > scrolls.txt
-          while IFS= read -r file; do
-            if ! grep -q "emotional_tags" "$file"; then
-              echo "⚠️ $file is missing emotional_tags"
-            fi
-            if ! grep -q "dating_archetype" "$file"; then
-              echo "⚠️ $file is missing dating_archetype"
-            fi
-            if ! grep -q "remix_intent" "$file"; then
-              echo "⚠️ $file is missing remix_intent"
-            fi
-          done < scrolls.txt
+          for file in scrolls/*.json; do
+            echo "Validating $file"
+            jq empty "$file"
+          done
+
