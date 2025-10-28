@@ -3,7 +3,6 @@
 <head>
   <meta charset="UTF-8" />
   <title>Contributor Dashboard</title>
-  <link rel="stylesheet" href="styles.css" />
 </head>
 <body>
   <h1>Temple Contributors + Product Sync</h1>
@@ -18,7 +17,6 @@
         const list = document.getElementById('contributor-list');
         data.forEach(c => {
           const div = document.createElement('div');
-          div.className = 'contributor';
           div.innerHTML = `<strong>${c.name}</strong> — ${c.role} (${c.emotion})`;
           list.appendChild(div);
         });
@@ -30,7 +28,6 @@
         const list = document.getElementById('product-list');
         products.forEach(p => {
           const div = document.createElement('div');
-          div.className = 'product';
           div.innerHTML = `
             <strong>${p.title}</strong> — $${p.price} [${p.emotion}]
             <a href="${p.link}" target="_blank">Buy Now</a>
