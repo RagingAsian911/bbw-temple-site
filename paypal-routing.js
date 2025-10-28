@@ -8,7 +8,6 @@ app.use(bodyParser.urlencoded({ extended: false }));
 app.post('/paypal/ipn', async (req, res) => {
   const payload = req.body;
 
-  // Validate IPN with PayPal
   const verification = await axios.post('https://ipnpb.paypal.com/cgi-bin/webscr', {
     ...payload,
     cmd: '_notify-validate'
