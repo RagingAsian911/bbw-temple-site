@@ -18,3 +18,4 @@ function logSignal(entry) {
     else console.log('Signal logged:', logEntry);
   });
 }
+
