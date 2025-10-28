@@ -12,23 +12,19 @@
   <div id="product-list"></div>
 
   <script>
-    // Load contributors
-    fetch('logs/talent/contributors.json')
+    fetch('/logs/talent/contributors.json')
       .then(res => res.json())
       .then(data => {
         const list = document.getElementById('contributor-list');
         data.forEach(c => {
           const div = document.createElement('div');
           div.className = 'contributor';
-          div.innerHTML = `
-            <strong>${c.name}</strong> — ${c.role} (${c.emotion})
-          `;
+          div.innerHTML = `<strong>${c.name}</strong> — ${c.role} (${c.emotion})`;
           list.appendChild(div);
         });
       });
 
-    // Load products
-    fetch('scrolls/products.json')
+    fetch('/scrolls/products.json')
       .then(res => res.json())
       .then(products => {
         const list = document.getElementById('product-list');
