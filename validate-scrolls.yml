@@ -1,22 +1,3 @@
-name: Validate Scrolls
-
-on:
-  push:
-    paths:
-      - 'scrolls/**'
-      - '.github/workflows/validate-scrolls.yml'
-
-jobs:
-  validate:
-    runs-on: ubuntu-latest
-    steps:
-      - name: Checkout repo
-        uses: actions/checkout@v3
-
-      - name: Validate JSON scrolls
-        run: |
-          for file in scrolls/*.json; do
-            echo "Validating $file"
-            jq empty "$file"
-          done
-
+git add .github/workflows/main.yml .github/workflows/validate-scrolls.yml
+git commit -m "Restore main and scroll validation workflows"
+git push origin main
