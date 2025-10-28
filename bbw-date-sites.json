@@ -1,0 +1,25 @@
+{
+  "ritual_tags": [
+    {
+      "name": "OneDrop",
+      "symbol": "💧",
+      "description": "Seals the branded invocation and contributor flow",
+      "trigger": "launch.sh",
+      "status": "active"
+    },
+    {
+      "name": "SignalBond",
+      "symbol": "🔗",
+      "description": "Links contributor signal to emotional overlay",
+      "trigger": "remix-console.js",
+      "status": "active"
+    },
+    {
+      "name": "FlameLoop",
+      "symbol": "🔥",
+      "description": "Cycles emotional intensity through storefront preview",
+      "trigger": "storefront-preview.js",
+      "status": "active"
+    }
+  ]
+}
