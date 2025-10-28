@@ -3,3 +3,4 @@ git add docs/CNAME
 git commit -m "Bind GitHub Pages to oraclesignal.site"
 git push origin main
 
+
