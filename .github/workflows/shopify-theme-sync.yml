@@ -1,1 +1,3 @@
- Auto-push theme changes
+ git add .github/workflows/shopify-theme-sync.yml
+git commit -m "Restore Shopify theme sync workflow"
+git push origin main
