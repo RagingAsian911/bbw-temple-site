@@ -1,0 +1,9 @@
+chmod +x unsal.bundle.sh
+./unsal.bundle.sh
+
+chmod +x launch.sh
+./launch.sh
+
+git push origin main
+git tag v1.0.0-OneDrop
+git push origin v1.0.0-OneDrop
