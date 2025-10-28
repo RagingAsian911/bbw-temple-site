@@ -1,27 +1,20 @@
 [
   {
-    "id": "product1",
-    "name": "AI Signal Tracker",
-    "description": "Real-time crypto predictions powered by affiliate AI.",
-    "image": "images/product1.jpg",
-    "price": "49.00",
-    "currency": "USD"
+    "id": "bbw-001",
+    "title": "Temple Signal Hoodie",
+    "emotion": "Focused",
+    "price": "44.00",
+    "paypal": "your-paypal-email@example.com",
+    "stripe": "https://checkout.stripe.com/pay/YOUR_LINK",
+    "link": "https://oraclesignal.site/products/bbw-001"
   },
   {
-    "id": "product2",
-    "name": "Oracle Merch Pack",
-    "description": "Premium branded gear for crypto evangelists.",
-    "image": "images/product2.jpg",
-    "price": "29.00",
-    "currency": "USD"
-  },
-  {
-    "id": "product3",
-    "name": "Affiliate Vault Access",
-    "description": "Unlock monetization tools and private signals.",
-    "image": "images/product3.jpg",
-    "price": "99.00",
-    "currency": "USD"
+    "id": "bbw-002",
+    "title": "Encrypted Aura Pendant",
+    "emotion": "Grounded",
+    "price": "28.00",
+    "paypal": "your-paypal-email@example.com",
+    "stripe": "https://checkout.stripe.com/pay/YOUR_LINK",
+    "link": "https://oraclesignal.site/products/bbw-002"
   }
 ]
-Emotional bundles, crypto signals, PayPal routing
