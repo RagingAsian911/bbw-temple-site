@@ -1,34 +1,3 @@
-function renderOverlay(entry) {
-  const emotionColors = {
-    joy: '#FFD700',
-    sorrow: '#708090',
-    desire: '#FF4500',
-    pride: '#8A2BE2',
-    fear: '#2F4F4F',
-    trust: '#32CD32'
-  };
-
-  const roleIcons = {
-    creator: '🎨',
-    supporter: '🤝',
-    analyst: '📊',
-    ritualist: '🔥',
-    scout: '🕵️'
-  };
-
-  const color = emotionColors[entry.emotion] || '#999';
-  const icon = roleIcons[entry.role] || '🌀';
-
-  return `
-    <div class="signal" style="border-left: 6px solid ${color}; padding-left: 10px;">
-      <strong>${icon} ${entry.alias}</strong><br>
-      Emotion: ${entry.emotion}<br>
-      Role: ${entry.role}<br>
-      Signal: ${entry.signal}<br>
-      Timestamp: ${entry.timestamp}
-    </div>
-  `;
-}
 <select id="emotion-filter">
   <option value="">All Emotions</option>
   <option value="joy">Joy</option>
@@ -65,7 +34,7 @@ function renderOverlay(entry) {
     container.innerHTML = '';
 
     filtered.forEach(entry => {
-      container.innerHTML += renderOverlay(entry);
+      container.innerHTML += generateRemixPreview(entry);
     });
   }
 
