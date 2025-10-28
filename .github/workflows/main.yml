@@ -1,25 +1,27 @@
-name: Final Invocation
+name: Main Workflow
 
 on:
   push:
-    tags:
-      - 'v1.0.0-OneDrop'
+    branches:
+      - main
 
 jobs:
-  seal:
+  build:
     runs-on: ubuntu-latest
     steps:
-      - name: Checkout
+      - name: Checkout repo
         uses: actions/checkout@v3
 
-      - name: Validate Modules
-        run: echo "🔮 Modules sealed: Crypto Oracle, AI Temple, BBW Sites, Emotional Tagging, PayPal Routing"
+      - name: Set up Node.js
+        uses: actions/setup-node@v3
+        with:
+          node-version: '18'
 
-      - name: Route PayPal Checkout
-        run: |
-   env:
-  PAYPAL_RECEIVER_ID: ${{ secrets.PAYPAL_RECEIVER_ID }}
+      - name: Install dependencies
+        run: npm install
 
+      - name: Run build
+        run: npm run build
 
-      - name: Confirm Archive
-        run: echo "📜 README.md sealed. License embedded. Ritual tag v1.0.0-OneDrop confirmed."
+      - name: Verify output
+        run: ls -la
