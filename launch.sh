@@ -11,7 +11,7 @@ git add .
 git commit -m "Final invocation: v1.0.0-OneDrop"
 
 # Push to origin
-git remote add origin https://github.com/YOUR_USERNAME/bbw-temple.git
+git remote add origin https://github.com/RagingAsian911/bbw-temple.git
 git push -u origin main
 
 # Tag the ritual
