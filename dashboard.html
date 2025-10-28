@@ -2,156 +2,46 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <title>BBW Temple Contributor Dashboard</title>
-  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
-  <style>
-    body {
-      background: #0e0e0e;
-      color: #f5f5f5;
-      font-family: 'Segoe UI', sans-serif;
-      padding: 2rem;
-    }
-    h1 { color: #ff69b4; }
-    canvas { max-width: 600px; margin: 2rem 0; }
-    table {
-      width: 100%;
-      border-collapse: collapse;
-      margin-top: 2rem;
-    }
-    th, td {
-      border: 1px solid #444;
-      padding: 0.5rem;
-      text-align: left;
-    }
-    th {
-      background-color: #222;
-    }
-  </style>
+  <title>Contributor Dashboard</title>
+  <link rel="stylesheet" href="styles.css" />
 </head>
 <body>
-  <h1>🔥 BBW Temple Contributor Dashboard</h1>
-
-  <canvas id="tagChart"></canvas>
-
-  <table id="contributorTable">
-    <thead>
-      <tr>
-        <th>Contributor</th>
-        <th>Role</th>
-        <th>Emotional Tag</th>
-        <th>Joined</th>
-      </tr>
-    </thead>
-    <tbody></tbody>
-  </table>
+  <h1>Temple Contributors + Product Sync</h1>
+  <div id="contributor-list"></div>
+  <hr />
+  <div id="product-list"></div>
 
   <script>
-  async function loadContributors() {
-    const files = ['charles.json', 'ragingasian911.json', 'unsal.json']; // Add more as needed
-    const contributors = [];
-
-    for (const file of files) {
-      const res = await fetch(`logs/talent/${file}`);
-      const data = await res.json();
-      contributors.push(data);
-    }
-
-    // Clear previous table
-    const tbody = document.querySelector('#contributorTable tbody');
-    tbody.innerHTML = '';
-
-    contributors.forEach(c => {
-      const row = document.createElement('tr');
-      row.innerHTML = `
-        <td>${c.name}</td>
-        <td>${c.role}</td>
-        <td>${c.tag}</td>
-        <td>${c.joined}</td>
-      `;
-      tbody.appendChild(row);
-    });
-
-    // Chart data
-    const tagCounts = {};
-    contributors.forEach(c => {
-      tagCounts[c.tag] = (tagCounts[c.tag] || 0) + 1;
-    });
-
-    const ctx = document.getElementById('tagChart').getContext('2d');
-    if (window.tagChart) window.tagChart.destroy(); // Reset chart
-    window.tagChart = new Chart(ctx, {
-      type: 'bar',
-      data: {
-        labels: Object.keys(tagCounts),
-        datasets: [{
-          label: 'Contributors per Emotional Tag',
-          data: Object.values(tagCounts),
-          backgroundColor: ['#ff4500', '#00ced1', '#9370db', '#ffd700']
-        }]
-      },
-      options: {
-        plugins: {
-          legend: { display: false }
-        },
-        scales: {
-          y: { beginAtZero: true }
-        }
-      }
-    });
-  }
-
-  loadContributors();
-  setInterval(loadContributors, 30000); // Refresh every 30 seconds
-</script>
-
-
-      // Populate table
-      const tbody = document.querySelector('#contributorTable tbody');
-      contributors.forEach(c => {
-        const row = document.createElement('tr');
-        row.innerHTML = `
-          <td>${c.name}</td>
-          <td>${c.role}</td>
-          <td>${c.tag}</td>
-          <td>${c.joined}</td>
-        `;
-        tbody.appendChild(row);
+    // Load contributors
+    fetch('logs/talent/contributors.json')
+      .then(res => res.json())
+      .then(data => {
+        const list = document.getElementById('contributor-list');
+        data.forEach(c => {
+          const div = document.createElement('div');
+          div.className = 'contributor';
+          div.innerHTML = `
+            <strong>${c.name}</strong> — ${c.role} (${c.emotion})
+          `;
+          list.appendChild(div);
+        });
       });
 
-      // Chart data
-      const tagCounts = {};
-      contributors.forEach(c => {
-        tagCounts[c.tag] = (tagCounts[c.tag] || 0) + 1;
+    // Load products
+    fetch('scrolls/products.json')
+      .then(res => res.json())
+      .then(products => {
+        const list = document.getElementById('product-list');
+        products.forEach(p => {
+          const div = document.createElement('div');
+          div.className = 'product';
+          div.innerHTML = `
+            <strong>${p.title}</strong> — $${p.price} [${p.emotion}]
+            <a href="${p.link}" target="_blank">Buy Now</a>
+          `;
+          list.appendChild(div);
+        });
       });
-
-      const ctx = document.getElementById('tagChart').getContext('2d');
-      new Chart(ctx, {
-        type: 'bar',
-        data: {
-          labels: Object.keys(tagCounts),
-          datasets: [{
-            label: 'Contributors per Emotional Tag',
-            data: Object.values(tagCounts),
-            backgroundColor: ['#ff4500', '#00ced1', '#9370db', '#ffd700']
-          }]
-        },
-        options: {
-          plugins: {
-            legend: { display: false }
-          },
-          scales: {
-            y: { beginAtZero: true }
-          }
-        }
-      });
-    }
-
-    loadContributors();
   </script>
 </body>
 </html>
-mkdir -p docs
-mv dashboard.html docs/
-git add docs/dashboard.html
-git commit -m "Add BBW Temple contributor dashboard"
-git push origin main
