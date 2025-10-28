@@ -3,7 +3,6 @@
 <head>
   <meta charset="UTF-8" />
   <title>BBW Temple Storefront</title>
-  <link rel="stylesheet" href="styles.css" />
 </head>
 <body>
   <h1>Temple Broadcast: Product Scrolls</h1>
@@ -16,7 +15,6 @@
         const grid = document.getElementById('product-grid');
         products.forEach(p => {
           const card = document.createElement('div');
-          card.className = 'product-card';
           card.innerHTML = `
             <h2>${p.title}</h2>
             <p>Emotion: ${p.emotion}</p>
@@ -37,4 +35,3 @@
   </script>
 </body>
 </html>
-
