@@ -23,3 +23,6 @@ jobs:
       - name: Run build
         run: npm run build
 Restore branded workflow logic
+git add docs/products.html docs/dashboard.html scrolls/products.json logs/talent/contributors.json .github/workflows/deploy.yml
+git commit -m "Final storefront push: products, contributors, checkout live"
+git push origin main
