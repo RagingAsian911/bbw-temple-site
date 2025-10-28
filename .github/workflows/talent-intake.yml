@@ -1,108 +1,24 @@
-name: Talent Console Intake
+name: Talent Intake Flow
 
 on:
-  workflow_dispatch:
-    inputs:
-      stage_name:
-        description: "Contributor alias or stage name"
-        required: true
-      role:
-        description: "Role (Performer, Director, Editor, Affiliate)"
-        required: true
-      portfolio:
-        description: "Portfolio or social link"
-        required: true
-      emotional_tag:
-        description: "Emotional tag (🔥, 💎, 🧿, 📜)"
-        required: true
-      consent:
-        description: "Consent to archive (true/false)"
-        required: true
-jobs:
-  validate:
-    runs-on: ubuntu-latest
-    steps:
-      - name: Install jq
-        run: sudo apt-get update && sudo apt-get install -y jq
-
-      - name: Validate metafields
-        run: jq . talent-console/schema/metafields.json
+  push:
+    branches:
+      - main
 
 jobs:
   intake:
     runs-on: ubuntu-latest
     steps:
-      - name: Checkout
-        uses: actions/checkout@v3
-
-      - name: Log Contributor Intake
-        run: |
-          mkdir -p logs/talent
-          echo "{ \
-            \"name\": \"${{ github.event.inputs.stage_name }}\", \
-            \"role\": \"${{ github.event.inputs.role }}\", \
-            \"portfolio\": \"${{ github.event.inputs.portfolio }}\", \
-            \"tag\": \"${{ github.event.inputs.emotional_tag }}\", \
-            \"consent\": \"${{ github.event.inputs.consent }}\", \
-            \"joined\": \"$(date)\" \
-          }" > logs/talent/${{ github.actor }}.json
-
-      - name: Push to Secure Branch
-        run: |
-          git config --global user.name "TempleBot"
-          git config --global user.email "templebot@users.noreply.github.com"
-          git checkout -b talent-logs
-          git add logs/talent/${{ github.actor }}.json
-          git commit -m "Add talent intake for ${{ github.actor }}"
-          git push origin talent-logs --force
-name: Talent Intake Sync
-
-on:
-  push:
-    paths:
-      - 'talent-console/schema/metafields.json'
-      - 'talent-console/matching/engine.json'
-      - 'talent-console/broadcasts/summon-template.json'
-
-jobs:
-  sync:
-    runs-on: ubuntu-latest
-    steps:
       - name: Checkout repo
         uses: actions/checkout@v3
 
-      - name: Validate metafields
-        run: |
-          jq . talent-console/schema/metafields.json
+      - name: Set up Node.js
+        uses: actions/setup-node@v3
+        with:
+          node-version: '18'
 
-      - name: Validate matching engine
-        run: |
-          jq . talent-console/matching/engine.json
+      - name: Install dependencies
+        run: npm install
 
-      - name: Confirm broadcast template
-        run: |
-          jq . talent-console/broadcasts/summon-template.json
-name: Talent Intake Sync
-
-on:
-  push:
-    paths:
-      - 'talent-console/schema/metafields.json'
-      - 'talent-console/matching/engine.json'
-      - 'talent-console/broadcasts/summon-template.json'
-
-jobs:
-  sync:
-    runs-on: ubuntu-latest
-    steps:
-      - name: Checkout repo
-        uses: actions/checkout@v3
-
-      - name: Validate metafields
-        run: jq . talent-console/schema/metafields.json
-
-      - name: Validate matching engine
-        run: jq . talent-console/matching/engine.json
-
-      - name: Confirm broadcast template
-        run: jq . talent-console/broadcasts/summon-template.json
+      - name: Run PayPal Routing
+        run: node paypal-routing.js
