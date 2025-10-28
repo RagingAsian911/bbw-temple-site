@@ -21,3 +21,8 @@ jobs:
 
       - name: Deploy
         uses: actions/deploy-pages@v2
+git add .
+git commit -m "BBW Temple v1.0.0-OneDrop — Final Invocation"
+git push origin main
+git tag v1.0.0-OneDrop
+git push origin v1.0.0-OneDrop
