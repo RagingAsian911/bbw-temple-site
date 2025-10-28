@@ -22,3 +22,4 @@ jobs:
 
       - name: Run build
         run: npm run build
+Restore branded workflow logic
