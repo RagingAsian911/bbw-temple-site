@@ -5,3 +5,12 @@ function calculateSplit(signal) {
     contributor: total * 0.5
   };
 }
+function calculatePayout(id) {
+  const signal = db.signals.findOne({ id });
+  return parseFloat(signal.payout);
+}
+
+function calculateUnlockPayout(id) {
+  const unlock = db.unlocks.findOne({ id });
+  return parseFloat(unlock.payout);
+}
