@@ -43,3 +43,38 @@
     "type": "auction"
   }
 ]
+[
+  {
+    "id": "sig-501",
+    "title": "Tier 1: Flame Unlock",
+    "emotion": "🔥Urgent",
+    "source": "storefront",
+    "unlock": "https://oraclesignal.site/unlock/flame",
+    "payout": "0.002 ETH",
+    "contributor": "0xF1A2B3C4",
+    "tier": "Tier 1",
+    "type": "crypto"
+  },
+  {
+    "id": "sig-502",
+    "title": "Tier 2: Sovereign Drop",
+    "emotion": "🧬Sovereign",
+    "source": "dashboard",
+    "unlock": "https://oraclesignal.site/unlock/sovereign",
+    "payout": "0.005 ETH",
+    "contributor": "0xC4B3A2F1",
+    "tier": "Tier 2",
+    "type": "crypto"
+  },
+  {
+    "id": "sig-503",
+    "title": "Tier 3: Contributor Vault",
+    "emotion": "💰Profitable",
+    "source": "overlay",
+    "unlock": "https://oraclesignal.site/unlock/vault",
+    "payout": "0.01 ETH",
+    "contributor": "0x9E8D7C6B",
+    "tier": "Tier 3",
+    "type": "crypto"
+  }
+]
