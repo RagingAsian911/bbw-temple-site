@@ -1,0 +1,23 @@
+[
+  {
+    "contributor": "0xF1A2B3C4",
+    "tier": "Tier 1",
+    "emotion": "🔥Urgent",
+    "vault": "https://oraclesignal.site/vault/flame",
+    "preview": "https://oraclesignal.site/preview/flame"
+  },
+  {
+    "contributor": "0xC4B3A2F1",
+    "tier": "Tier 2",
+    "emotion": "🧠Insightful",
+    "vault": "https://oraclesignal.site/vault/ignite",
+    "preview": "https://oraclesignal.site/preview/ignite"
+  },
+  {
+    "contributor": "0x9E8D7C6B",
+    "tier": "Tier 3",
+    "emotion": "💰Profitable",
+    "vault": "https://oraclesignal.site/vault/sovereign",
+    "preview": "https://oraclesignal.site/preview/sovereign"
+  }
+]
