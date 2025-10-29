@@ -66,3 +66,17 @@ function logSignalOverlay(signalId, emotion, assets) {
     })
   });
 }
+function logSignalOverlay(signalId, emotion, assets) {
+  fetch("/webhook/signal-overlay", {
+    method: "POST",
+    headers: { "Content-Type": "application/json" },
+    body: JSON.stringify({
+      signalId,
+      emotion,
+      assets,
+      overlay: "https://oraclesignal.site/vaults/sol-preview",
+      amplifiers: ["pika.art", "upscale.media", "make.com"],
+      timestamp: Date.now()
+    })
+  });
+}
