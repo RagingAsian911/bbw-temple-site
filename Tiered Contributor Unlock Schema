@@ -1,0 +1,29 @@
+[
+  {
+    "tier": "Tier 1",
+    "emotion": "🔥Urgent",
+    "unlock": "https://oraclesignal.site/onboard/flame",
+    "wallet_required": false,
+    "payout": "0.001 ETH",
+    "route": "flame-entry",
+    "contributor": "0xF1A2B3C4"
+  },
+  {
+    "tier": "Tier 2",
+    "emotion": "🧠Insightful",
+    "unlock": "https://oraclesignal.site/onboard/ignite",
+    "wallet_required": true,
+    "payout": "0.005 ETH",
+    "route": "flame-ignite",
+    "contributor": "0xC4B3A2F1"
+  },
+  {
+    "tier": "Tier 3",
+    "emotion": "💰Profitable",
+    "unlock": "https://oraclesignal.site/onboard/vault",
+    "wallet_required": true,
+    "payout": "0.01 ETH",
+    "route": "flame-vault",
+    "contributor": "0x9E8D7C6B"
+  }
+]
