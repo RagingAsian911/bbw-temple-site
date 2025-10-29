@@ -21,3 +21,26 @@ fetch("/api/signals")
     });
   });
 </script>
+<table>
+  <thead><tr><th>Signal</th><th>Tier</th><th>Emotion</th><th>Contributor</th><th>Payout</th><th>Status</th></tr></thead>
+  <tbody id="crypto-log"></tbody>
+</table>
+
+<script>
+fetch("/api/crypto-signals")
+  .then(res => res.json())
+  .then(data => {
+    const tbody = document.getElementById("crypto-log");
+    data.forEach(sig => {
+      const row = `<tr>
+        <td>${sig.title}</td>
+        <td>${sig.tier}</td>
+        <td>${sig.emotion}</td>
+        <td>${sig.contributor}</td>
+        <td>${sig.payout}</td>
+        <td>Unlocked</td>
+      </tr>`;
+      tbody.innerHTML += row;
+    });
+  });
+</script>
