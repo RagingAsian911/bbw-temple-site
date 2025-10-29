@@ -1,0 +1,36 @@
+<div id="storefront-ignition-console"></div>
+
+<script>
+  async function loadStorefrontIgnitionConsole() {
+    const res = await fetch('/logs/storefront');
+    const data = await res.json();
+
+    const container = document.getElementById('storefront-ignition-console');
+    container.innerHTML = '';
+
+    data.forEach(entry => {
+      const div = document.createElement('div');
+      div.className = 'ignition-card';
+      div.innerHTML = `
+        <h3>Commit: ${entry.commit}</h3>
+        <p><strong>Module:</strong> ${entry.module}</p>
+        <p><strong>Ignition Trigger:</strong> ${getIgnitionTrigger(entry.commit)}</p>
+        <p><strong>Status:</strong> ${entry.status}</p>
+        <p><strong>Timestamp:</strong> ${entry.timestamp}</p>
+      `;
+      container.appendChild(div);
+    });
+  }
+
+  function getIgnitionTrigger(commit) {
+    return {
+      e1ec290: 'ignite-storefront 🔥',
+      d723bf4: 'ignite-lock 🔒',
+      279d1c8: 'ignite-sovereign 🔐',
+      785b01c: 'ignite-contract 📜',
+      417d682: 'ignite-remix 💥'
+    }[commit] || 'ignite-neutral 🌀';
+  }
+
+  window.onload = loadStorefrontIgnitionConsole;
+</script>
