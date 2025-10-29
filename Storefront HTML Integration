@@ -108,3 +108,29 @@
   <h3>Sovereign Vault</h3>
   <button onclick="triggerVaultUnlock(this)">Access</button>
 </div>
+<div class="signal-card" 
+     data-id="sig-601" 
+     data-emotion="💰Profitable" 
+     data-affiliate="https://shopify.com/theme?id=onedrop123" 
+     data-contributor="0xA1B2C3D4">
+  <h3>OneDrop Theme</h3>
+  <button onclick="triggerSignal(this)">Unlock</button>
+</div>
+
+<div class="signal-card" 
+     data-id="sig-602" 
+     data-emotion="🔥Urgent" 
+     data-unlock="https://oraclesignal.site/unlock/console" 
+     data-contributor="0xD4C3B2A1">
+  <h3>Ignition Console Unlock</h3>
+  <button onclick="triggerUnlock(this)">Access</button>
+</div>
+
+<div class="signal-card" 
+     data-id="sig-603" 
+     data-emotion="🧠Insightful" 
+     data-affiliate="https://brandb.com/deal?id=xyz789" 
+     data-contributor="0x9E8D7C6B">
+  <h3>Flame Route Auction</h3>
+  <button onclick="triggerSignal(this)">Sponsored</button>
+</div>
