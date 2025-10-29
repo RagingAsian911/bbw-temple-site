@@ -108,3 +108,17 @@ function logScrollOverlay(scrollId, emotion, amplifiers) {
     })
   });
 }
+function logScrollOverlay(scrollId, emotion, amplifiers) {
+  fetch("/webhook/scroll-overlay", {
+    method: "POST",
+    headers: { "Content-Type": "application/json" },
+    body: JSON.stringify({
+      scrollId,
+      emotion,
+      overlay: "https://www.youtube.com/@charlesbuchanan-d1e/shorts",
+      vault_preview: "https://oraclesignal.site/vaults/scroll-preview",
+      amplifiers,
+      timestamp: Date.now()
+    })
+  });
+}
