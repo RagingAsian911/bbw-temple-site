@@ -49,3 +49,7 @@ function triggerProductOverlay(emotion) {
   "affiliate": "https://www.youtube.com/@charlesbuchanan-d1e",
   "amplifiers": ["pika.art", "upscale.media", "make.com"]
 }
+if (emotion === "🔥Urgent") {
+  window.open("https://www.youtube.com/@charlesbuchanan-d1e", "_blank");
+  logScrollOverlay("scroll-youtube-preview", "🔥Urgent", ["pika.art", "upscale.media", "make.com"]);
+}
