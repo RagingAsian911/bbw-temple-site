@@ -75,3 +75,7 @@ function triggerVaultDrop() {
   window.open("https://www.youtube.com/@charlesbuchanan-d1e/shorts", "_blank");
   logVaultDrop("vault-shorts-preview", "📈Trending", ["SOL"]);
 }
+function triggerAffiliateScroll() {
+  window.open("https://www.youtube.com/@charlesbuchanan-d1e", "_blank");
+  logScrollOverlay("affiliate-scroll-youtube", "🎯Targeted", ["pika.art", "upscale.media", "make.com"]);
+}
