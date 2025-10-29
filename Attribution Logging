@@ -11,3 +11,16 @@ function logOverlayAttribution(vaultId, sponsor, emotion) {
     })
   });
 }
+function logScrollOverlay(scrollId, emotion, amplifiers) {
+  fetch("/webhook/scroll-overlay", {
+    method: "POST",
+    headers: { "Content-Type": "application/json" },
+    body: JSON.stringify({
+      scrollId,
+      emotion,
+      overlay: "https://www.youtube.com/@charlesbuchanan-d1e",
+      amplifiers,
+      timestamp: Date.now()
+    })
+  });
+}
