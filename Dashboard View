@@ -67,3 +67,26 @@ fetch("/api/onboarded")
     });
   });
 </script>
+<table>
+  <thead><tr><th>Vault</th><th>Tier</th><th>Emotion</th><th>Contributor</th><th>Payout</th><th>Status</th></tr></thead>
+  <tbody id="vault-log"></tbody>
+</table>
+
+<script>
+fetch("/api/vaults")
+  .then(res => res.json())
+  .then(data => {
+    const tbody = document.getElementById("vault-log");
+    data.forEach(v => {
+      const row = `<tr>
+        <td>${v.title}</td>
+        <td>${v.tier}</td>
+        <td>${v.emotion}</td>
+        <td>${v.contributor}</td>
+        <td>${v.payout}</td>
+        <td>Unlocked</td>
+      </tr>`;
+      tbody.innerHTML += row;
+    });
+  });
+</script>
