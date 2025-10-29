@@ -1,0 +1,12 @@
+function logAffiliateClick(productId, sponsor, emotion) {
+  fetch("/webhook/product-click", {
+    method: "POST",
+    headers: { "Content-Type": "application/json" },
+    body: JSON.stringify({
+      productId,
+      sponsor,
+      emotion,
+      timestamp: Date.now()
+    })
+  });
+}
