@@ -26,3 +26,5 @@ jobs:
         env:
           SEARCH_CONSOLE_TOKEN: ${{ secrets.SEARCH_CONSOLE_TOKEN }}
         run: node broadcast-sitemap.js
+docker build -t oraclesignal-sitemap .
+docker run --env-file .env oraclesignal-sitemap
