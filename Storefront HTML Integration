@@ -79,3 +79,32 @@
   <h3>Vault Access</h3>
   <button onclick="triggerOnboarding(this)">Begin</button>
 </div>
+<div class="vault-card" 
+     data-vault="vault-001" 
+     data-tier="Tier 1" 
+     data-emotion="🔥Urgent" 
+     data-unlock="https://oraclesignal.site/vault/flame" 
+     data-contributor="0xF1A2B3C4">
+  <h3>Flame Entry Vault</h3>
+  <button onclick="triggerVaultUnlock(this)">Access</button>
+</div>
+
+<div class="vault-card" 
+     data-vault="vault-002" 
+     data-tier="Tier 2" 
+     data-emotion="🧠Insightful" 
+     data-unlock="https://oraclesignal.site/vault/ignite" 
+     data-contributor="0xC4B3A2F1">
+  <h3>Ignition Vault</h3>
+  <button onclick="triggerVaultUnlock(this)">Access</button>
+</div>
+
+<div class="vault-card" 
+     data-vault="vault-003" 
+     data-tier="Tier 3" 
+     data-emotion="💰Profitable" 
+     data-unlock="https://oraclesignal.site/vault/sovereign" 
+     data-contributor="0x9E8D7C6B">
+  <h3>Sovereign Vault</h3>
+  <button onclick="triggerVaultUnlock(this)">Access</button>
+</div>
