@@ -71,3 +71,7 @@ function triggerSOLOverlay() {
   window.open("https://oraclesignal.site/vaults/sol-preview", "_blank");
   logSignalOverlay("sol-forecast-preview", "⚡Surging", ["SOL"]);
 }
+function triggerVaultDrop() {
+  window.open("https://www.youtube.com/@charlesbuchanan-d1e/shorts", "_blank");
+  logVaultDrop("vault-shorts-preview", "📈Trending", ["SOL"]);
+}
