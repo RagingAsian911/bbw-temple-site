@@ -14,3 +14,12 @@ function calculateUnlockPayout(id) {
   const unlock = db.unlocks.findOne({ id });
   return parseFloat(unlock.payout);
 }
+function getVaultPayout(vault_id) {
+  const vault = db.vaults.findOne({ vault_id });
+  return parseFloat(vault.payout);
+}
+
+function getSignalPayout(id) {
+  const signal = db.signals.findOne({ id });
+  return parseFloat(signal.payout);
+}
