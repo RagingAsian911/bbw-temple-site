@@ -1,0 +1,23 @@
+<table>
+  <thead><tr><th>Type</th><th>Title</th><th>Emotion</th><th>Contributor</th><th>Payout</th><th>Status</th></tr></thead>
+  <tbody id="log"></tbody>
+</table>
+
+<script>
+fetch("/api/logs")
+  .then(res => res.json())
+  .then(data => {
+    const tbody = document.getElementById("log");
+    data.forEach(entry => {
+      const row = `<tr>
+        <td>${entry.type}</td>
+        <td>${entry.title}</td>
+        <td>${entry.emotion}</td>
+        <td>${entry.contributor}</td>
+        <td>${entry.payout}</td>
+        <td>${entry.status}</td>
+      </tr>`;
+      tbody.innerHTML += row;
+    });
+  });
+</script>
