@@ -44,3 +44,26 @@ fetch("/api/crypto-signals")
     });
   });
 </script>
+<table>
+  <thead><tr><th>Tier</th><th>Emotion</th><th>Contributor</th><th>Payout</th><th>Route</th><th>Status</th></tr></thead>
+  <tbody id="onboard-log"></tbody>
+</table>
+
+<script>
+fetch("/api/onboarded")
+  .then(res => res.json())
+  .then(data => {
+    const tbody = document.getElementById("onboard-log");
+    data.forEach(entry => {
+      const row = `<tr>
+        <td>${entry.tier}</td>
+        <td>${entry.emotion}</td>
+        <td>${entry.contributor}</td>
+        <td>${entry.payout}</td>
+        <td>${entry.route}</td>
+        <td>Unlocked</td>
+      </tr>`;
+      tbody.innerHTML += row;
+    });
+  });
+</script>
