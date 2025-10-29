@@ -1,0 +1,13 @@
+function logOverlayAttribution(vaultId, sponsor, emotion) {
+  fetch("/webhook/vault-preview", {
+    method: "POST",
+    headers: { "Content-Type": "application/json" },
+    body: JSON.stringify({
+      vaultId,
+      sponsor,
+      emotion,
+      amplifiers: ["pika.art", "upscale.media", "make.com"],
+      timestamp: Date.now()
+    })
+  });
+}
