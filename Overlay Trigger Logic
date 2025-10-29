@@ -59,3 +59,7 @@ function triggerCryptoSignalOverlay(emotion) {
     logSignalOverlay("crypto-vault-preview", "💰Profitable", ["BTC", "ETH", "SOL"]);
   }
 }
+function triggerBTCOverlay() {
+  window.open("https://www.youtube.com/@charlesbuchanan-d1e", "_blank");
+  logSignalOverlay("btc-forecast-preview", "💰Profitable", ["BTC"]);
+}
