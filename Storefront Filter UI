@@ -39,3 +39,9 @@
   <h3>Sovereign Vault</h3>
   <button onclick="triggerOverlay(this)">View</button>
 </div>
+<select id="tierFilter" onchange="applyAuctionFilters()">
+  <option value="">All Tiers</option>
+  <option value="Tier 1">Tier 1</option>
+  <option value="Tier 2">Tier 2</option>
+  <option value="Tier 3">Tier 3</option>
+</select>
