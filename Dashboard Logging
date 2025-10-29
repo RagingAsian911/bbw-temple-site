@@ -1,0 +1,23 @@
+<table>
+  <thead><tr><th>Contributor</th><th>Tier</th><th>Emotion</th><th>Vault</th><th>Preview</th><th>Status</th></tr></thead>
+  <tbody id="overlay-log"></tbody>
+</table>
+
+<script>
+fetch("/api/overlays")
+  .then(res => res.json())
+  .then(data => {
+    const tbody = document.getElementById("overlay-log");
+    data.forEach(o => {
+      const row = `<tr>
+        <td>${o.contributor}</td>
+        <td>${o.tier}</td>
+        <td>${o.emotion}</td>
+        <td><a href="${o.vault}">Vault</a></td>
+        <td><a href="${o.preview}">Preview</a></td>
+        <td>Locked</td>
+      </tr>`;
+      tbody.innerHTML += row;
+    });
+  });
+</script>
