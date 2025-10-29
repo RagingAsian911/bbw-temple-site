@@ -137,3 +137,20 @@ function triggerOverlay(el) {
 
   window.open(payload.preview, "_blank");
 }
+function triggerTrafficOverlay(el) {
+  const payload = {
+    emotion: el.dataset.emotion,
+    preview: el.dataset.preview,
+    affiliate: el.dataset.affiliate,
+    timestamp: Date.now()
+  };
+
+  fetch("/webhook/traffic-overlay", {
+    method: "POST",
+    headers: { "Content-Type": "application/json" },
+    body: JSON.stringify(payload)
+  });
+
+  window.open(payload.preview, "_blank");
+  window.open(payload.affiliate, "_blank");
+}
