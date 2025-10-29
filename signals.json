@@ -10,3 +10,36 @@
     "received_at": "2025-10-27 04:05:00"
   }
 ]
+[
+  {
+    "id": "sig-401",
+    "title": "OneDrop Theme",
+    "emotion": "💰Profitable",
+    "source": "storefront",
+    "affiliate": "https://shopify.com/theme?id=onedrop123",
+    "payout": "1.25",
+    "contributor": "0xA1B2C3D4",
+    "type": "affiliate"
+  },
+  {
+    "id": "sig-402",
+    "title": "Ignition Console Unlock",
+    "emotion": "🔥Urgent",
+    "source": "dashboard",
+    "unlock": "https://oraclesignal.site/unlock/console",
+    "payout": "3.00",
+    "contributor": "0xD4C3B2A1",
+    "type": "gated"
+  },
+  {
+    "id": "sig-403",
+    "title": "Signal Auction: Flame Route",
+    "emotion": "🧠Insightful",
+    "source": "overlay",
+    "affiliate": "https://brandb.com/deal?id=xyz789",
+    "payout": "2.50",
+    "contributor": "0x9F8E7D6C",
+    "sponsor": "BrandB",
+    "type": "auction"
+  }
+]
