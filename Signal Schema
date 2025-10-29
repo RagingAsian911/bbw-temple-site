@@ -39,3 +39,11 @@
   "amplifiers": ["pika.art", "upscale.media", "make.com"],
   "log": true
 }
+{
+  "signal_id": "eth-forecast-preview",
+  "emotion": "💰Profitable",
+  "asset": "ETH",
+  "overlay_url": "https://www.youtube.com/@charlesbuchanan-d1e/shorts",
+  "amplifiers": ["pika.art", "upscale.media", "make.com"],
+  "log": true
+}
