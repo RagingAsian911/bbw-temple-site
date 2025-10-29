@@ -38,3 +38,24 @@
   </script>
 </body>
 </html>
+<table>
+  <thead><tr><th>Signal</th><th>Emotion</th><th>Contributor</th><th>Payout</th></tr></thead>
+  <tbody id="signal-log"></tbody>
+</table>
+
+<script>
+fetch("/api/signals")
+  .then(res => res.json())
+  .then(data => {
+    const tbody = document.getElementById("signal-log");
+    data.forEach(sig => {
+      const row = `<tr>
+        <td>${sig.id}</td>
+        <td>${sig.emotion}</td>
+        <td>${sig.contributor}</td>
+        <td>$${sig.payout}</td>
+      </tr>`;
+      tbody.innerHTML += row;
+    });
+  });
+</script>
