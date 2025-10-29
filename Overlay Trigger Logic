@@ -33,3 +33,11 @@ function triggerTrafficOverlay(vault) {
     window.open(vault.affiliate, "_blank");
   }
 }
+function triggerProductOverlay(emotion) {
+  const products = document.querySelectorAll(".product-card");
+
+  products.forEach(card => {
+    const match = !emotion || card.dataset.emotion === emotion;
+    card.style.display = match ? "block" : "none";
+  });
+}
