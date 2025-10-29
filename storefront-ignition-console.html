@@ -34,3 +34,28 @@
 
   window.onload = loadStorefrontIgnitionConsole;
 </script>
+<div class="signal-card" 
+     data-id="sig-001" 
+     data-emotion="🔥Urgent" 
+     data-affiliate="https://partner.com/deal?id=abc123" 
+     data-contributor="0xA1B2C3D4">
+  <h3>Ignition Drop</h3>
+  <button onclick="triggerSignal(this)">Unlock</button>
+</div>
+function triggerSignal(el) {
+  const payload = {
+    id: el.dataset.id,
+    emotion: el.dataset.emotion,
+    affiliate: el.dataset.affiliate,
+    contributor: el.dataset.contributor,
+    timestamp: Date.now()
+  };
+
+  fetch("https://yourdomain.com/webhook/signal", {
+    method: "POST",
+    headers: { "Content-Type": "application/json" },
+    body: JSON.stringify(payload)
+  });
+
+  window.open(payload.affiliate, "_blank");
+}
