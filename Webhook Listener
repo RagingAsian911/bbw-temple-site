@@ -5,3 +5,8 @@ app.post('/api/webhook', (req, res) => {
   }
   res.sendStatus(200);
 });
+app.post("/webhook/overlay", (req, res) => {
+  const { contributor, emotion, preview, timestamp } = req.body;
+  db.overlays.insert({ contributor, emotion, preview, timestamp });
+  res.status(200).send("Overlay triggered");
+});
