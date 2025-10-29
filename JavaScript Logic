@@ -154,3 +154,19 @@ function triggerTrafficOverlay(el) {
   window.open(payload.preview, "_blank");
   window.open(payload.affiliate, "_blank");
 }
+function triggerAffiliateVault(el) {
+  const payload = {
+    emotion: el.dataset.emotion,
+    affiliate: el.dataset.affiliate,
+    sponsor: el.dataset.sponsor,
+    timestamp: Date.now()
+  };
+
+  fetch("/webhook/affiliate-vault", {
+    method: "POST",
+    headers: { "Content-Type": "application/json" },
+    body: JSON.stringify(payload)
+  });
+
+  window.open(payload.affiliate, "_blank");
+}
