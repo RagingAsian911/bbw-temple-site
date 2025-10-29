@@ -47,3 +47,11 @@
   "amplifiers": ["pika.art", "upscale.media", "make.com"],
   "log": true
 }
+{
+  "signal_id": "sol-forecast-preview",
+  "emotion": "⚡Surging",
+  "asset": "SOL",
+  "overlay_url": "https://oraclesignal.site/vaults/sol-preview",
+  "amplifiers": ["pika.art", "upscale.media", "make.com"],
+  "log": true
+}
