@@ -21,3 +21,11 @@ Gemfile.lock
 secrets.json
 wallet-config.yml
 private-scrolls/
+.env
+.env.template
+*.log
+node_modules/
+__pycache__/
+*.pyc
+.DS_Store
+oraclesignal-drop
