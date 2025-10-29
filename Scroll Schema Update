@@ -15,3 +15,12 @@
   "amplifiers": ["pika.art", "upscale.media", "make.com"],
   "log": true
 }
+{
+  "scroll_id": "scroll-shorts-vault",
+  "emotion": "📡Broadcast",
+  "title": "Signal Scroll Drop: Vault Attribution",
+  "overlay_url": "https://www.youtube.com/@charlesbuchanan-d1e/shorts",
+  "vault_preview": "https://oraclesignal.site/vaults/scroll-preview",
+  "amplifiers": ["pika.art", "upscale.media", "make.com"],
+  "log": true
+}
