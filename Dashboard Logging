@@ -86,3 +86,25 @@ fetch("/api/vaults")
     });
   });
 </script>
+<table>
+  <thead><tr><th>Vault</th><th>Emotion</th><th>Sponsor</th><th>Payout</th><th>Status</th></tr></thead>
+  <tbody id="affiliate-log"></tbody>
+</table>
+
+<script>
+fetch("/api/affiliate-vaults")
+  .then(res => res.json())
+  .then(data => {
+    const tbody = document.getElementById("affiliate-log");
+    data.forEach(v => {
+      const row = `<tr>
+        <td>${v.title}</td>
+        <td>${v.emotion}</td>
+        <td>${v.sponsor}</td>
+        <td>$${v.payout}</td>
+        <td>Triggered</td>
+      </tr>`;
+      tbody.innerHTML += row;
+    });
+  });
+</script>
