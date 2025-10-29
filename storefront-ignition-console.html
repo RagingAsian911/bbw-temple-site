@@ -59,3 +59,16 @@ function triggerSignal(el) {
 
   window.open(payload.affiliate, "_blank");
 }
+const express = require("express");
+const app = express();
+app.use(express.json());
+
+app.post("/webhook/signal", (req, res) => {
+  const { id, emotion, affiliate, contributor, timestamp } = req.body;
+  console.log("Signal received:", req.body);
+
+  // Log to dashboard, trigger payout, etc.
+  res.status(200).send("Signal logged");
+});
+
+app.listen(3000, () => console.log("Signal listener active"));
