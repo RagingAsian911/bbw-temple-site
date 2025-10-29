@@ -1,0 +1,9 @@
+{
+  "signal_id": "crypto-vault-preview",
+  "emotion": "💰Profitable",
+  "type": "forecast",
+  "asset": "BTC, ETH, SOL",
+  "overlay_url": "https://www.youtube.com/@charlesbuchanan-d1e",
+  "amplifiers": ["pika.art", "upscale.media", "make.com"],
+  "log": true
+}
