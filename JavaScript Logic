@@ -51,3 +51,20 @@ function triggerCryptoUnlock(el) {
 
   window.location.href = payload.unlock;
 }
+function triggerOnboarding(el) {
+  const payload = {
+    tier: el.dataset.tier,
+    emotion: el.dataset.emotion,
+    unlock: el.dataset.unlock,
+    contributor: el.dataset.contributor,
+    timestamp: Date.now()
+  };
+
+  fetch("/webhook/onboard", {
+    method: "POST",
+    headers: { "Content-Type": "application/json" },
+    body: JSON.stringify(payload)
+  });
+
+  window.location.href = payload.unlock;
+}
