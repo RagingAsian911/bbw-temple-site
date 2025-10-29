@@ -1,22 +1,4 @@
 {
-  "vault_access": {
-    "required_id": "bconstruction4209.cb.id",
-    "monetized": true
-  },
-  "overlay_routing": {
-    "amplifier": "pika.art",
-    "preview_tag": "@BBWTEMPLECRYPTO",
-    "destination": "https://oraclesignal.site/vaults"
-  },
-  "logging": {
-    "contributor_id": "bconstruction4209.cb.id",
-    "emotion": "💰",
-    "timestamp": "auto",
-    "payout": true
-  }
-}
-Attribution Schema
-{
   "system": "oraclesignal.site",
   "access": "Paid only",
   "vaults": {
