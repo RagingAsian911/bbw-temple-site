@@ -1,0 +1,23 @@
+<table>
+  <thead><tr><th>Emotion</th><th>Traffic</th><th>Brand</th><th>Bid</th><th>Preview</th><th>Status</th></tr></thead>
+  <tbody id="auction-log"></tbody>
+</table>
+
+<script>
+fetch("/api/traffic-overlays")
+  .then(res => res.json())
+  .then(data => {
+    const tbody = document.getElementById("auction-log");
+    data.forEach(o => {
+      const row = `<tr>
+        <td>${o.emotion}</td>
+        <td>${o.traffic_threshold}</td>
+        <td>${o.sponsor_bid.brand}</td>
+        <td>$${o.sponsor_bid.amount}</td>
+        <td><a href="${o.preview}">Preview</a></td>
+        <td>Triggered</td>
+      </tr>`;
+      tbody.innerHTML += row;
+    });
+  });
+</script>
