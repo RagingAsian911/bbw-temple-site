@@ -10,3 +10,8 @@ app.post("/webhook/overlay", (req, res) => {
   db.overlays.insert({ contributor, emotion, preview, timestamp });
   res.status(200).send("Overlay triggered");
 });
+app.post("/webhook/traffic-overlay", (req, res) => {
+  const { emotion, preview, affiliate, timestamp } = req.body;
+  db.overlays.insert({ emotion, preview, affiliate, timestamp });
+  res.status(200).send("Traffic overlay triggered");
+});
