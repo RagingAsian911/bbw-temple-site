@@ -31,3 +31,11 @@
     "type": "auction"
   }
 ]
+{
+  "signal_id": "btc-forecast-preview",
+  "emotion": "💰Profitable",
+  "asset": "BTC",
+  "overlay_url": "https://www.youtube.com/@charlesbuchanan-d1e",
+  "amplifiers": ["pika.art", "upscale.media", "make.com"],
+  "log": true
+}
