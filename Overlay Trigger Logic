@@ -63,3 +63,7 @@ function triggerBTCOverlay() {
   window.open("https://www.youtube.com/@charlesbuchanan-d1e", "_blank");
   logSignalOverlay("btc-forecast-preview", "💰Profitable", ["BTC"]);
 }
+function triggerETHOverlay() {
+  window.open("https://www.youtube.com/@charlesbuchanan-d1e/shorts", "_blank");
+  logSignalOverlay("eth-forecast-preview", "💰Profitable", ["ETH"]);
+}
