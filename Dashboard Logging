@@ -65,3 +65,24 @@ fetch("/api/overlays")
     });
   });
 </script>
+<table>
+  <thead><tr><th>Tier</th><th>Emotion</th><th>Preview</th><th>Status</th></tr></thead>
+  <tbody id="vault-log"></tbody>
+</table>
+
+<script>
+fetch("/api/vaults")
+  .then(res => res.json())
+  .then(data => {
+    const tbody = document.getElementById("vault-log");
+    data.forEach(v => {
+      const row = `<tr>
+        <td>${v.tier}</td>
+        <td>${v.emotion}</td>
+        <td><a href="${v.preview}">Preview</a></td>
+        <td>Routed</td>
+      </tr>`;
+      tbody.innerHTML += row;
+    });
+  });
+</script>
