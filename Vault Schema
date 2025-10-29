@@ -1,0 +1,29 @@
+[
+  {
+    "vault_id": "vault-001",
+    "title": "Flame Entry Vault",
+    "tier": "Tier 1",
+    "emotion": "🔥Urgent",
+    "unlock": "https://oraclesignal.site/vault/flame",
+    "payout": "0.001 ETH",
+    "contributor": "0xF1A2B3C4"
+  },
+  {
+    "vault_id": "vault-002",
+    "title": "Ignition Vault",
+    "tier": "Tier 2",
+    "emotion": "🧠Insightful",
+    "unlock": "https://oraclesignal.site/vault/ignite",
+    "payout": "0.005 ETH",
+    "contributor": "0xC4B3A2F1"
+  },
+  {
+    "vault_id": "vault-003",
+    "title": "Sovereign Vault",
+    "tier": "Tier 3",
+    "emotion": "💰Profitable",
+    "unlock": "https://oraclesignal.site/vault/sovereign",
+    "payout": "0.01 ETH",
+    "contributor": "0x9E8D7C6B"
+  }
+]
