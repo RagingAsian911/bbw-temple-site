@@ -1,0 +1,16 @@
+function triggerOverlay(el) {
+  const payload = {
+    contributor: el.dataset.contributor,
+    emotion: el.dataset.emotion,
+    preview: el.dataset.preview,
+    timestamp: Date.now()
+  };
+
+  fetch("/webhook/overlay", {
+    method: "POST",
+    headers: { "Content-Type": "application/json" },
+    body: JSON.stringify(payload)
+  });
+
+  window.open(payload.preview, "_blank");
+}
