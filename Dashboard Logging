@@ -108,3 +108,26 @@ fetch("/api/affiliate-vaults")
     });
   });
 </script>
+<table>
+  <thead><tr><th>Vault</th><th>Emotion</th><th>Traffic</th><th>Sponsor</th><th>Preview</th><th>Status</th></tr></thead>
+  <tbody id="overlay-log"></tbody>
+</table>
+
+<script>
+fetch("/api/vault-previews")
+  .then(res => res.json())
+  .then(data => {
+    const tbody = document.getElementById("overlay-log");
+    data.forEach(v => {
+      const row = `<tr>
+        <td>${v.vault_id}</td>
+        <td>${v.emotion}</td>
+        <td>${v.traffic_threshold}</td>
+        <td>${v.sponsor}</td>
+        <td><a href="${v.preview_url}">Preview</a></td>
+        <td>Triggered</td>
+      </tr>`;
+      tbody.innerHTML += row;
+    });
+  });
+</script>
