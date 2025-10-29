@@ -1,0 +1,7 @@
+<div class="traffic-overlay" 
+     data-emotion="💰Profitable" 
+     data-preview="https://oraclesignal.site/preview/sovereign" 
+     data-affiliate="https://brandC.com/deal?id=sovereign">
+  <h3>Sovereign Vault – Sponsored by BrandC</h3>
+  <button onclick="triggerTrafficOverlay(this)">View</button>
+</div>
