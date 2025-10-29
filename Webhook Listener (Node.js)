@@ -1,0 +1,13 @@
+app.post("/webhook/signal", (req, res) => {
+  const { id, emotion, affiliate, contributor, timestamp } = req.body;
+  db.signals.insert({ id, emotion, affiliate, contributor, timestamp });
+  payoutEngine.route({ contributor, amount: calculatePayout(id) });
+  res.status(200).send("Signal logged");
+});
+
+app.post("/webhook/unlock", (req, res) => {
+  const { id, emotion, unlock, contributor, timestamp } = req.body;
+  db.unlocks.insert({ id, emotion, unlock, contributor, timestamp });
+  payoutEngine.route({ contributor, amount: calculateUnlockPayout(id) });
+  res.status(200).send("Unlock logged");
+});
