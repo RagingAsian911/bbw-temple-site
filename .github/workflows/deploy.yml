@@ -1,29 +1,31 @@
-name: Deploy Storefront
+name: Deploy Static Content
 
 on:
   push:
-    branches: [main]
+    branches:
+      - main
 
 jobs:
   deploy:
     runs-on: ubuntu-latest
+
     steps:
-      - name: Checkout
+      - name: Checkout repository
         uses: actions/checkout@v3
 
-      - name: Setup Pages
-        uses: actions/configure-pages@v3
-
-      - name: Upload
-        uses: actions/upload-pages-artifact@v2
+      - name: Setup Node.js
+        uses: actions/setup-node@v3
         with:
-          path: docs
+          node-version: '18'
 
-      - name: Deploy
-        uses: actions/deploy-pages@v2
-git add .
-git commit -m "BBW Temple v1.0.0-OneDrop — Final Invocation"
-git push origin main
-git tag v1.0.0-OneDrop
-git push origin v1.0.0-OneDrop
-git remote set-url origin https://github.com/RagingAsian911/bbw-temple.git
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Build static content
+        run: npm run build
+
+      - name: Deploy to GitHub Pages
+        uses: peaceiris/actions-gh-pages@v3
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          publish_dir: ./dist
