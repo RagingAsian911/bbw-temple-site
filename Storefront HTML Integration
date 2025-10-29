@@ -24,3 +24,32 @@
   <h3>Flame Route Auction</h3>
   <button onclick="triggerSignal(this)">Sponsored</button>
 </div>
+<div class="signal-card" 
+     data-id="sig-501" 
+     data-emotion="🔥Urgent" 
+     data-unlock="https://oraclesignal.site/unlock/flame" 
+     data-contributor="0xF1A2B3C4" 
+     data-tier="Tier 1">
+  <h3>Flame Unlock</h3>
+  <button onclick="triggerCryptoUnlock(this)">Unlock</button>
+</div>
+
+<div class="signal-card" 
+     data-id="sig-502" 
+     data-emotion="🧬Sovereign" 
+     data-unlock="https://oraclesignal.site/unlock/sovereign" 
+     data-contributor="0xC4B3A2F1" 
+     data-tier="Tier 2">
+  <h3>Sovereign Drop</h3>
+  <button onclick="triggerCryptoUnlock(this)">Unlock</button>
+</div>
+
+<div class="signal-card" 
+     data-id="sig-503" 
+     data-emotion="💰Profitable" 
+     data-unlock="https://oraclesignal.site/unlock/vault" 
+     data-contributor="0x9E8D7C6B" 
+     data-tier="Tier 3">
+  <h3>Contributor Vault</h3>
+  <button onclick="triggerCryptoUnlock(this)">Unlock</button>
+</div>
