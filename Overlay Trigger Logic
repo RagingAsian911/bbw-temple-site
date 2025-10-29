@@ -79,3 +79,7 @@ function triggerAffiliateScroll() {
   window.open("https://www.youtube.com/@charlesbuchanan-d1e", "_blank");
   logScrollOverlay("affiliate-scroll-youtube", "🎯Targeted", ["pika.art", "upscale.media", "make.com"]);
 }
+function triggerScrollDrop() {
+  window.open("https://www.youtube.com/@charlesbuchanan-d1e/shorts", "_blank");
+  logScrollOverlay("scroll-shorts-vault", "📡Broadcast", ["pika.art", "upscale.media", "make.com"]);
+}
