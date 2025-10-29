@@ -33,3 +33,21 @@ function triggerUnlock(el) {
 
   window.location.href = payload.unlock;
 }
+function triggerCryptoUnlock(el) {
+  const payload = {
+    id: el.dataset.id,
+    emotion: el.dataset.emotion,
+    unlock: el.dataset.unlock,
+    contributor: el.dataset.contributor,
+    tier: el.dataset.tier,
+    timestamp: Date.now()
+  };
+
+  fetch("/webhook/crypto-unlock", {
+    method: "POST",
+    headers: { "Content-Type": "application/json" },
+    body: JSON.stringify(payload)
+  });
+
+  window.location.href = payload.unlock;
+}
