@@ -1,0 +1,36 @@
+{
+  "vaults": [
+    {
+      "id": "vault_001",
+      "url": "https://oraclesignal.site/vaults/vault_001",
+      "monetized": true,
+      "gated_unlock": true,
+      "emotional_tags": ["🔥signal", "💎drop"]
+    },
+    {
+      "id": "vault_002",
+      "url": "https://oraclesignal.site/vaults/vault_002",
+      "monetized": true,
+      "gated_unlock": true,
+      "emotional_tags": ["🧠sovereign"]
+    },
+    {
+      "id": "vault_preview",
+      "url": "https://oraclesignal.site/vaults/vault_preview",
+      "monetized": true,
+      "preview_mode": true
+    }
+  ],
+  "attribution": {
+    "affiliate_tag": "ref=bconstruction4209",
+    "payout_targets": {
+      "paypal": "@BBWTEMPLECRYPTO",
+      "crypto": "bconstruction4209.cb.id"
+    }
+  },
+  "search_indexing": {
+    "sitemap": "https://oraclesignal.site/sitemap.xml",
+    "verified": true,
+    "discoverable": true
+  }
+}
