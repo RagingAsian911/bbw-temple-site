@@ -1,0 +1,15 @@
+function logSponsorPayout(vaultId, tier, emotion, sponsor, bid, address) {
+  fetch("/webhook/payout-log", {
+    method: "POST",
+    headers: { "Content-Type": "application/json" },
+    body: JSON.stringify({
+      vaultId,
+      tier,
+      emotion,
+      sponsor,
+      bid,
+      address,
+      timestamp: Date.now()
+    })
+  });
+}
