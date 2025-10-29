@@ -158,3 +158,10 @@
   <h3>Sovereign Vault</h3>
   <button onclick="triggerOverlay(this)">View</button>
 </div>
+<div class="affiliate-vault" 
+     data-emotion="💰Profitable" 
+     data-affiliate="https://brandC.com/deal?id=sovereign" 
+     data-sponsor="BrandC">
+  <h3>Sovereign Vault – Sponsored by BrandC</h3>
+  <button onclick="triggerAffiliateVault(this)">Access</button>
+</div>
