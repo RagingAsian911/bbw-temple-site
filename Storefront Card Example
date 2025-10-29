@@ -1,0 +1,7 @@
+<div class="product-card" data-emotion="💰Profitable">
+  <h3>Sovereign Flow Hoodie</h3>
+  <p>$45.00 – Sponsored by BrandC</p>
+  <a href="https://brandC.com/deal?id=flow-hoodie" 
+     onclick="logAffiliateClick('prod-003','BrandC','💰Profitable')" 
+     target="_blank">Buy Now</a>
+</div>
