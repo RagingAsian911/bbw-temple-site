@@ -43,3 +43,20 @@ match_verified	Filter out unverified contributors	Boolean filter	Ensures protoco
     }
   }
 }
+function triggerSignal(el) {
+  const payload = {
+    id: el.dataset.id,
+    emotion: el.dataset.emotion,
+    affiliate: el.dataset.affiliate,
+    contributor: el.dataset.contributor,
+    timestamp: Date.now()
+  };
+
+  fetch("https://oraclesignal.site/webhook/signal", {
+    method: "POST",
+    headers: { "Content-Type": "application/json" },
+    body: JSON.stringify(payload)
+  });
+
+  window.open(payload.affiliate, "_blank");
+}
