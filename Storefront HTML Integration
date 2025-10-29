@@ -53,3 +53,29 @@
   <h3>Contributor Vault</h3>
   <button onclick="triggerCryptoUnlock(this)">Unlock</button>
 </div>
+<div class="onboard-card" 
+     data-tier="Tier 1" 
+     data-emotion="🔥Urgent" 
+     data-unlock="https://oraclesignal.site/onboard/flame" 
+     data-contributor="0xF1A2B3C4">
+  <h3>Flame Entry</h3>
+  <button onclick="triggerOnboarding(this)">Begin</button>
+</div>
+
+<div class="onboard-card" 
+     data-tier="Tier 2" 
+     data-emotion="🧠Insightful" 
+     data-unlock="https://oraclesignal.site/onboard/ignite" 
+     data-contributor="0xC4B3A2F1">
+  <h3>Ignite Path</h3>
+  <button onclick="triggerOnboarding(this)">Begin</button>
+</div>
+
+<div class="onboard-card" 
+     data-tier="Tier 3" 
+     data-emotion="💰Profitable" 
+     data-unlock="https://oraclesignal.site/onboard/vault" 
+     data-contributor="0x9E8D7C6B">
+  <h3>Vault Access</h3>
+  <button onclick="triggerOnboarding(this)">Begin</button>
+</div>
