@@ -1,0 +1,7 @@
+app.post('/api/webhook', (req, res) => {
+  const event = req.body;
+  if (event.type === 'payment_intent.succeeded') {
+    logPayment(event.data.object);
+  }
+  res.sendStatus(200);
+});
