@@ -1,0 +1,16 @@
+app.post("/webhook/vault-unlock", handleVaultUnlock);
+app.post("/webhook/signal", handleSignalClick);
+
+function handleVaultUnlock(req, res) {
+  const { vault_id, tier, emotion, unlock, contributor, timestamp } = req.body;
+  db.vaults.insert({ vault_id, tier, emotion, contributor, timestamp });
+  payoutEngine.route({ contributor, amount: getVaultPayout(vault_id) });
+  res.status(200).send("Vault unlocked");
+}
+
+function handleSignalClick(req, res) {
+  const { id, emotion, affiliate, contributor, timestamp } = req.body;
+  db.signals.insert({ id, emotion, affiliate, contributor, timestamp });
+  payoutEngine.route({ contributor, amount: getSignalPayout(id) });
+  res.status(200).send("Signal logged");
+}
