@@ -27,3 +27,12 @@
     "contributor": "0x9E8D7C6B"
   }
 ]
+{
+  "vault_id": "vault-shorts-preview",
+  "emotion": "📈Trending",
+  "title": "Crypto Forecast Drop: SOL Surge",
+  "scroll_url": "https://oraclesignal.site/vaults/sol-preview",
+  "overlay_url": "https://www.youtube.com/@charlesbuchanan-d1e/shorts",
+  "amplifiers": ["pika.art", "upscale.media", "make.com"],
+  "log": true
+}
