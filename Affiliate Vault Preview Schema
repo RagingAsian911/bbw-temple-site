@@ -1,0 +1,26 @@
+[
+  {
+    "vault_id": "aff-001",
+    "emotion": "🔥Urgent",
+    "traffic_threshold": 100,
+    "preview_url": "https://oraclesignal.site/preview/flame",
+    "sponsor": "BrandA",
+    "affiliate": "https://brandA.com/deal?id=flame"
+  },
+  {
+    "vault_id": "aff-002",
+    "emotion": "🧠Insightful",
+    "traffic_threshold": 250,
+    "preview_url": "https://oraclesignal.site/preview/ignite",
+    "sponsor": "BrandB",
+    "affiliate": "https://brandB.com/deal?id=ignite"
+  },
+  {
+    "vault_id": "aff-003",
+    "emotion": "💰Profitable",
+    "traffic_threshold": 500,
+    "preview_url": "https://oraclesignal.site/preview/sovereign",
+    "sponsor": "BrandC",
+    "affiliate": "https://brandC.com/deal?id=sovereign"
+  }
+]
