@@ -1,15 +1,29 @@
-# Validate YAML syntax
-yamllint .github/workflows/main.yml
+name: Deploy Signal System
 
-# Patch example
+on:
+  push:
+    branches:
+      - main
+
 jobs:
-  deploy:
+  build-and-deploy:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v3
+      - name: Checkout repo
+        uses: actions/checkout@v3
+
+      - name: Set up Node
+        uses: actions/setup-node@v3
+        with:
+          node-version: '18'
+
       - name: Install dependencies
-        run: npm install
-      - name: Build
+        run: npm ci
+
+      - name: Build project
         run: npm run build
-      - name: Deploy
+
+      - name: Deploy to GitHub Pages
         run: npm run deploy
+        env:
+          GH_TOKEN: ${{ secrets.GH_TOKEN }}
