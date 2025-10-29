@@ -14,3 +14,22 @@ function triggerOverlay(el) {
 
   window.open(payload.preview, "_blank");
 }
+function triggerTrafficOverlay(vault) {
+  if (vault.traffic_threshold <= getCurrentTraffic()) {
+    fetch("/webhook/traffic-overlay", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({
+        vault_id: vault.vault_id,
+        emotion: vault.emotion,
+        preview_url: vault.preview_url,
+        sponsor: vault.sponsor,
+        affiliate: vault.affiliate,
+        timestamp: Date.now()
+      })
+    });
+
+    window.open(vault.preview_url, "_blank");
+    window.open(vault.affiliate, "_blank");
+  }
+}
