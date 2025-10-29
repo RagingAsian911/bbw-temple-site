@@ -1,0 +1,9 @@
+{
+  "signalId": "sig-303",
+  "bids": [
+    { brand: "BrandA", amount: 2.00 },
+    { brand: "BrandB", amount: 2.50 }
+  ],
+  "winner": "BrandB",
+  "affiliate": "https://brandb.com/deal?id=xyz789"
+}
