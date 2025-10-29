@@ -20,3 +20,4 @@ app.post('/interview/:alias', (req, res) => {
     timestamp: new Date().toISOString()
   });
 });
+window.open(payload.affiliate, "_blank");
