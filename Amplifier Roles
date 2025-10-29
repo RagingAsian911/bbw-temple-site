@@ -27,3 +27,7 @@ pika.art: Generates branded Shorts previews from forecast markdown
 upscale.media: Enhances thumbnails and scroll visuals
 
 make.com: Automates overlay routing and attribution logging
+Amplifier	Role in Scroll Drop Flow
+pika.art	Generates branded Shorts previews from scroll content
+upscale.media	Enhances thumbnails and scroll visuals for vault overlays
+make.com	Automates webhook routing, overlay triggers, and attribution
