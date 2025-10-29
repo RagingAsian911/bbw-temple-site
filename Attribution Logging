@@ -38,3 +38,17 @@ function logSignalOverlay(signalId, emotion, assets) {
     })
   });
 }
+function logSignalOverlay(signalId, emotion, assets) {
+  fetch("/webhook/signal-overlay", {
+    method: "POST",
+    headers: { "Content-Type": "application/json" },
+    body: JSON.stringify({
+      signalId,
+      emotion,
+      assets,
+      overlay: "https://www.youtube.com/@charlesbuchanan-d1e",
+      amplifiers: ["pika.art", "upscale.media", "make.com"],
+      timestamp: Date.now()
+    })
+  });
+}
