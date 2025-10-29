@@ -1,0 +1,7 @@
+function calculateSplit(signal) {
+  const total = parseFloat(signal.payout);
+  return {
+    owner: total * 0.5,
+    contributor: total * 0.5
+  };
+}
