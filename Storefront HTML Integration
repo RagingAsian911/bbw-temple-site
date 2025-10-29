@@ -165,3 +165,8 @@
   <h3>Sovereign Vault – Sponsored by BrandC</h3>
   <button onclick="triggerAffiliateVault(this)">Access</button>
 </div>
+<div class="product-card" data-emotion="🔥Urgent" data-tier="Tier 1">
+  <h3>Signal Sovereign Tee</h3>
+  <p>$28.00 – Sponsored by BrandA</p>
+  <a href="https://brandA.com/deal?id=signal-tee" target="_blank">Buy Now</a>
+</div>
