@@ -80,3 +80,17 @@ function logSignalOverlay(signalId, emotion, assets) {
     })
   });
 }
+function logVaultDrop(vaultId, emotion, assets) {
+  fetch("/webhook/vault-drop", {
+    method: "POST",
+    headers: { "Content-Type": "application/json" },
+    body: JSON.stringify({
+      vaultId,
+      emotion,
+      assets,
+      overlay: "https://www.youtube.com/@charlesbuchanan-d1e/shorts",
+      amplifiers: ["pika.art", "upscale.media", "make.com"],
+      timestamp: Date.now()
+    })
+  });
+}
