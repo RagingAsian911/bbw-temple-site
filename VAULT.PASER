@@ -1,0 +1,35 @@
+const fs = require('fs');
+const path = require('path');
+
+const VAULT_PATH = path.join(__dirname, 'vault.log');
+
+function parseVault() {
+  if (!fs.existsSync(VAULT_PATH)) {
+    console.error('Vault log not found.');
+    return;
+  }
+
+  const lines = fs.readFileSync(VAULT_PATH, 'utf-8').trim().split('\n');
+  const entries = lines.map(line => {
+    try {
+      return JSON.parse(line);
+    } catch {
+      return { error: 'Invalid JSON', raw: line };
+    }
+  });
+
+  console.log(`\n🔐 Parsed Vault Entries (${entries.length} total):\n`);
+  entries.forEach((entry, i) => {
+    if (entry.error) {
+      console.log(`[${i}] ❌ ${entry.raw}`);
+    } else {
+      console.log(`[${i}] ✅ ${entry.timestamp}`);
+      console.log(`     Contributor: ${entry.contributor}`);
+      console.log(`     Emotion:     ${entry.emotion}`);
+      console.log(`     Amount:      ${entry.amount}`);
+      console.log(`     Routed To:   ${entry.routedTo}`);
+    }
+  });
+}
+
+parseVault();
