@@ -66,3 +66,10 @@ console.log(`Routing payout to: ${JSON.stringify(payout)}`);
 // Insert ECS task metadata or webhook logic here// logSignal.js
 const signal = process.argv[2];
 console.log(`[${signal}] drop executed at ${new Date().toISOString()}`);
+<script>
+  const payout = {
+    paypal: "charlesbuchanan89@yahoo.com",
+    crypto: "awaiting-reactivation"
+  };
+  console.log("Routing payout to:", payout);
+</script>
