@@ -154,3 +154,4 @@ jobs:
       - name: Start drop server
         run: node api/drop-oneclick.js
 publish_dir: ./public
+verifySearchConsole(dnsConfig.domain);
