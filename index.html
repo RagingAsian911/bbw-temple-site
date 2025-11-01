@@ -74,3 +74,30 @@
 
 </body>
 </html>
+<!DOCTYPE html>
+<html>
+<head><title>Trigger Drop</title></head>
+<body>
+  <h1>Trigger Drop</h1>
+  <form id="dropForm">
+    <input name="contributor" placeholder="Contributor Name" required><br>
+    <input name="emotion" placeholder="Emotion Tag" required><br>
+    <input name="amount" placeholder="Amount" required><br>
+    <button type="submit">Trigger</button>
+  </form>
+  <pre id="result"></pre>
+  <script>
+    document.getElementById('dropForm').onsubmit = async (e) => {
+      e.preventDefault();
+      const data = Object.fromEntries(new FormData(e.target));
+      const res = await fetch('https://your-render-url.onrender.com/api/system-drop', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(data)
+      });
+      const result = await res.json();
+      document.getElementById('result').textContent = JSON.stringify(result, null, 2);
+    };
+  </script>
+</body>
+</html>
