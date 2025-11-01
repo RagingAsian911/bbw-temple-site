@@ -86,3 +86,52 @@ jobs:
       "payout_target": "coinbase",
       "index_url": "https://oraclesignal.site/vaults/github-drop"
     }'
+const express = require('express');
+const app = express();
+app.use(express.json());
+
+app.post('/api/drop-oneclick', async (req, res) => {
+  const drop = {
+    contributor_id: req.body.contributor_id || "rogue-uuid",
+    emotion_tag: req.body.emotion_tag || "sovereignty",
+    source: req.body.source || "storefronts.oraclesignal.site",
+    index_url: req.body.index_url || "https://oraclesignal.site/vaults/drop",
+    timestamp: new Date().toISOString()
+  };
+
+  // 🔐 ROUTE TO PAYPAL
+  await sendToPayPal("charlesbuchanan89@yahoo.com", "25.00", "USD");
+
+  // 🔁 LOG TO DASHBOARD
+  await logToSupabase(drop);
+
+  // 🔗 INDEX TO VAULT
+  await publishToVault(drop.index_url, drop);
+
+  res.status(200).send({ status: "Drop executed", drop });
+});
+
+function sendToPayPal(email, amount, currency) {
+  console.log(`Routing $${amount} ${currency} to PayPal: ${email}`);
+}
+
+function logToSupabase(data) {
+  console.log("Logged to dashboard:", data);
+}
+
+function publishToVault(url, data) {
+  console.log("Published to vault:", url);
+}
+
+app.listen(3002, () => console.log('One-click drop live on port 3002'));<form action="https://oraclesignal.site/api/drop-oneclick" method="POST">
+  <input type="hidden" name="contributor_id" value="rogue-uuid">
+  <input type="hidden" name="emotion_tag" value="sovereignty">
+  <input type="hidden" name="source" value="storefronts.oraclesignal.site">
+  <input type="hidden" name="index_url" value="https://oraclesignal.site/vaults/drop">
+  <input type="hidden" name="timestamp" value="">
+  <button type="submit">Trigger Drop</button>
+</form>
+
+<script>
+  document.querySelector('input[name="timestamp"]').value = new Date().toISOString();
+</script>
