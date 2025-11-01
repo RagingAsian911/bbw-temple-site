@@ -1,2 +1,5 @@
 git commit --allow-empty -m "🔥 Ritual redeploy trigger"
 git push origin main
+git clone https://github.com/RagingAsian911/bbw-temple-site.git
+cd bbw-temple-site
+git log --oneline --graph --decorate
