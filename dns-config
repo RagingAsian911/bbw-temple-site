@@ -17,3 +17,37 @@ deployDNSRecords(dnsConfig.records);logSignal('DNS_RECORD_DEPLOYED', {
   record: record,
   timestamp: Date.now()
 });
+# .github/workflows/deploy-dns.yml
+name: Deploy DNS + Payout Logic
+
+on:
+  push:
+    branches:
+      - dev
+    paths:
+      - 'config/dns/dns-config.json'
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout Repo
+        uses: actions/checkout@v3
+
+      - name: Load DNS Config
+        run: cat config/dns/dns-config.json
+
+      - name: Deploy DNS Records
+        run: node scripts/deployDNS.js config/dns/dns-config.json
+
+      - name: Log Attribution
+        run: node scripts/logSignal.js "DNS_DEPLOYED"const payout = {
+  paypal: "charlesbuchanan89@yahoo.com",
+  crypto: "awaiting-reactivation"
+};
+firmwareIndex.payout = payout;logSignal('FIRMWARE_SIGNAL_DROP', {
+  branch: 'dev',
+  dns: true,
+  payout: payout,
+  timestamp: Date.now()
+});
