@@ -1,0 +1,31 @@
+# .github/workflows/deploy-dns.yml
+name: Deploy DNS Records
+
+on:
+  push:
+    paths:
+      - 'config/dns/dns-config.json'
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout Repo
+        uses: actions/checkout@v3
+
+      - name: Load DNS Config
+        run: |
+          cat config/dns/dns-config.json
+
+      - name: Deploy DNS Records
+        run: |
+          node scripts/deployDNS.js config/dns/dns-config.json// scripts/deployDNS.js
+const dnsRecords = require(process.argv[2]);
+dnsRecords.records.forEach(record => {
+  console.log(`Deploying ${record.type} ${record.name} → ${record.value}`);
+  // Insert API call to DNS provider here
+});logSignal('DNS_DEPLOYED', {
+  domain: dnsRecords.domain,
+  count: dnsRecords.records.length,
+  timestamp: Date.now()
+});
