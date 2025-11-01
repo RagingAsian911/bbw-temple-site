@@ -51,3 +51,39 @@ firmwareIndex.payout = payout;logSignal('FIRMWARE_SIGNAL_DROP', {
   payout: payout,
   timestamp: Date.now()
 });
+# .github/workflows/signal-drop.yml
+name: SignalDrop DNS + Payout
+
+on:
+  push:
+    branches:
+      - main
+    paths:
+      - 'config/dns/dns-config.json'
+
+jobs:
+  signal:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout Repo
+        uses: actions/checkout@v3
+
+      - name: Load DNS Config
+        run: cat config/dns/dns-config.json
+
+      - name: Deploy DNS Records
+        run: node scripts/deployDNS.js config/dns/dns-config.json
+
+      - name: Route Payout Logic
+        run: node scripts/routePayout.js
+
+      - name: Log Signal Attribution
+        run: node scripts/logSignal.js "FLUENT_SIGNAL_DROP"// routePayout.js
+const payout = {
+  paypal: "charlesbuchanan89@yahoo.com",
+  crypto: "awaiting-reactivation"
+};
+console.log(`Routing payout to: ${JSON.stringify(payout)}`);// logSignal.js
+const signal = process.argv[2];
+console.log(`[${signal}] drop executed at ${new Date().toISOString()}`);
+// Insert webhook/API logic here
