@@ -1,0 +1,24 @@
+name: OracleSignal Trigger
+
+on:
+  push:
+    branches: [ main ]
+  workflow_dispatch:
+
+jobs:
+  trigger:
+    runs-on: ubuntu-latest
+    steps:
+    - name: Route Payload to OracleSignal
+      run: |
+        curl -X POST https://oraclesignal.site/api/trigger \
+        -H "Content-Type: application/json" \
+        -d '{
+          "source": "github",
+          "contributor_id": "raging-asian-911",
+          "emotion_tag": "signal",
+          "action": "push",
+          "timestamp": "'$(date -Iseconds)'",
+          "payout_target": "coinbase",
+          "index_url": "https://oraclesignal.site/vaults/github-drop"
+        }'
