@@ -1,0 +1,12 @@
+<form action="https://oraclesignal.site/api/contributor-onboard" method="POST">
+  <input type="hidden" name="contributor_id" value="rogue-uuid">
+  <input type="hidden" name="emotion_tag" value="sovereignty">
+  <input type="hidden" name="source" value="adult.oraclesignal.site">
+  <input type="hidden" name="index_url" value="https://oraclesignal.site/vaults/contributor-drop">
+  <input type="hidden" name="timestamp" value="">
+  <button type="submit">Join Contributor Flow</button>
+</form>
+
+<script>
+  document.querySelector('input[name="timestamp"]').value = new Date().toISOString();
+</script>
