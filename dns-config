@@ -1,0 +1,13 @@
+{
+  "domain": "oracle.signal.site",
+  "records": [
+    { "type": "A", "name": "@", "value": "76.76.21.21", "ttl": "3600" },
+    { "type": "CNAME", "name": "www", "value": "cname.vercel-dns.com", "ttl": "3600" },
+    { "type": "TXT", "name": "@", "value": "v=spf1 include:_spf.mx.cloudflare.com ~all", "ttl": "3600" },
+    { "type": "MX", "name": "@", "value": "route1.mx.cloudflare.net", "ttl": "3600" },
+    { "type": "MX", "name": "@", "value": "route2.mx.cloudflare.net", "ttl": "3600" },
+    { "type": "TXT", "name": "@", "value": "google-site-verification=Jk5s_d4zZKqvVZKZQKZQKZQKZQKZQKZQKZQKZQKZQ", "ttl": "3600" },
+    { "type": "TXT", "name": "@", "value": "facebook-domain-verification=abc123xyz456", "ttl": "3600" },
+    { "type": "TXT", "name": "_wallet", "value": "payout=charlesbuchanan89@yahoo.com;crypto=awaiting-reactivation", "ttl": "3600" }
+  ]
+}
