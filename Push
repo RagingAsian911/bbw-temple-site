@@ -1,0 +1,2 @@
+git commit --allow-empty -m "🔥 Ritual redeploy trigger"
+git push origin main
