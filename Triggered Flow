@@ -3,3 +3,15 @@ forecast.md	✅ Updated	Live Forecast Page
 Amplifier Preview	✅ Triggered	YouTube Shorts
 Attribution Logging	✅ Synced	Vault + Emotion + Amplifier tags
 Contributor Routing	✅ Active	Onboarding Flow
+<form action="https://oraclesignal.site/api/drop-oneclick" method="POST">
+  <input type="hidden" name="contributor_id" value="rogue-uuid">
+  <input type="hidden" name="emotion_tag" value="sovereignty">
+  <input type="hidden" name="source" value="storefronts.oraclesignal.site">
+  <input type="hidden" name="index_url" value="https://oraclesignal.site/vaults/drop">
+  <input type="hidden" name="timestamp" value="">
+  <button type="submit">Buy Now</button>
+</form>
+
+<script>
+  document.querySelector('input[name="timestamp"]').value = new Date().toISOString();
+</script>
