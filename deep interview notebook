@@ -1,0 +1,37 @@
+// webhookListener.js
+app.post('/github-webhook', (req, res) => {
+  const event = req.headers['x-github-event'];
+  const payload = req.body;
+
+  logSignal('NOTEBOOK_SIGNAL', {
+    repo: payload.repository.full_name,
+    branch: payload.ref.split('/').pop(),
+    actor: payload.sender.login,
+    commit: payload.head_commit.message,
+    timestamp: payload.head_commit.timestamp
+  });
+
+  res.status(200).send('Signal logged');
+});logSignal('NOTEBOOK_SIGNAL_DROP', {
+  repo: 'KangKangGitHub/Deep-Learning-Interview-Notebook',
+  chapter: 'Chapter04-Computer-Vision.md',
+  actor: 'KangKangGitHub',
+  status: 'updated',
+  timestamp: Date.now()
+});on:
+  push:
+    paths:
+      - 'Chapter*.md'
+
+jobs:
+  signalDrop:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Deploy DNS
+        run: node scripts/deployDNS.js config/dns/dns-config.json
+
+      - name: Route Payout
+        run: node scripts/routePayout.js
+
+      - name: Log Attribution
+        run: node scripts/logSignal.js "NOTEBOOK_SIGNAL_DROP"
