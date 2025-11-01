@@ -135,3 +135,21 @@ app.listen(3002, () => console.log('One-click drop live on port 3002'));<form ac
 <script>
   document.querySelector('input[name="timestamp"]').value = new Date().toISOString();
 </script>
+name: Deploy Drop Logic
+
+on:
+  push:
+    branches: [ main ]
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repo
+        uses: actions/checkout@v3
+
+      - name: Install dependencies
+        run: npm install
+
+      - name: Start drop server
+        run: node api/drop-oneclick.js
