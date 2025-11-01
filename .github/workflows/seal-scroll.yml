@@ -1,0 +1,66 @@
+name: Seal Scroll
+
+on:
+  workflow_dispatch:
+  push:
+    branches:
+      - main
+
+jobs:
+  seal:
+    name: Seal the Scroll
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: 🔥 Checkout Repository
+        uses: actions/checkout@v3
+
+      - name: 🧾 Set Ritual Metadata
+        run: |
+          echo "Sealing scrolls for BBW Temple..."
+          echo "DATE=$(date -u +'%Y-%m-%dT%H:%M:%SZ')" >> $GITHUB_ENV
+          echo "COMMITTER=Charles Buchanan" >> $GITHUB_ENV
+
+      - name: 📜 Embed Ritual Links in README
+        run: |
+          sed -i '/<!-- RITUAL-START -->/,/<!-- RITUAL-END -->/c\
+          <!-- RITUAL-START -->\n\
+          🔗 [Affiliate Scroll](https://yourdomain.com/scrolls/affiliate.pdf)\n\
+          🎥 [Forecast Video](https://youtube.com/yourforecastvideo)\n\
+          🛍️ [Shopify Store](https://bbwtemple.com)\n\
+          🧠 [Talent Intake Form](https://yourdomain.com/intake)\n\
+          💬 [WhatsApp Oracle Circle](https://wa.me/yourgroup)\n\
+          🤖 [Telegram Bot](https://t.me/yourbot)\n\
+          🪙 [Telegram Wallet](https://t.me/yourwallet)\n\
+          <!-- RITUAL-END -->' README.md
+
+      - name: 📦 Commit & Push Sealed Scrolls
+        run: |
+          git config user.name "${{ env.COMMITTER }}"
+          git config user.email "charles@bbwtemple.com"
+          git add README.md LICENSE
+          git commit -m "🔥 Sealed scrolls on ${{ env.DATE }}"
+          git push origin main
+
+      - name: 🛍️ Update Shopify Metafields
+        env:
+          SHOPIFY_STORE: ${{ secrets.SHOPIFY_STORE }}
+          SHOPIFY_TOKEN: ${{ secrets.SHOPIFY_TOKEN }}
+        run: |
+          curl -X POST "https://${SHOPIFY_STORE}/admin/api/2023-10/metafields.json" \
+            -H "X-Shopify-Access-Token: ${SHOPIFY_TOKEN}" \
+            -H "Content-Type: application/json" \
+            -d '{
+              "metafield": {
+                "namespace": "ritual",
+                "key": "forecast_signal",
+                "value": "Crypto Oracle Forecast: Sealed on ${{ env.DATE }}",
+                "type": "single_line_text_field"
+              }
+            }'
+
+      - name: 🚀 Deploy GitHub Pages
+        uses: peaceiris/actions-gh-pages@v3
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          publish_dir: ./public
