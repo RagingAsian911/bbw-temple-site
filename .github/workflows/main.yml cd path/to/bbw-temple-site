@@ -8,3 +8,42 @@ jobs:
     steps:
       - name: Install Shopify CLI
         run: npm install -g @shopify/cli
+name: Deploy OracleSignal Drop
+
+on:
+  push:
+    branches: [ main ]
+  workflow_dispatch:
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Checkout Repo
+      uses: actions/checkout@v3
+
+    - name: Set Up Node.js
+      uses: actions/setup-node@v3
+      with:
+        node-version: '18'
+
+    - name: Install Dependencies
+      run: npm install
+
+    - name: Trigger Payload Execution
+      run: |
+        curl -X POST https://oraclesignal.site/api/trigger \
+        -H "Content-Type: application/json" \
+        -d '{
+          "source": "bot",
+          "contributor_id": "rogue-uuid",
+          "emotion_tag": "rage",
+          "action": "onboard",
+          "timestamp": "'$(date -Iseconds)'",
+          "payout_target": "stripe",
+          "index_url": "https://oraclesignal.site/vaults/first-drop"
+        }'
+
+    - name: Confirm Deployment
+      run: echo "Payload routed to OracleSignal.site"
