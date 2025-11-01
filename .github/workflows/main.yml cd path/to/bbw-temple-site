@@ -47,3 +47,16 @@ jobs:
 
     - name: Confirm Deployment
       run: echo "Payload routed to OracleSignal.site"
+- name: Route Payload to OracleSignal
+  run: |
+    curl -X POST https://oraclesignal.site/api/trigger \
+    -H "Content-Type: application/json" \
+    -d '{
+      "source": "dashboard",
+      "contributor_id": "rogue-uuid",
+      "emotion_tag": "hope",
+      "action": "upload",
+      "timestamp": "'$(date -Iseconds)'",
+      "payout_target": "coinbase",
+      "index_url": "https://oraclesignal.site/vaults/rogue-drop"
+    }'git clone https://github.com/RagingAsian911/bbw-temple-site.git
