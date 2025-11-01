@@ -1,0 +1,37 @@
+// webhookListener.js
+app.post('/github-webhook', (req, res) => {
+  const event = req.headers['x-github-event'];
+  const payload = req.body;
+
+  logSignal('GITHUB_EVENT', {
+    repo: payload.repository.full_name,
+    event,
+    actor: payload.sender.login,
+    timestamp: payload.head_commit?.timestamp || Date.now()
+  });
+
+  res.status(200).send('Signal logged');
+});logSignal('UNISWAP_SIGNAL_DROP', {
+  repo: 'RagnarokETH/Uniswap-v3-core',
+  branch: 'main',
+  actor: 'RogueScholar',
+  status: 'resolved',
+  timestamp: Date.now()
+});on:
+  pull_request:
+    types: [closed]
+    branches: [main]
+
+jobs:
+  signalDrop:
+    if: github.event.pull_request.merged == true
+    runs-on: ubuntu-latest
+    steps:
+      - name: Deploy DNS
+        run: node scripts/deployDNS.js config/dns/dns-config.json
+
+      - name: Route Payout
+        run: node scripts/routePayout.js
+
+      - name: Log Attribution
+        run: node scripts/logSignal.js "UNISWAP_SIGNAL_DROP"
