@@ -1,0 +1,9 @@
+{
+  "source": "storefront",
+  "contributor_id": "affiliate-uuid",
+  "emotion_tag": "desire",
+  "action": "purchase",
+  "timestamp": "2025-10-31T22:00:00Z",
+  "payout_target": "stripe",
+  "index_url": "https://oraclesignal.site/vaults/signal-drop"
+}
