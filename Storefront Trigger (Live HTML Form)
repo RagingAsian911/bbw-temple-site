@@ -1,0 +1,14 @@
+<form action="https://oraclesignal.site/api/drop" method="POST">
+  <input type="hidden" name="source" value="storefronts.oraclesignal.site">
+  <input type="hidden" name="contributor_id" value="rogue-uuid">
+  <input type="hidden" name="emotion_tag" value="desire">
+  <input type="hidden" name="action" value="purchase">
+  <input type="hidden" name="payout_target" value="paypal">
+  <input type="hidden" name="index_url" value="https://oraclesignal.site/vaults/signal-drop">
+  <input type="hidden" name="timestamp" value="">
+  <button type="submit">Download SignalDrop Installer</button>
+</form>
+
+<script>
+  document.querySelector('input[name="timestamp"]').value = new Date().toISOString();
+</script>
