@@ -11,3 +11,9 @@
     { "type": "TXT", "name": "_wallet", "value": "payout=charlesbuchanan89@yahoo.com;crypto=awaiting-reactivation", "ttl": "3600" }
   ]
 }
+const dnsConfig = require('./config/dns/dns-config.json');
+deployDNSRecords(dnsConfig.records);logSignal('DNS_RECORD_DEPLOYED', {
+  domain: dnsConfig.domain,
+  record: record,
+  timestamp: Date.now()
+});
