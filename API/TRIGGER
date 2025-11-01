@@ -1,0 +1,10 @@
+app.post('/api/trigger', async (req, res) => {
+  const payload = req.body;
+  // Validate and log
+  await supabase.from('logs').insert([payload]);
+  // Trigger payout
+  if (payload.payout_target === 'stripe') { /* Stripe logic */ }
+  // Index signal
+  await pingSearchConsole(payload.index_url);
+  res.status(200).send('Payload routed');
+});
