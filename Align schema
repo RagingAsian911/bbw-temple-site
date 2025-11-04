@@ -1,0 +1,4 @@
+- uses: cardinalby/schema-validator-action@v3
+  with:
+    file: 'scrolls/*.yml'
+    schema: 'schemas/scroll.schema.json'
