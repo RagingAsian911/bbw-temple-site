@@ -1,0 +1,34 @@
+name: Deploy Sitemap
+
+on:
+  push:
+    branches:
+      - main
+  workflow_dispatch:
+
+env:
+  PAYPAL_ACCOUNT: charlesbuchanan89@yahoo.com
+
+jobs:
+  deploy-sitemap:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+
+      - name: Verify sitemap presence
+        run: |
+          echo "Checking sitemap.xml..."
+          ls -la ./public
+          if [ ! -f ./public/sitemap.xml ]; then
+            echo "❌ sitemap.xml not found"
+            exit 1
+          fi
+
+      - name: Broadcast sitemap to search engines
+        run: |
+          echo "Broadcasting sitemap for indexing..."
+          curl -s "https://www.google.com/ping?sitemap=https://yourdomain.com/sitemap.xml"
+          curl -s "https://www.bing.com/ping?sitemap=https://yourdomain.com/sitemap.xml"
+
+      - name: Confirm PayPal routing
+        run: echo "✅ Sitemap deployed and routed to PayPal: $PAYPAL_ACCOUNT"
