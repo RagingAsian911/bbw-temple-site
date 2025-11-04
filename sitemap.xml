@@ -36,3 +36,10 @@
     <priority>0.6</priority>
   </url>
 </urlset>
+- name: Deploy Sitemap
+  run: |
+    echo "Deploying sitemap..."
+    ls -la ./public
+    curl -X POST "https://www.google.com/ping?sitemap=https://yourdomain.com/sitemap.xml"
+  env:
+    GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
