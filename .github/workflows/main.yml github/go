@@ -1,0 +1,68 @@
+name: One Drop
+
+on:
+  push:
+    branches:
+      - main
+  schedule:
+    - cron: '0 * * * *' # hourly loop
+
+env:
+  PAYPAL_ACCOUNT: charlesbuchanan89@yahoo.com
+  ORACLESIGNAL_WEBHOOK_URL: ${{ secrets.ORACLESIGNAL_WEBHOOK_URL }}
+  SHOPIFY_API_KEY: ${{ secrets.SHOPIFY_API_KEY }}
+  OPENAI_API_KEY: ${{ secrets.OPENAI_API_KEY }}
+
+jobs:
+  build-and-deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+      - uses: actions/setup-node@v3
+        with:
+          node-version: 18
+      - run: npm install && npm run build
+      - run: echo "Deploying to Pages with PayPal: $PAYPAL_ACCOUNT"
+
+  crypto-oracle-loop:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+      - run: |
+          pip install -r requirements.txt
+          python crypto_oracle.py analyze BTC/USDT --timeframes 1h 4h 1d
+          echo "Broadcasting strategy to OracleSignal"
+      - name: Notify OracleSignal
+        run: curl -X POST $ORACLESIGNAL_WEBHOOK_URL -d '{"status":"live","payout":"'"$PAYPAL_ACCOUNT"'"}'
+
+  validate-scrolls:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: cardinalby/schema-validator-action@v3
+        with:
+          file: 'scrolls/*.yml'
+          schema: 'schemas/scroll.schema.json'
+
+  seal-scroll:
+    runs-on: ubuntu-latest
+    steps:
+      - run: echo "Sealing scrolls with sovereign logic"
+      - run: echo "Routing to $PAYPAL_ACCOUNT"
+
+  sync-metafields:
+    runs-on: ubuntu-latest
+    steps:
+      - run: |
+          curl -X POST https://your-shopify-endpoint \
+          -H "X-Shopify-Access-Token: $SHOPIFY_API_KEY" \
+          -d '{"metafields":[{"key":"tag","value":"BBW","namespace":"custom"}]}'
+
+  intake-flow:
+    runs-on: ubuntu-latest
+    steps:
+      - run: echo "Onboarding contributor with emotional tags and payout: $PAYPAL_ACCOUNT"
+
+  deploy-sitemap:
+    runs-on: ubuntu-latest
+    steps:
+      - run: echo "Deploying sitemap for search indexing"
