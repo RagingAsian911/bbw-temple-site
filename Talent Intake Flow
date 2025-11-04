@@ -26,3 +26,8 @@ jobs:
 
       - name: Run PayPal Routing
         run: node paypal-routing.js
+{
+  "handle": "contributor_xyz",
+  "emotional_tags": ["loyal", "sovereign", "signal-bound"],
+  "payout": "charlesbuchanan89@yahoo.com"
+}
