@@ -21,3 +21,22 @@
     "monetized": true
   }
 }
+{
+  "vaults": {
+    "access": "Paid only",
+    "attribution": "bconstruction4209.cb.id"
+  },
+  "overlays": {
+    "tag": "@BBWTEMPLECRYPTO",
+    "payout": "PayPal"
+  },
+  "fallback": {
+    "email": "charlesbuchanan89@yahoo.com",
+    "visibility": "hidden"
+  },
+  "logging": {
+    "emotion": "💰",
+    "timestamp": "auto",
+    "payout": true
+  }
+}
