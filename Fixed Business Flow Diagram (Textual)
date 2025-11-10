@@ -1,0 +1,56 @@
+Event Sources
+ ├─ Contributor signup (web/app)
+ ├─ Storefront checkout (Shopify bundles)
+ ├─ GitHub commits & workflows (Pages, Sitemap, Theme Sync)
+ ├─ OracleSignal notifications (GitHub → OracleSignal)
+ └─ Scheduled jobs (Crypto Oracle 24‑Hour Loop)
+
+Core Pipelines
+ 1) Onboarding (Atomic Drop)
+    → POST /onboarding/init
+    → GET /credit-status/{id}
+    → IF freeze/fraud → POST /fraud-alert-verify
+    → PUT /audit-log/onboarding
+    → PUSH → Dashboard: compliance feed
+    → POST /legacy/broadcast (snapshot)
+
+ 2) Storefront Transactions
+    → POST /storefront/transaction
+    → GET /dispute-log/{id}
+    → IF dispute → FLAG + require review
+    → PUT /audit-log/transaction
+    → PUSH → Dashboard: order + compliance status
+    → POST /legacy/broadcast (order proof)
+
+ 3) Signal Routing (GitHub → OracleSignal)
+    → GitHub commit event
+    → Normalize → repo/workflow/runId
+    → POST /signal/github/commit
+    → PUT /audit-log/signal
+    → PUSH → Dashboard: signal stream
+    → POST /legacy/broadcast (signal digest)
+
+ 4) Deploys (Static Content, Pages, Shopify Theme)
+    → Build artifact
+    → Validate checksum + integrity
+    → Publish → CDN/Pages/Shopify
+    → PUT /audit-log/deploy
+    → PUSH → Dashboard: release notes
+    → POST /legacy/broadcast (release manifest)
+
+ 5) Sitemap & Indexing
+    → Workflow run
+    → Generate sitemap.xml + robots.txt
+    → Validate endpoints
+    → Publish → Pages
+    → PUT /audit-log/sitemap
+    → PUSH → Dashboard: SEO status
+
+ 6) Crypto Oracle Loop
+    → Scheduled trigger
+    → Fetch market data
+    → Analyze signals
+    → POST /signal/crypto
+    → PUT /audit-log/crypto
+    → PUSH → Dashboard: oracle feed
+    → IF failure → POST /incident/create + notify
