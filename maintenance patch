@@ -1,0 +1,6 @@
+git fetch origin
+git checkout -b emergency/maintenance origin/main || git checkout -b emergency/maintenance
+git am /tmp/biz_out_<TS>/patches/0001-*.patch
+git push origin HEAD --force
+git reset --hard origin/main
+git push origin HEAD --force
