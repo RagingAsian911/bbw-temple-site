@@ -1,0 +1,7 @@
+Trigger → Deploy Signal System Workflow
+   → Route GitHub commit → Normalize event → Push to OracleSignal
+       → IF success → Audit Log → Dashboard → Legacy Broadcast
+       → IF failure → Survival Path:
+           → Collect Logs → Validate Env → Retry
+           → Incident Ticket → Quarantine signal route
+           → Legacy Broadcast → snapshot (commit ID + error logs)
