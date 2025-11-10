@@ -1,0 +1,9 @@
+Contributor Signup → POST /onboarding/init
+   → GET /credit-status/{id}
+       → IF freeze/fraud → POST /fraud-alert-verify
+   → PUT /audit-log/onboarding
+   → Dashboard → compliance feed
+   → IF failure → Recovery Path
+       → Collect Logs → Validate Env → Retry
+       → Incident → Quarantine onboarding until verified
+   → Legacy Broadcast → compliance proof snapshot (ID + bureau response)
