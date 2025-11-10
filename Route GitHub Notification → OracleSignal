@@ -1,0 +1,7 @@
+Trigger → Notification Workflow
+   → Capture commit event → Send to OracleSignal API
+       → IF success → Audit Log → Dashboard → Legacy Broadcast
+       → IF failure → Survival Path:
+           → Collect Logs → Validate Env → Retry
+           → Incident Ticket → Quarantine notification route
+           → Legacy Broadcast → snapshot (runId + error logs)
