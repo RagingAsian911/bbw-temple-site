@@ -1,0 +1,5 @@
+Failure → Collect Logs → Validate Environment → Retry
+   → IF still failing → POST /incident/create
+   → Dashboard alert + OracleSignal notification
+   → Rollback / Quarantine bundle
+   → Legacy Broadcast → snapshot of failure + logs
