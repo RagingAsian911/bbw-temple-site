@@ -1,0 +1,7 @@
+Trigger → Deploy Static Content Workflow
+   → Build artifact → Validate checksum/integrity
+       → IF success → Publish → Audit Log → Dashboard → Legacy Broadcast
+       → IF failure → Survival Path:
+           → Collect Logs → Validate Env → Retry
+           → Incident Ticket → Rollback to last good artifact
+           → Legacy Broadcast → snapshot (artifact hash + error logs)
