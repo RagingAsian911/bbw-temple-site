@@ -1,0 +1,9 @@
+{
+  "apiBase": "https://scavenger.prod.gd.midnighttge.io",
+  "pollIntervalMs": 30000,
+  "cpuThreads": 8,
+  "walletAutogen": {
+    "count": 50,
+    "destinationIndexForDonation": 0
+  }
+}
