@@ -1,0 +1,7 @@
+Trigger → Seal Scroll Workflow
+   → Generate artifact manifest → Apply cryptographic seal
+       → IF success → Audit Log → Dashboard → Legacy Broadcast
+       → IF failure → Survival Path:
+           → Collect Logs → Validate Env → Retry
+           → Incident Ticket → Quarantine scroll until verified
+           → Legacy Broadcast → snapshot (manifest + error logs)
