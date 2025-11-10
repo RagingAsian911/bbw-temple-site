@@ -1,0 +1,7 @@
+Trigger → Sitemap Workflow
+   → Generate sitemap.xml + robots.txt → Validate endpoints
+       → IF success → Publish → Audit Log → Dashboard → Legacy Broadcast
+       → IF failure → Survival Path:
+           → Collect Logs → Validate Env → Retry
+           → Incident Ticket → Rollback to last good sitemap
+           → Legacy Broadcast → snapshot (sitemap hash + error logs)
