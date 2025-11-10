@@ -29,5 +29,10 @@
     <p style="color:#777;">© 2025 Oracle Vault. All rights reserved.</p>
   </footer>
 
-</body>
+</body># from repo root
+echo "oraclesignal.site" > CNAME
+# build step (adjust to project)
+npm ci
+npm run build   # produces build/ or dist/
+
 </html>
