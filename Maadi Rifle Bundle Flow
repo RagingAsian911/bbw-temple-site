@@ -1,0 +1,9 @@
+Contributor Checkout → POST /storefront/transaction
+   → GET /dispute-log/{id}
+       → IF fraud alert → POST /fraud-alert-verify
+   → PUT /audit-log/maadi
+   → Dashboard → order + compliance status
+   → IF failure → Recovery Path
+       → Collect Logs → Validate Env → Retry
+       → Incident → Quarantine firearm bundle until cleared
+   → Legacy Broadcast → compliance proof snapshot (serial + hash)
