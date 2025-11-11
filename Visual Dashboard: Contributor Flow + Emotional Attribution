@@ -42,3 +42,8 @@
   </div>
 </body>
 </html>
+{
+  "emotion_tag": "rage",
+  "source": "crypto-oracle-server",
+  "index_url": "https://oraclesignal.site/vaults/final-drop"
+}
