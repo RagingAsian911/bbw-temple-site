@@ -1,0 +1,6 @@
+const overlay = {
+  status: "SYSTEM DENIED",
+  workflows: ["Signal Drop", "Seal Scroll", "Talent Intake", "Static Deploy"],
+  timestamp: new Date().toISOString(),
+  vault_link: "https://oraclesignal.site/vaults/final-drop"
+};
