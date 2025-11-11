@@ -23,11 +23,7 @@ jobs:
           echo "GITHUB_REF=$GITHUB_REF"
           echo "GITHUB_RUN_NUMBER=$GITHUB_RUN_NUMBER"
 
-    
-
-      
-
-      - name: Collect env and save file
+- name: Collect env and save file
         run: |
           env > debug-env.txt
           echo "----" >> debug-env.txt
@@ -38,7 +34,6 @@ jobs:
         with:
           name: debug-runner
           path: debug-env.txt
-
 git checkout main
 git pull origin main
 git revert 645205cdb88373637dba5a4a5012cc340bd66eef --no-edit
