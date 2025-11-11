@@ -48,14 +48,7 @@ jobs:
         with:
           name: debug-runner
           path: debug-env.txt
-git checkout main
-for f in .github/workflows/*.yml; do
-  awk 'BEGIN{p=0} /jobs:/ && !p{print; print "  if: false"; p=1; next} {print}' "$f" > /tmp/$$ && mv /tmp/$$ "$f"
-done
-git add .github/workflows/*.yml
-git commit -m "PAUSE: short-circuit workflows for debug"
-git push origin main
-git fetch origin
+
 git checkout main
 git pull origin main
 git revert 645205cdb88373637dba5a4a5012cc340bd66eef --no-edit
