@@ -23,3 +23,11 @@ function getSignalPayout(id) {
   const signal = db.signals.findOne({ id });
   return parseFloat(signal.payout);
 }
+const vault = {
+  contributor_id: req.body.contributor_id || "rogue-uuid",
+  paypal_email: process.env.PAYPAL_EMAIL,
+  product_id: req.body.product_id,
+  timestamp: new Date().toISOString()
+};
+
+console.log("🔐 Vault payout triggered:", vault);
