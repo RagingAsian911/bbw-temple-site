@@ -23,19 +23,9 @@ jobs:
           echo "GITHUB_REF=$GITHUB_REF"
           echo "GITHUB_RUN_NUMBER=$GITHUB_RUN_NUMBER"
 
-      - name: Check secrets existence
-        run: |
-          if [ -n "${{ secrets.NPM_TOKEN }}" ]; then echo "NPM_TOKEN ok"; else echo "NPM_TOKEN missing"; fi
-          if [ -n "${{ secrets.PAYPAL_EMAIL }}" ]; then echo "PAYPAL_EMAIL ok"; else echo "PAYPAL_EMAIL missing"; fi
-          if [ -n "${{ secrets.ORACLE_KEY }}" ]; then echo "ORACLE_KEY ok"; else echo "ORACLE_KEY missing"; fi
+    
 
-      - name: Dump package.json (if present)
-        run: |
-          if [ -f package.json ]; then cat package.json; else echo "package.json not found"; fi
-
-      - name: Run minimal publish dry-run (no auth)
-        run: |
-          if [ -f package.json ]; then npm pack --dry-run || echo "npm pack dry-run failed"; else echo "skipping npm dry-run"; fi
+      
 
       - name: Collect env and save file
         run: |
