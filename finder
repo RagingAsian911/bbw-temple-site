@@ -1,0 +1,50 @@
+name: CI Debug Probe
+on:
+  workflow_dispatch:
+
+jobs:
+  debug-probe:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Print runner info and tools
+        run: |
+          echo "Runner: $RUNNER_OS"
+          uname -a
+          node -v || echo "node not present"
+          npm -v || echo "npm not present"
+          jq --version || echo "jq not present"
+
+      - name: Show repo context
+        run: |
+          echo "GITHUB_REPOSITORY=$GITHUB_REPOSITORY"
+          echo "GITHUB_REF=$GITHUB_REF"
+          echo "GITHUB_RUN_NUMBER=$GITHUB_RUN_NUMBER"
+
+      - name: Check secrets existence
+        run: |
+          if [ -n "${{ secrets.NPM_TOKEN }}" ]; then echo "NPM_TOKEN ok"; else echo "NPM_TOKEN missing"; fi
+          if [ -n "${{ secrets.PAYPAL_EMAIL }}" ]; then echo "PAYPAL_EMAIL ok"; else echo "PAYPAL_EMAIL missing"; fi
+          if [ -n "${{ secrets.ORACLE_KEY }}" ]; then echo "ORACLE_KEY ok"; else echo "ORACLE_KEY missing"; fi
+
+      - name: Dump package.json (if present)
+        run: |
+          if [ -f package.json ]; then cat package.json; else echo "package.json not found"; fi
+
+      - name: Run minimal publish dry-run (no auth)
+        run: |
+          if [ -f package.json ]; then npm pack --dry-run || echo "npm pack dry-run failed"; else echo "skipping npm dry-run"; fi
+
+      - name: Collect env and save file
+        run: |
+          env > debug-env.txt
+          echo "----" >> debug-env.txt
+          ls -la >> debug-env.txt
+
+      - name: Upload debug artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: debug-runner
+          path: debug-env.txt
