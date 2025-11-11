@@ -155,3 +155,6 @@ jobs:
         run: node api/drop-oneclick.js
 publish_dir: ./public
 verifySearchConsole(dnsConfig.domain);
+registry-url: 'https://registry.npmjs.org' # for public npm
+# or
+registry-url: 'https://npm.pkg.github.com/' # for GitHub Packages
