@@ -34,10 +34,7 @@ jobs:
         with:
           name: debug-runner
           path: debug-env.txt
-git checkout main
-git pull origin main
-git revert 645205cdb88373637dba5a4a5012cc340bd66eef --no-edit
-git push origin main
+
 
 
 
