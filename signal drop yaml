@@ -34,3 +34,5 @@ console.log(`Routing payout to: ${JSON.stringify(payout)}`);
 // Insert webhook/API logic here// logSignal.js
 const signal = process.argv[2];
 console.log(`[${signal}] drop executed at ${new Date().toISOString()}`);
+- name: Log broadcast failure
+  run: echo "🔥 Workflow #${{ github.run_number }} failed. Signal lit."
