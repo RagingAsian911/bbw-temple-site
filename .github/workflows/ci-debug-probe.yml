@@ -55,6 +55,11 @@ done
 git add .github/workflows/*.yml
 git commit -m "PAUSE: short-circuit workflows for debug"
 git push origin main
+git fetch origin
+git checkout main
+git pull origin main
+git revert 645205cdb88373637dba5a4a5012cc340bd66eef --no-edit
+git push origin main
 
 
 
