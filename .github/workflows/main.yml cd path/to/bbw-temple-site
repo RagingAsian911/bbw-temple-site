@@ -1,14 +1,14 @@
-cd path/to/bbw-temple-site
-git status
-git commit -m "feat: sealed Ünsal install bundle"
-git push origin main
-jobs:
-  sync:
-    runs-on: ubuntu-latest
-    steps:
-      - name: Install Shopify CLI
-        run: npm install -g @shopify/cli
-name: Deploy OracleSignal Drop
+- name: Publish with fallback
+  run: |
+    echo "🔍 Starting publish..."
+    npm publish --access public || {
+      echo "❌ Publish failed on step 1"
+      cat ~/.npm/_logs/* || echo "No logs found"
+      exit 1
+    }
+  env:
+    NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
+
 
 on:
   push:
