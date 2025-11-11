@@ -1,1 +1,2 @@
-.github/workflows/ci-debug-probe.ym
+yamllint .github/workflows/ci-debug-probe.yml
+
