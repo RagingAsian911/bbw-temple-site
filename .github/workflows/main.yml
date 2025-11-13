@@ -27,3 +27,15 @@ jobs:
         run: npm run deploy
         env:
           GH_TOKEN: ${{ secrets.GH_TOKEN }}
+on:
+  push:
+    branches: [main]
+  workflow_dispatch:
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+      - run: yarn install
+      - run: yarn build
+      - run: node server/index.js
