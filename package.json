@@ -1,0 +1,4 @@
+"scripts": {
+  "start": "node server/index.js",
+  "build": "your-build-command"
+}
