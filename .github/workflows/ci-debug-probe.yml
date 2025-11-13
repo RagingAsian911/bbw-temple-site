@@ -34,6 +34,19 @@ jobs:
         with:
           name: debug-runner
           path: debug-env.txt
+name: CI Debug Probe
+on:
+  workflow_dispatch:
+  schedule:
+    - cron: '0 * * * *'
+
+jobs:
+  probe:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+      - run: yarn install
+      - run: echo "CI probe active"
 
 
 
