@@ -28,3 +28,16 @@ jobs:
         run: node broadcast-sitemap.js
 docker build -t oraclesignal-sitemap .
 docker run --env-file .env oraclesignal-sitemap
+name: Deploy Sitemap
+on:
+  push:
+    branches: [main]
+  workflow_dispatch:
+
+jobs:
+  sitemap:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+      - run: yarn run sitemap
+      - run: curl -X POST https://api.render.com/deploy ...
