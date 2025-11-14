@@ -158,3 +158,15 @@ verifySearchConsole(dnsConfig.domain);
 registry-url: 'https://registry.npmjs.org' # for public npm
 # or
 registry-url: 'https://npm.pkg.github.com/' # for GitHub Packages
+env:
+  NODE_AUTH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
+steps:
+  - uses: actions/setup-node@v3
+    with:
+      node-version: '18'
+      registry-url: 'https://npm.pkg.github.com/'
+      scope: '@your-org'  # if using scoped packages
+
+  - run: npm ci
+  - run: npm publish
