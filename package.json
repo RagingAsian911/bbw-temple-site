@@ -13,3 +13,5 @@
   "author": "RagingAsian911",
   "license": "MIT"
 }
+"main": "MAIN.JS",
+"files": ["MAIN.JS", "server/", "index.html"]
