@@ -1,0 +1,1 @@
+purge(shopify): remove all Shopify logic from workflows and package.json
