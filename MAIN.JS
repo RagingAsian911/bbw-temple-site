@@ -4,3 +4,10 @@ function createWindow() {
   win.loadFile('index.html');
 }
 app.whenReady().then(createWindow);
+{
+  "contributor_id": "...",
+  "emotion_tag": "...",
+  "source": "fire-sale",
+  "index_url": "https://oraclesignal.site/vaults/final-drop",
+  "timestamp": "..."
+}
