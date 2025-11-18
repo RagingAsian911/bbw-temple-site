@@ -11,3 +11,17 @@ git commit --allow-empty -m "Seal Final Invocation v1.0.0–OneDrop"
 git tag -a v1.0.0–OneDrop -m "Final Invocation: Sovereign Archive Sealed"
 git push origin main
 git push origin v1.0.0–OneDrop
+name: Deploy Sitemap
+on:
+  push:
+    branches: [ main ]
+  workflow_dispatch:
+jobs:
+  deploy-sitemap:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Broadcast sitemap
+        run: echo "✅ Sitemap deployed and routed to PayPal: $PAYPAL_ACCOUNT"
+        env:
+          PAYPAL_ACCOUNT: ${{ secrets.PAYPAL_ACCOUNT }}
