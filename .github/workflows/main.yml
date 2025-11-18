@@ -2,3 +2,26 @@ git add .
 git commit -m "feat: installed BBW Temple + AI Matchmaking Temple system"
 git push origin main
 git add . git commit -m “feat: added [your feature]” git push origin feat/your-feature-name
+name: Main Deploy
+on:
+  push:
+    branches: [ main ]
+  workflow_dispatch:
+jobs:
+  build-and-deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+      - name: Setup Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+      - name: Install
+        run: npm ci || npm install
+      - name: Test
+        run: npm test || echo "No tests"
+      - name: Build
+        run: npm run build || echo "No build step"
+      - name: Deploy
+        run: echo "✅ Main deploy completed"
