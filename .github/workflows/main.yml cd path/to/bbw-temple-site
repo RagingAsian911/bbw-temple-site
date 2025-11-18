@@ -2,3 +2,12 @@ cd path/to/bbw-temple-site
 git status
 git commit -m "feat: sealed Ünsal install bundle"
 git push origin main
+# In each repo (run from your local machine)
+git fetch origin
+git checkout main
+
+# Seal release with OneDrop tag
+git commit --allow-empty -m "Seal Final Invocation v1.0.0–OneDrop"
+git tag -a v1.0.0–OneDrop -m "Final Invocation: Sovereign Archive Sealed"
+git push origin main
+git push origin v1.0.0–OneDrop
