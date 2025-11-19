@@ -22,3 +22,4 @@ jobs:
           "payout_target": "coinbase",
           "index_url": "https://oraclesignal.site/vaults/github-drop"
         }'
+.github/workflows/canary-ramp.yml
