@@ -1,0 +1,85 @@
+function triggerOverlay(el) {
+  const payload = {
+    contributor: el.dataset.contributor,
+    emotion: el.dataset.emotion,
+    preview: el.dataset.preview,
+    timestamp: Date.now()
+  };
+
+  fetch("/webhook/overlay", {
+    method: "POST",
+    headers: { "Content-Type": "application/json" },
+    body: JSON.stringify(payload)
+  });
+
+  window.open(payload.preview, "_blank");
+}
+function triggerTrafficOverlay(vault) {
+  if (vault.traffic_threshold <= getCurrentTraffic()) {
+    fetch("/webhook/traffic-overlay", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({
+        vault_id: vault.vault_id,
+        emotion: vault.emotion,
+        preview_url: vault.preview_url,
+        sponsor: vault.sponsor,
+        affiliate: vault.affiliate,
+        timestamp: Date.now()
+      })
+    });
+
+    window.open(vault.preview_url, "_blank");
+    window.open(vault.affiliate, "_blank");
+  }
+}
+function triggerProductOverlay(emotion) {
+  const products = document.querySelectorAll(".product-card");
+
+  products.forEach(card => {
+    const match = !emotion || card.dataset.emotion === emotion;
+    card.style.display = match ? "block" : "none";
+  });
+}
+{
+  "vault_id": "vault-youtube",
+  "emotion": "🔥Urgent",
+  "preview_url": "https://www.youtube.com/@charlesbuchanan-d1e",
+  "sponsor": "YouTube",
+  "affiliate": "https://www.youtube.com/@charlesbuchanan-d1e",
+  "amplifiers": ["pika.art", "upscale.media", "make.com"]
+}
+if (emotion === "🔥Urgent") {
+  window.open("https://www.youtube.com/@charlesbuchanan-d1e", "_blank");
+  logScrollOverlay("scroll-youtube-preview", "🔥Urgent", ["pika.art", "upscale.media", "make.com"]);
+}
+function triggerCryptoSignalOverlay(emotion) {
+  if (emotion === "💰Profitable") {
+    window.open("https://www.youtube.com/@charlesbuchanan-d1e", "_blank");
+    logSignalOverlay("crypto-vault-preview", "💰Profitable", ["BTC", "ETH", "SOL"]);
+  }
+}
+function triggerBTCOverlay() {
+  window.open("https://www.youtube.com/@charlesbuchanan-d1e", "_blank");
+  logSignalOverlay("btc-forecast-preview", "💰Profitable", ["BTC"]);
+}
+function triggerETHOverlay() {
+  window.open("https://www.youtube.com/@charlesbuchanan-d1e/shorts", "_blank");
+  logSignalOverlay("eth-forecast-preview", "💰Profitable", ["ETH"]);
+}
+function triggerSOLOverlay() {
+  window.open("https://oraclesignal.site/vaults/sol-preview", "_blank");
+  logSignalOverlay("sol-forecast-preview", "⚡Surging", ["SOL"]);
+}
+function triggerVaultDrop() {
+  window.open("https://www.youtube.com/@charlesbuchanan-d1e/shorts", "_blank");
+  logVaultDrop("vault-shorts-preview", "📈Trending", ["SOL"]);
+}
+function triggerAffiliateScroll() {
+  window.open("https://www.youtube.com/@charlesbuchanan-d1e", "_blank");
+  logScrollOverlay("affiliate-scroll-youtube", "🎯Targeted", ["pika.art", "upscale.media", "make.com"]);
+}
+function triggerScrollDrop() {
+  window.open("https://www.youtube.com/@charlesbuchanan-d1e/shorts", "_blank");
+  logScrollOverlay("scroll-shorts-vault", "📡Broadcast", ["pika.art", "upscale.media", "make.com"]);
+}

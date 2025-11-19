@@ -1,0 +1,31 @@
+const express = require('express');
+const bodyParser = require('body-parser');
+const fs = require('fs');
+const app = express();
+
+app.use(bodyParser.json());
+
+app.post('/logs/talent', (req, res) => {
+  const { alias, emotion, role, signal } = req.body;
+
+  if (!alias || !emotion || !role || !signal) {
+    return res.status(400).send('Missing fields');
+  }
+
+  const entry = {
+    alias,
+    emotion,
+    role,
+    signal,
+    timestamp: new Date().toISOString()
+  };
+
+  fs.appendFile('talent-log.json', JSON.stringify(entry) + '\n', err => {
+    if (err) {
+      return res.status(500).send('Failed to log contributor');
+    }
+    res.status(200).send('Contributor logged');
+  });
+});
+
+app.listen(3001, () => console.log('Talent intake running on port 3001'));

@@ -1,0 +1,45 @@
+Workflow Trigger (Commit / Schedule / Manual / Storefront / Onboarding)
+ ├─ Contributor Onboarding (Atomic Drop)
+ ├─ Storefront Bundles (Mustang, Mercedes SL, Maadi rifle, Ammo)
+ ├─ Talent Intake Flow
+ ├─ Deploy Static Content / Pages / Theme
+ ├─ Deploy Signal System
+ ├─ Seal Scroll
+ ├─ Route GitHub Notification → OracleSignal
+ ├─ Sitemap Deploy
+ └─ Crypto Oracle 24-Hour Loop
+
+Step 1: Initial Run
+ └─ Execute workflow or bundle action
+     → Success → Audit Log + Legacy Broadcast
+     → Failure → Route to Recovery Path
+
+Step 2: Recovery Path (on Failure)
+ ├─ Collect Logs
+ │   → Capture runner output, bureau responses, error codes
+ │   → Store in immutable audit vault
+ ├─ Validate Environment
+ │   → Check secrets, tokens, API endpoints
+ │   → Verify dependencies (Node.js, bureau API, Shopify, OracleSignal)
+ ├─ Retry Logic
+ │   → Exponential backoff retry (up to N attempts)
+ │   → If still failing → escalate
+ ├─ Incident Creation
+ │   → POST /incident/create with runId + bundle ID + error snapshot
+ │   → Notify OracleSignal + Dashboard alert
+ └─ Rollback / Quarantine
+     → Revert to last good artifact (Pages, Sitemap, Theme)
+     → Quarantine bad storefront bundle (Mustang, SL, Maadi, Ammo)
+     → Require manual override for sensitive contributor actions
+
+Step 3: Dashboard Visibility
+ ├─ Contributor feeds (onboarding compliance, fraud alerts)
+ ├─ Storefront feeds (bundle status, disputes, approvals)
+ ├─ Workflow feeds (success/failure, retries, incidents)
+ ├─ Signal streams (GitHub commits, OracleSignal routes)
+ └─ Oracle feeds (crypto loop outputs, health checks)
+
+Step 4: Legacy Locking
+ ├─ Snapshot: contributor/bundle result + artifact hash + bureau response
+ ├─ Store: immutable audit vault (append-only)
+ └─ Broadcast: /legacy/broadcast → public proof stream

@@ -1,0 +1,38 @@
+<div class="vault-card" 
+     data-vault="vault-003" 
+     data-tier="Tier 3" 
+     data-emotion="💰Profitable" 
+     data-unlock="https://oraclesignal.site/vault/sovereign" 
+     data-contributor="0x9E8D7C6B">
+  <h3>Sovereign Vault</h3>
+  <button onclick="triggerVaultUnlock(this)">Access</button>
+</div>
+
+<div class="signal-card" 
+     data-id="sig-603" 
+     data-emotion="🧠Insightful" 
+     data-affiliate="https://brandb.com/deal?id=xyz789" 
+     data-contributor="0x9E8D7C6B">
+  <h3>Flame Route Auction</h3>
+  <button onclick="triggerSignal(this)">Sponsored</button>
+</div>
+<!-- Vault Access -->
+<div class="vault-card" 
+     data-vault="vault-003" 
+     data-tier="Tier 3" 
+     data-emotion="💰Profitable" 
+     data-unlock="https://oraclesignal.site/vault/sovereign" 
+     data-contributor="0x9E8D7C6B">
+  <h3>Sovereign Vault</h3>
+  <button onclick="triggerVaultUnlock(this)">Access</button>
+</div>
+
+<!-- Signal Trigger -->
+<div class="signal-card" 
+     data-id="sig-603" 
+     data-emotion="🧠Insightful" 
+     data-affiliate="https://brandb.com/deal?id=xyz789" 
+     data-contributor="0x9E8D7C6B">
+  <h3>Flame Route Auction</h3>
+  <button onclick="triggerSignal(this)">Sponsored</button>
+</div>

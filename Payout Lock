@@ -1,0 +1,3 @@
+function confirmPayment(intentId) {
+  return fetch(`/api/confirm?intent=${intentId}`);
+}

@@ -1,27 +1,112 @@
-// Example: ?ref=partner123
-const urlParams = new URLSearchParams(window.location.search);
-const ref = urlParams.get('ref');
-if (ref) {
-  localStorage.setItem('oracleAffiliate', ref);
-}
-<div id="paypal-button-container"></div>
-<script>
-  paypal.Buttons({
-    createOrder: function(data, actions) {
-      return actions.order.create({
-        purchase_units: [{
-          amount: {
-            value: '49.99' // Replace with dynamic product price
-          }
-        }]
-      });
-    },
-    onApprove: function(data, actions) {
-      return actions.order.capture().then(function(details) {
-        alert('Transaction completed by ' + details.payer.name.given_name);
-        // Optional: Trigger bot or redirect
-      });
+<!-- Google Tag Manager -->
+<script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+})(window,document,'script','dataLayer','GTM-KB6PK95W');</script>
+<!-- End Google Tag Manager --><!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>BBW Temple — Crypto Oracle Forecast</title>
+  <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
+  <script>
+    async function loadForecastScroll() {
+      const response = await fetch('forecast.md');
+      const markdown = await response.text();
+      const html = marked.parse(markdown);
+      document.getElementById('forecast-content').innerHTML = html;
+      const dateMatch = markdown.match(/\*\*Date:\*\* (.+)/);
+      if (dateMatch) {
+        document.getElementById('forecast-date').textContent = dateMatch[1];
+      }
     }
-  }).render('#paypal-button-container');
-</script>
-Fully integrated homepage: storefront, talent pool, dashboard, PayPal buttons
+    window.onload = loadForecastScroll;
+  </script>
+  <style>
+    body { font-family: sans-serif; background: #111; color: #eee; padding: 2rem; }
+    h1, h2 { color: #ffcc00; }
+    a { color: #00ffff; text-decoration: none; }
+    .btn { display: inline-block; margin: 1rem 0; padding: 0.5rem 1rem; background: #333; color: #fff; border-radius: 5px; }
+    section { margin-bottom: 3rem; }
+  </style>
+</head>
+<body>
+
+  <section id="hero">
+    <h1>🪬 Enter the Crypto Oracle Forecast Temple</h1>
+    <p><strong>Signals from the Source. Scrolls from the Flame. Join the Ritual.</strong></p>
+    <div>
+      <a href="https://youtube.com/@charlesbuchanan-d1e" class="btn">🎬 Watch Forecasts</a>
+      <a href="https://t.me/wallet?profile" class="btn">🪙 Buy Crypto</a>
+      <a href="forecast.md" class="btn">📜 Claim Your Scroll</a>
+      <a href="https://chat.whatsapp.com/CKKqVrgHzh60M3NbLJFHqu" class="btn">📡 Join Oracle Circle</a>
+      <a href="https://t.me/IQWAYNE_BOT" class="btn">🤖 Signal Bot</a>
+      <a href="/forms/talent-intake" class="btn">💼 Become an Affiliate</a>
+    </div>
+  </section>
+
+  <section id="forecast-scroll">
+    <h2>📜 Today’s Forecast Scroll</h2>
+    <p><strong>Date:</strong> <span id="forecast-date"></span></p>
+    <div id="forecast-content">Loading scroll...</div>
+    <a href="/downloads/affiliate_scroll.pdf" class="btn">📥 Download Affiliate Scroll PDF</a>
+  </section>
+
+  <section id="contributor-onboarding">
+    <h2>💼 Contributor Onboardingh</h2>
+    <p>To activate your affiliate role:</p>
+    <ol>
+      <li>✅ Join the <a href="https://chat.whatsapp.com/CKKqVrgHzh60M3NbLJFHqu">WhatsApp Oracle Circle</a></li>
+      <li>✅ Follow the <a href="https://t.me/IQWAYNE_BOT">Telegram Signal Bot</a></li>
+      <li>✅ Set up your <a href="https://t.me/wallet?profile">Telegram Wallet</a></li>
+      <li>✅ Fill out the <a href="/forms/talent-intake">Talent Intake Form</a></li>
+      <li>✅ Consent to GitHub audit logging + payout tracking</li>
+    </ol>
+  </section>
+
+  <section id="audit-trail">
+    <h2>📜 GitHub Audit Trail</h2>
+    <p>Every signal, scroll, and contributor action is logged in our sovereign archive:</p>
+    <a href="https://github.com/BBW-Temple-AI-Matchmaking" class="btn">🔍 View GitHub Archive</a>
+  </section>
+
+  <section id="trigger">
+    <h2>⚡ Trigger the Oracle Loop</h2>
+    <p>Click below to manually activate the GitHub workflow:</p>
+    <a href="https://github.com/BBW-Temple-AI-Matchmaking/actions/workflows/oracle-loop.yml" class="btn">🚀 Run Oracle Loop</a>
+  </section>
+
+</body><!-- Google Tag Manager (noscript) -->
+<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-KB6PK95W"
+height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+<!-- End Google Tag Manager (noscript) -->
+</html>
+<!DOCTYPE html>
+<html>
+<head><title>Trigger Drop</title></head>
+<body>
+  <h1>Trigger Drop</h1>
+  <form id="dropForm">
+    <input name="contributor" placeholder="Contributor Name" required><br>
+    <input name="emotion" placeholder="Emotion Tag" required><br>
+    <input name="amount" placeholder="Amount" required><br>
+    <button type="submit">Trigger</button>
+  </form>
+  <pre id="result"></pre>
+  <script>
+    document.getElementById('dropForm').onsubmit = async (e) => {
+      e.preventDefault();
+      const data = Object.fromEntries(new FormData(e.target));
+      const res = await fetch('https://your-render-url.onrender.com/api/system-drop', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(data)
+      });
+      const result = await res.json();
+      document.getElementById('result').textContent = JSON.stringify(result, null, 2);
+    };
+  </script>
+</body>
+</html>

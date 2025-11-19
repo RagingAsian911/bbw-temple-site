@@ -1,0 +1,9 @@
+Contributor Checkout → POST /storefront/transaction
+   → GET /dispute-log/{id}
+       → IF dispute → FLAG + manual review
+   → PUT /audit-log/mustang
+   → Dashboard → order + compliance status
+   → IF failure → Recovery Path
+       → Collect Logs → Validate Env → Retry
+       → Incident → Rollback to last good Mustang artifact
+   → Legacy Broadcast → compliance proof snapshot (VIN + hash)

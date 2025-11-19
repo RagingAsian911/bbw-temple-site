@@ -1,1 +1,37 @@
 <div id="products-container" style="display:flex; flex-wrap:wrap; justify-content:center;"></div>
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Trigger Drop</title>
+  <style>
+    body { font-family: Arial; padding: 2em; background: #111; color: #eee; }
+    input, button { margin: 0.5em 0; padding: 0.5em; width: 100%; }
+    button { background: #0f0; color: #000; font-weight: bold; }
+    pre { background: #222; padding: 1em; overflow-x: auto; }
+  </style>
+</head>
+<body>
+  <h1>Trigger Drop</h1>
+  <form id="dropForm">
+    <input name="contributor" placeholder="Contributor Name" required><br>
+    <input name="emotion" placeholder="Emotion Tag" required><br>
+    <input name="amount" placeholder="Amount" required><br>
+    <button type="submit">Trigger</button>
+  </form>
+  <pre id="result"></pre>
+  <script>
+    document.getElementById('dropForm').onsubmit = async (e) => {
+      e.preventDefault();
+      const data = Object.fromEntries(new FormData(e.target));
+      const res = await fetch('https://oraclesignal-backend.oraclecloud.com/api/system-drop', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(data)
+      });
+      const result = await res.json();
+      document.getElementById('result').textContent = JSON.stringify(result, null, 2);
+    };
+  </script>
+</body>
+</html>
+google83d5f6b8e6421541%20.html

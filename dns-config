@@ -1,0 +1,89 @@
+{
+  "domain": "oracle.signal.site",
+  "records": [
+    { "type": "A", "name": "@", "value": "76.76.21.21", "ttl": "3600" },
+    { "type": "CNAME", "name": "www", "value": "cname.vercel-dns.com", "ttl": "3600" },
+    { "type": "TXT", "name": "@", "value": "v=spf1 include:_spf.mx.cloudflare.com ~all", "ttl": "3600" },
+    { "type": "MX", "name": "@", "value": "route1.mx.cloudflare.net", "ttl": "3600" },
+    { "type": "MX", "name": "@", "value": "route2.mx.cloudflare.net", "ttl": "3600" },
+    { "type": "TXT", "name": "@", "value": "google-site-verification=Jk5s_d4zZKqvVZKZQKZQKZQKZQKZQKZQKZQKZQKZQ", "ttl": "3600" },
+    { "type": "TXT", "name": "@", "value": "facebook-domain-verification=abc123xyz456", "ttl": "3600" },
+    { "type": "TXT", "name": "_wallet", "value": "payout=charlesbuchanan89@yahoo.com;crypto=awaiting-reactivation", "ttl": "3600" }
+  ]
+}
+const dnsConfig = require('./config/dns/dns-config.json');
+deployDNSRecords(dnsConfig.records);logSignal('DNS_RECORD_DEPLOYED', {
+  domain: dnsConfig.domain,
+  record: record,
+  timestamp: Date.now()
+});
+# .github/workflows/deploy-dns.yml
+name: Deploy DNS + Payout Logic
+
+on:
+  push:
+    branches:
+      - dev
+    paths:
+      - 'config/dns/dns-config.json'
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout Repo
+        uses: actions/checkout@v3
+
+      - name: Load DNS Config
+        run: cat config/dns/dns-config.json
+
+      - name: Deploy DNS Records
+        run: node scripts/deployDNS.js config/dns/dns-config.json
+
+      - name: Log Attribution
+        run: node scripts/logSignal.js "DNS_DEPLOYED"const payout = {
+  paypal: "charlesbuchanan89@yahoo.com",
+  crypto: "awaiting-reactivation"
+};
+firmwareIndex.payout = payout;logSignal('FIRMWARE_SIGNAL_DROP', {
+  branch: 'dev',
+  dns: true,
+  payout: payout,
+  timestamp: Date.now()
+});
+# .github/workflows/signal-drop.yml
+name: SignalDrop DNS + Payout
+
+on:
+  push:
+    branches:
+      - main
+    paths:
+      - 'config/dns/dns-config.json'
+
+jobs:
+  signal:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout Repo
+        uses: actions/checkout@v3
+
+      - name: Load DNS Config
+        run: cat config/dns/dns-config.json
+
+      - name: Deploy DNS Records
+        run: node scripts/deployDNS.js config/dns/dns-config.json
+
+      - name: Route Payout Logic
+        run: node scripts/routePayout.js
+
+      - name: Log Signal Attribution
+        run: node scripts/logSignal.js "FLUENT_SIGNAL_DROP"// routePayout.js
+const payout = {
+  paypal: "charlesbuchanan89@yahoo.com",
+  crypto: "awaiting-reactivation"
+};
+console.log(`Routing payout to: ${JSON.stringify(payout)}`);// logSignal.js
+const signal = process.argv[2];
+console.log(`[${signal}] drop executed at ${new Date().toISOString()}`);
+// Insert webhook/API logic here

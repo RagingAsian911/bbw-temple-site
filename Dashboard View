@@ -1,0 +1,115 @@
+<table>
+  <thead><tr><th>Signal</th><th>Type</th><th>Emotion</th><th>Contributor</th><th>Payout</th><th>Status</th></tr></thead>
+  <tbody id="signal-log"></tbody>
+</table>
+
+<script>
+fetch("/api/signals")
+  .then(res => res.json())
+  .then(data => {
+    const tbody = document.getElementById("signal-log");
+    data.forEach(sig => {
+      const row = `<tr>
+        <td>${sig.title}</td>
+        <td>${sig.type}</td>
+        <td>${sig.emotion}</td>
+        <td>${sig.contributor}</td>
+        <td>$${sig.payout}</td>
+        <td>${sig.type === "auction" ? "Sponsored by " + sig.sponsor : "Live"}</td>
+      </tr>`;
+      tbody.innerHTML += row;
+    });
+  });
+</script>
+<table>
+  <thead><tr><th>Signal</th><th>Tier</th><th>Emotion</th><th>Contributor</th><th>Payout</th><th>Status</th></tr></thead>
+  <tbody id="crypto-log"></tbody>
+</table>
+
+<script>
+fetch("/api/crypto-signals")
+  .then(res => res.json())
+  .then(data => {
+    const tbody = document.getElementById("crypto-log");
+    data.forEach(sig => {
+      const row = `<tr>
+        <td>${sig.title}</td>
+        <td>${sig.tier}</td>
+        <td>${sig.emotion}</td>
+        <td>${sig.contributor}</td>
+        <td>${sig.payout}</td>
+        <td>Unlocked</td>
+      </tr>`;
+      tbody.innerHTML += row;
+    });
+  });
+</script>
+<table>
+  <thead><tr><th>Tier</th><th>Emotion</th><th>Contributor</th><th>Payout</th><th>Route</th><th>Status</th></tr></thead>
+  <tbody id="onboard-log"></tbody>
+</table>
+
+<script>
+fetch("/api/onboarded")
+  .then(res => res.json())
+  .then(data => {
+    const tbody = document.getElementById("onboard-log");
+    data.forEach(entry => {
+      const row = `<tr>
+        <td>${entry.tier}</td>
+        <td>${entry.emotion}</td>
+        <td>${entry.contributor}</td>
+        <td>${entry.payout}</td>
+        <td>${entry.route}</td>
+        <td>Unlocked</td>
+      </tr>`;
+      tbody.innerHTML += row;
+    });
+  });
+</script>
+<table>
+  <thead><tr><th>Vault</th><th>Tier</th><th>Emotion</th><th>Contributor</th><th>Payout</th><th>Status</th></tr></thead>
+  <tbody id="vault-log"></tbody>
+</table>
+
+<script>
+fetch("/api/vaults")
+  .then(res => res.json())
+  .then(data => {
+    const tbody = document.getElementById("vault-log");
+    data.forEach(v => {
+      const row = `<tr>
+        <td>${v.title}</td>
+        <td>${v.tier}</td>
+        <td>${v.emotion}</td>
+        <td>${v.contributor}</td>
+        <td>${v.payout}</td>
+        <td>Unlocked</td>
+      </tr>`;
+      tbody.innerHTML += row;
+    });
+  });
+</script>
+<table>
+  <thead><tr><th>Signal</th><th>Type</th><th>Emotion</th><th>Contributor</th><th>Payout</th><th>Status</th></tr></thead>
+  <tbody id="signal-log"></tbody>
+</table>
+
+<script>
+fetch("/api/signals")
+  .then(res => res.json())
+  .then(data => {
+    const tbody = document.getElementById("signal-log");
+    data.forEach(sig => {
+      const row = `<tr>
+        <td>${sig.title}</td>
+        <td>${sig.type}</td>
+        <td>${sig.emotion}</td>
+        <td>${sig.contributor}</td>
+        <td>$${sig.payout}</td>
+        <td>${sig.type === "auction" ? "Sponsored by " + sig.sponsor : "Live"}</td>
+      </tr>`;
+      tbody.innerHTML += row;
+    });
+  });
+</script>

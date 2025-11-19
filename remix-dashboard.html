@@ -1,0 +1,27 @@
+<div id="remix-dashboard"></div>
+
+<script>
+  async function loadRemixDashboard() {
+    const res = await fetch('/logs/contributors');
+    const data = await res.json();
+
+    const container = document.getElementById('remix-dashboard');
+    container.innerHTML = '';
+
+    data.forEach(entry => {
+      const div = document.createElement('div');
+      div.className = 'remix-card';
+      div.innerHTML = `
+        <h3>${entry.alias}</h3>
+        <p><strong>Emotion:</strong> ${entry.emotion}</p>
+        <p><strong>Role:</strong> ${entry.role}</p>
+        <p><strong>Signal:</strong> ${entry.signal}</p>
+        <p><strong>Remix Preview:</strong></p>
+        ${generateRemixPreview(entry)}
+      `;
+      container.appendChild(div);
+    });
+  }
+
+  window.onload = loadRemixDashboard;
+</script>

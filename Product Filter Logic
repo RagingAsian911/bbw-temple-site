@@ -1,0 +1,6 @@
+function filterProductsByEmotion(emotion) {
+  document.querySelectorAll(".product-card").forEach(card => {
+    const match = !emotion || card.dataset.emotion === emotion;
+    card.style.display = match ? "block" : "none";
+  });
+}

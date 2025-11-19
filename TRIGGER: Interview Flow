@@ -1,0 +1,23 @@
+app.post('/interview/:alias', (req, res) => {
+  const alias = req.params.alias;
+  const { emotion, role, signal } = req.body;
+
+  const interviewModules = {
+    creator: '/interview/remix',
+    supporter: '/interview/console',
+    analyst: '/interview/analytics',
+    ritualist: '/interview/invocation',
+    scout: '/interview/routes'
+  };
+
+  const route = interviewModules[role] || '/interview/general';
+
+  res.json({
+    alias,
+    route,
+    emotion,
+    signal,
+    timestamp: new Date().toISOString()
+  });
+});
+window.open(payload.affiliate, "_blank");

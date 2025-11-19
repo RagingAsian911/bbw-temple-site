@@ -1,0 +1,9 @@
+Contributor Checkout → POST /storefront/transaction
+   → GET /dispute-log/{id}
+       → IF dispute → FLAG + manual review
+   → PUT /audit-log/mercedes
+   → Dashboard → order + compliance status
+   → IF failure → Recovery Path
+       → Collect Logs → Validate Env → Retry
+       → Incident → Rollback to last good SL artifact
+   → Legacy Broadcast → compliance proof snapshot (VIN + hash)

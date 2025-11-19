@@ -1,0 +1,42 @@
+Workflow Trigger (Commit / Schedule / Manual)
+ ├─ Talent Intake Flow
+ ├─ Deploy Static Content / Pages / Theme
+ ├─ Deploy Signal System
+ ├─ Seal Scroll
+ ├─ Route GitHub Notification → OracleSignal
+ ├─ Sitemap Deploy
+ └─ Crypto Oracle 24-Hour Loop
+
+Step 1: Initial Run
+ └─ Execute workflow job
+     → Success → Audit Log + Legacy Broadcast
+     → Failure → Route to Recovery Path
+
+Step 2: Recovery Path (on Failure)
+ ├─ Collect Logs
+ │   → Capture runner output, error codes, env vars
+ │   → Store in immutable audit vault
+ ├─ Validate Environment
+ │   → Check secrets, tokens, API endpoints
+ │   → Verify dependencies (Node.js, Python, packages)
+ ├─ Retry Logic
+ │   → Exponential backoff retry (up to N attempts)
+ │   → If still failing → escalate
+ ├─ Incident Creation
+ │   → POST /incident/create with runId + error snapshot
+ │   → Notify OracleSignal + Dashboard alert
+ └─ Rollback / Quarantine
+     → Revert to last good artifact (Pages, Sitemap, Theme)
+     → Quarantine bad signals (Crypto Oracle)
+     → Require manual override for sensitive bundles
+
+Step 3: Dashboard Visibility
+ ├─ Compliance feeds (onboarding, storefront)
+ ├─ Workflow status (success/failure, retries, incidents)
+ ├─ Signal streams (GitHub commits, OracleSignal routes)
+ └─ Oracle feeds (crypto loop outputs, health checks)
+
+Step 4: Legacy Locking
+ ├─ Snapshot: workflow result + artifact hash + error logs
+ ├─ Store: immutable audit vault (append-only)
+ └─ Broadcast: /legacy/broadcast → public proof stream

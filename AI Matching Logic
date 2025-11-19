@@ -1,0 +1,20 @@
+{
+  "match_engine": {
+    "inputs": [
+      "emotional_tags",
+      "consent_matrix",
+      "availability",
+      "revenue_goal"
+    ],
+    "weights": {
+      "emotional_tags": 0.4,
+      "consent_matrix": 0.3,
+      "availability": 0.2,
+      "revenue_goal": 0.1
+    },
+    "output": {
+      "match_score": "integer (0–100)",
+      "scene_suggestion": "string"
+    }
+  }
+}

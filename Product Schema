@@ -1,0 +1,29 @@
+[
+  {
+    "product_id": "prod-001",
+    "name": "Signal Sovereign Tee",
+    "emotion": "🔥Urgent",
+    "tier": "Tier 1",
+    "price": 28.00,
+    "affiliate": "https://brandA.com/deal?id=signal-tee",
+    "sponsor": "BrandA"
+  },
+  {
+    "product_id": "prod-002",
+    "name": "Insight Vault Journal",
+    "emotion": "🧠Insightful",
+    "tier": "Tier 2",
+    "price": 18.00,
+    "affiliate": "https://brandB.com/deal?id=insight-journal",
+    "sponsor": "BrandB"
+  },
+  {
+    "product_id": "prod-003",
+    "name": "Sovereign Flow Hoodie",
+    "emotion": "💰Profitable",
+    "tier": "Tier 3",
+    "price": 45.00,
+    "affiliate": "https://brandC.com/deal?id=flow-hoodie",
+    "sponsor": "BrandC"
+  }
+]

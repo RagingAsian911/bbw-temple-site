@@ -1,0 +1,1 @@
+0 */12 * * * /usr/bin/node /path/to/broadcast-sitemap.js >> /var/log/sitemap.log 2>&1

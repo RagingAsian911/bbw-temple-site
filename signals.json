@@ -1,0 +1,80 @@
+[
+  {
+    "source": "+1 (888) 893-1421",
+    "insight": "BTC surge expected, $28T cap",
+    "received_at": "2025-10-27 04:00:00"
+  },
+  {
+    "source": "+1 (478) 229-4379",
+    "insight": "ETH ETF momentum rising",
+    "received_at": "2025-10-27 04:05:00"
+  }
+]
+[
+  {
+    "id": "sig-401",
+    "title": "OneDrop Theme",
+    "emotion": "💰Profitable",
+    "source": "storefront",
+    "affiliate": "https://shopify.com/theme?id=onedrop123",
+    "payout": "1.25",
+    "contributor": "0xA1B2C3D4",
+    "type": "affiliate"
+  },
+  {
+    "id": "sig-402",
+    "title": "Ignition Console Unlock",
+    "emotion": "🔥Urgent",
+    "source": "dashboard",
+    "unlock": "https://oraclesignal.site/unlock/console",
+    "payout": "3.00",
+    "contributor": "0xD4C3B2A1",
+    "type": "gated"
+  },
+  {
+    "id": "sig-403",
+    "title": "Signal Auction: Flame Route",
+    "emotion": "🧠Insightful",
+    "source": "overlay",
+    "affiliate": "https://brandb.com/deal?id=xyz789",
+    "payout": "2.50",
+    "contributor": "0x9F8E7D6C",
+    "sponsor": "BrandB",
+    "type": "auction"
+  }
+]
+[
+  {
+    "id": "sig-501",
+    "title": "Tier 1: Flame Unlock",
+    "emotion": "🔥Urgent",
+    "source": "storefront",
+    "unlock": "https://oraclesignal.site/unlock/flame",
+    "payout": "0.002 ETH",
+    "contributor": "0xF1A2B3C4",
+    "tier": "Tier 1",
+    "type": "crypto"
+  },
+  {
+    "id": "sig-502",
+    "title": "Tier 2: Sovereign Drop",
+    "emotion": "🧬Sovereign",
+    "source": "dashboard",
+    "unlock": "https://oraclesignal.site/unlock/sovereign",
+    "payout": "0.005 ETH",
+    "contributor": "0xC4B3A2F1",
+    "tier": "Tier 2",
+    "type": "crypto"
+  },
+  {
+    "id": "sig-503",
+    "title": "Tier 3: Contributor Vault",
+    "emotion": "💰Profitable",
+    "source": "overlay",
+    "unlock": "https://oraclesignal.site/unlock/vault",
+    "payout": "0.01 ETH",
+    "contributor": "0x9E8D7C6B",
+    "tier": "Tier 3",
+    "type": "crypto"
+  }
+]

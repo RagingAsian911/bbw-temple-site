@@ -1,0 +1,18 @@
+/talent-console
+├── README.md
+├── LICENSE
+├── schema/
+│   └── metafields.json
+├── matching/
+│   └── engine.json
+├── broadcasts/
+│   └── summon-template.json
+├── workflows/
+│   └── talent-intake.yml
+├── liquid/
+│   └── talent-dashboard.liquid
+├── contributors/
+│   └── protocol.md
+git add talent-console
+git commit -m "Add BBW Temple Talent Console bundle"
+git push origin main

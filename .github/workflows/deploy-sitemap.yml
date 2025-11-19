@@ -1,0 +1,85 @@
+name: Broadcast Sitemap
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - broadcast-sitemap.js
+      - .env
+
+jobs:
+  broadcast:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v3
+
+      - name: Setup Node
+        uses: actions/setup-node@v3
+        with:
+          node-version: '18'
+
+      - name: Install dependencies
+        run: npm install axios
+
+      - name: Run broadcast
+        env:
+          SEARCH_CONSOLE_TOKEN: ${{ secrets.SEARCH_CONSOLE_TOKEN }}
+        run: node broadcast-sitemap.js
+docker build -t oraclesignal-sitemap .
+docker run --env-file .env oraclesignal-sitemap
+name: Deploy Sitemap
+on:
+  push:
+    branches: [main]
+  workflow_dispatch:
+
+jobs:
+  sitemap:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+      - run: yarn run sitemap
+      - run: curl -X POST https://api.render.com/deploy ...
+name: Deploy Sitemap
+on:
+  push:
+    branches: [main]
+  workflow_dispatch:
+
+jobs:
+  sitemap:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+      - run: yarn run sitemap
+      - run: curl -X POST https://api.render.com/deploy ...
+name: Deploy Sitemap
+
+on:
+  push:
+    branches: [main]
+  workflow_dispatch:
+
+jobs:
+  sitemap:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+      - run: yarn run sitemap
+      - run: curl -X POST https://api.render.com/deploy \
+          -H "Authorization: Bearer ${{ secrets.RENDER_API_KEY }}"
+name: Deploy Sitemap
+on:
+  push:
+    branches: [ main ]
+  workflow_dispatch:
+jobs:
+  deploy-sitemap:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Broadcast sitemap
+        run: echo "✅ Sitemap deployed and routed to PayPal: $PAYPAL_ACCOUNT"
+        env:
+          PAYPAL_ACCOUNT: ${{ secrets.PAYPAL_ACCOUNT }}

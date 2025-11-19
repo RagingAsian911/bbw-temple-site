@@ -1,0 +1,62 @@
+Rule ID	Purpose	Logic Type	Notes
+match_emotion	Emotional tone affinity	Similarity match	Uses tag clustering
+match_rituals	Shared onboarding rituals	Array intersection	Requires at least one overlap
+match_location	Proximity-based pairing	Geo radius filter	50-mile default radius
+match_verified	Filter out unverified contributors	Boolean filter	Ensures protocol compliance
+{
+  "engine": {
+    "version": "1.0",
+    "last_updated": "2025-10-27",
+    "matching_rules": [
+      {
+        "id": "match_emotion",
+        "description": "Match contributors by emotional tag affinity",
+        "input_field": "emotion_tag",
+        "logic": "group_by_similarity",
+        "threshold": 0.8
+      },
+      {
+        "id": "match_rituals",
+        "description": "Pair contributors with overlapping onboarding rituals",
+        "input_field": "rituals",
+        "logic": "intersect_array",
+        "threshold": 1
+      },
+      {
+        "id": "match_location",
+        "description": "Suggest contributors within proximity for live rituals",
+        "input_field": "profile.location",
+        "logic": "geo_radius",
+        "radius_miles": 50
+      },
+      {
+        "id": "match_verified",
+        "description": "Only include verified contributors in final match pool",
+        "input_field": "verified",
+        "logic": "filter_true"
+      }
+    ],
+    "output_format": {
+      "fields": ["id", "name", "role", "emotion_tag", "profile.location"],
+      "sort_by": "emotion_tag",
+      "limit": 10
+    }
+  }
+}
+function triggerSignal(el) {
+  const payload = {
+    id: el.dataset.id,
+    emotion: el.dataset.emotion,
+    affiliate: el.dataset.affiliate,
+    contributor: el.dataset.contributor,
+    timestamp: Date.now()
+  };
+
+  fetch("https://oraclesignal.site/webhook/signal", {
+    method: "POST",
+    headers: { "Content-Type": "application/json" },
+    body: JSON.stringify(payload)
+  });
+
+  window.open(payload.affiliate, "_blank");
+}

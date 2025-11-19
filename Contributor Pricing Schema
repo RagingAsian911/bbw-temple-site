@@ -1,0 +1,12 @@
+const pricing = {
+  creator: 25,
+  ritualist: 40,
+  scout: 15,
+  joy: 10,
+  pride: 20,
+  desire: 30,
+  signalDrop: 50,
+  dashboardAccess: 100,
+  intakeTrigger: 75,
+  overlayView: 60
+};

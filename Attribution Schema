@@ -1,0 +1,42 @@
+{
+  "system": "oraclesignal.site",
+  "access": "Paid only",
+  "vaults": {
+    "preview": false,
+    "emotion": ["💰", "🎯"],
+    "attribution": "bconstruction4209.cb.id"
+  },
+  "overlays": {
+    "amplifier_tag": "@BBWTEMPLECRYPTO",
+    "destination": "https://oraclesignal.site/vaults"
+  },
+  "logging": {
+    "contributor_id": "bconstruction4209.cb.id",
+    "timestamp": "auto",
+    "payout": true
+  },
+  "routing": {
+    "domain": "oraclesignal.site",
+    "status": "Locked",
+    "monetized": true
+  }
+}
+{
+  "vaults": {
+    "access": "Paid only",
+    "attribution": "bconstruction4209.cb.id"
+  },
+  "overlays": {
+    "tag": "@BBWTEMPLECRYPTO",
+    "payout": "PayPal"
+  },
+  "fallback": {
+    "email": "charlesbuchanan89@yahoo.com",
+    "visibility": "hidden"
+  },
+  "logging": {
+    "emotion": "💰",
+    "timestamp": "auto",
+    "payout": true
+  }
+}

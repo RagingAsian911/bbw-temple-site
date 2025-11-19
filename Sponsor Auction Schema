@@ -1,0 +1,26 @@
+[
+  {
+    "vault_id": "vault-001",
+    "tier": "Tier 1",
+    "emotion": "🔥Urgent",
+    "sponsor": "BrandA",
+    "bid": 2.00,
+    "payout_address": "walletA.eth"
+  },
+  {
+    "vault_id": "vault-002",
+    "tier": "Tier 2",
+    "emotion": "🧠Insightful",
+    "sponsor": "BrandB",
+    "bid": 3.50,
+    "payout_address": "walletB.eth"
+  },
+  {
+    "vault_id": "vault-003",
+    "tier": "Tier 3",
+    "emotion": "💰Profitable",
+    "sponsor": "BrandC",
+    "bid": 5.00,
+    "payout_address": "walletC.eth"
+  }
+]

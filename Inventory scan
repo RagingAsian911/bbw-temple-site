@@ -1,0 +1,13 @@
+OWNER="RagingAsian911"
+OUT="/tmp/biz_inventory_$(date +%s)"
+mkdir -p "$OUT"
+echo "repo,path,match" > "$OUT/asset_inventory.csv"
+for R in bbw-temple-site crypto-oracle-server Ford express-hello-world frida-website; do
+  TMP="/tmp/scan_$R"; rm -rf "$TMP"
+  git clone --depth 1 git@github.com:$OWNER/$R.git "$TMP" || continue
+  cd "$TMP"
+  grep -RInE "paypal|paypalme|charlesbuchanan89|bconstruction4209|BBWTEMPLECRYPTO|/webhooks|btcpay|coinbase" . \
+    | sed "s/^/$R,/" >> "$OUT/asset_inventory.csv" || true
+  cd - >/dev/null
+done
+echo "Saved: $OUT/asset_inventory.csv"

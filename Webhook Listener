@@ -1,0 +1,22 @@
+app.post('/api/webhook', (req, res) => {
+  const event = req.body;
+  if (event.type === 'payment_intent.succeeded') {
+    logPayment(event.data.object);
+  }
+  res.sendStatus(200);
+});
+app.post("/webhook/overlay", (req, res) => {
+  const { contributor, emotion, preview, timestamp } = req.body;
+  db.overlays.insert({ contributor, emotion, preview, timestamp });
+  res.status(200).send("Overlay triggered");
+});
+app.post("/webhook/traffic-overlay", (req, res) => {
+  const { emotion, preview, affiliate, timestamp } = req.body;
+  db.overlays.insert({ emotion, preview, affiliate, timestamp });
+  res.status(200).send("Traffic overlay triggered");
+});
+app.post("/webhook/affiliate-vault", (req, res) => {
+  const { emotion, affiliate, sponsor, timestamp } = req.body;
+  db.affiliateVaults.insert({ emotion, affiliate, sponsor, timestamp });
+  res.status(200).send("Affiliate vault triggered");
+});

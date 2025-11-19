@@ -1,0 +1,6 @@
+User-agent: *
+Allow: /
+Sitemap: https://oraclesignal.site/sitemap.xml
+User-agent: *
+Allow: /
+Sitemap: https://oraclesignal.site/sitemap.xml

@@ -1,0 +1,35 @@
+<!-- ORACLESIGNAL CONTRIBUTOR OVERLAY -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Contributor Signal Overlay</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link rel="stylesheet" href="https://oraclesignal.site/styles/overlay.css" />
+</head>
+<body>
+  <div class="overlay">
+    <h1>🔥 Signal Activated</h1>
+    <p>Contributor ID: <span id="contributorId">bconstruction4209</span></p>
+    <p>Emotional Tags: <span class="tags">🔥signal, 💎drop, 🧠sovereign</span></p>
+    <p>Affiliate Tag: <strong>ref=bconstruction4209</strong></p>
+    <p>Payout Routing: PayPal → @BBWTEMPLECRYPTO | Crypto → bconstruction4209.cb.id</p>
+    <button onclick="unlockVault()">Unlock Vault</button>
+  </div>
+
+  <script>
+    function unlockVault() {
+      fetch("https://oraclesignal.site/api/vaults/unlock", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          contributor: "bconstruction4209",
+          vault_id: "vault_001",
+          emotional_tags: ["🔥signal", "💎drop"],
+          affiliate_tag: "ref=bconstruction4209"
+        })
+      }).then(() => alert("Vault unlocked and logged."));
+    }
+  </script>
+</body>
+</html>

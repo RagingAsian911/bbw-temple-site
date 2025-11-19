@@ -1,0 +1,1 @@
+rsync -avz ./dashboard/ user@oraclesignal.site:/var/www/oraclesignal.site/dashboard/

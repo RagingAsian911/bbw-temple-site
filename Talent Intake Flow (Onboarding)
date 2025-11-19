@@ -1,0 +1,8 @@
+Trigger → Talent Intake Workflow
+   → Bureau check (credit/fraud/dispute)
+       → IF freeze/fraud → Verification required
+   → IF success → Audit Log → Dashboard → Legacy Broadcast
+   → IF failure → Survival Path:
+       → Collect Logs → Validate Env → Retry
+       → Incident Ticket → Quarantine onboarding
+       → Legacy Broadcast → snapshot (ID + error logs)

@@ -1,0 +1,17 @@
+{
+  "name": "@ragingasian911/bbw-temple-site",
+  "version": "1.0.1",
+  "description": "BBW Temple + AI Matchmaking System",
+  "main": "server/index.js",
+  "scripts": {
+    "start": "node server/index.js",
+    "build": "your-build-command"
+  },
+  "publishConfig": {
+    "registry": "https://npm.pkg.github.com/"
+  },
+  "author": "RagingAsian911",
+  "license": "MIT"
+}
+"main": "MAIN.JS",
+"files": ["MAIN.JS", "server/", "index.html"]

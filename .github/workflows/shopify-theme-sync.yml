@@ -1,1 +1,19 @@
- Auto-push theme changes
+name: Shopify Theme Sync
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  sync:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repo
+        uses: actions/checkout@v3
+
+      - name: Ensure script is executable
+        run: chmod +x unsal.bundle.sh
+
+      - name: Run Ünsal Bundle
+        run: ./unsal.bundle.sh

@@ -1,0 +1,9 @@
+{
+  "source": "bot|storefront|dashboard",
+  "contributor_id": "uuid",
+  "emotion_tag": "grief|desire|rage|hope",
+  "action": "onboard|purchase|upload|route",
+  "timestamp": "ISO8601",
+  "payout_target": "stripe|coinbase",
+  "index_url": "https://oraclesignal.site/vaults/..."
+}

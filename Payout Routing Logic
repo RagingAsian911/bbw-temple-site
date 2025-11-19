@@ -1,0 +1,13 @@
+function routeSponsorPayout(vaultId, sponsor, amount, address) {
+  fetch("/webhook/payout", {
+    method: "POST",
+    headers: { "Content-Type": "application/json" },
+    body: JSON.stringify({
+      vaultId,
+      sponsor,
+      amount,
+      address,
+      timestamp: Date.now()
+    })
+  });
+}

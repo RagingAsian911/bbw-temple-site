@@ -1,0 +1,35 @@
+[
+  {
+    "overlay_id": "overlay-001",
+    "emotion": "🔥Urgent",
+    "traffic_threshold": 100,
+    "preview": "https://oraclesignal.site/preview/flame",
+    "sponsor_bid": {
+      "brand": "BrandA",
+      "amount": 2.00,
+      "affiliate": "https://brandA.com/deal?id=flame"
+    }
+  },
+  {
+    "overlay_id": "overlay-002",
+    "emotion": "🧠Insightful",
+    "traffic_threshold": 250,
+    "preview": "https://oraclesignal.site/preview/ignite",
+    "sponsor_bid": {
+      "brand": "BrandB",
+      "amount": 3.50,
+      "affiliate": "https://brandB.com/deal?id=ignite"
+    }
+  },
+  {
+    "overlay_id": "overlay-003",
+    "emotion": "💰Profitable",
+    "traffic_threshold": 500,
+    "preview": "https://oraclesignal.site/preview/sovereign",
+    "sponsor_bid": {
+      "brand": "BrandC",
+      "amount": 5.00,
+      "affiliate": "https://brandC.com/deal?id=sovereign"
+    }
+  }
+]

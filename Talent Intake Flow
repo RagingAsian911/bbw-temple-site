@@ -1,0 +1,33 @@
+name: Talent Intake Flow
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  intake:
+    runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: ./
+
+    steps:
+      - name: Checkout repo
+        uses: actions/checkout@v3
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v3
+        with:
+          node-version: '18'
+
+      - name: Install dependencies
+        run: npm install
+
+      - name: Run PayPal Routing
+        run: node paypal-routing.js
+{
+  "handle": "contributor_xyz",
+  "emotional_tags": ["loyal", "sovereign", "signal-bound"],
+  "payout": "charlesbuchanan89@yahoo.com"
+}

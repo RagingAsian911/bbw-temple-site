@@ -1,0 +1,21 @@
+{
+  "broadcast": {
+    "type": "scene_summon",
+    "tone": "mythic",
+    "audience_filter": {
+      "emotional_tags": ["soft dom", "cryptic healer"],
+      "availability": "weekend",
+      "contract_signed": true
+    },
+    "message": "The Temple calls. A new bundle stirs. You are summoned to the Moonlight Chamber. Confirm your readiness."
+  }
+}
+{
+  "source": "voice-storefront-emotion",
+  "contributor_id": "rogue-uuid",
+  "emotion_tag": "rage",
+  "action": "drop",
+  "timestamp": "2025-10-31T21:45:00Z",
+  "payout_target": "stripe",
+  "index_url": "https://oraclesignal.site/vaults/atomic-drop"
+}

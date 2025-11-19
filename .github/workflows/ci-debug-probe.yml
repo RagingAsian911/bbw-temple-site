@@ -1,0 +1,67 @@
+name: CI Debug Probe
+on:
+  workflow_dispatch:
+
+jobs:
+  debug-probe:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Print runner info and tools
+        run: |
+          echo "Runner: $RUNNER_OS"
+          uname -a
+          node -v || echo "node not present"
+          npm -v || echo "npm not present"
+          jq --version || echo "jq not present"
+
+      - name: Show repo context
+        run: |
+          echo "GITHUB_REPOSITORY=$GITHUB_REPOSITORY"
+          echo "GITHUB_REF=$GITHUB_REF"
+          echo "GITHUB_RUN_NUMBER=$GITHUB_RUN_NUMBER"
+
+- name: Collect env and save file
+        run: |
+          env > debug-env.txt
+          echo "----" >> debug-env.txt
+          ls -la >> debug-env.txt
+
+      - name: Upload debug artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: debug-runner
+          path: debug-env.txt
+name: CI Debug Probe
+on:
+  workflow_dispatch:
+  schedule:
+    - cron: '0 * * * *'
+
+jobs:
+  probe:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+      - run: yarn install
+      - run: echo "CI probe active"
+name: CI Debug Probe
+
+on:
+  workflow_dispatch:
+  schedule:
+    - cron: '0 * * * *'
+
+jobs:
+  probe:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+      - run: yarn install
+      - run: echo "CI probe active"
+
+
+
+

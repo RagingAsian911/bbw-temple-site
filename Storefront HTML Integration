@@ -1,0 +1,172 @@
+<div class="signal-card" 
+     data-id="sig-401" 
+     data-emotion="💰Profitable" 
+     data-affiliate="https://shopify.com/theme?id=onedrop123" 
+     data-contributor="0xA1B2C3D4">
+  <h3>OneDrop Theme</h3>
+  <button onclick="triggerSignal(this)">Unlock</button>
+</div>
+
+<div class="signal-card" 
+     data-id="sig-402" 
+     data-emotion="🔥Urgent" 
+     data-unlock="https://oraclesignal.site/unlock/console" 
+     data-contributor="0xD4C3B2A1">
+  <h3>Ignition Console Unlock</h3>
+  <button onclick="triggerUnlock(this)">Access</button>
+</div>
+
+<div class="signal-card" 
+     data-id="sig-403" 
+     data-emotion="🧠Insightful" 
+     data-affiliate="https://brandb.com/deal?id=xyz789" 
+     data-contributor="0x9F8E7D6C">
+  <h3>Flame Route Auction</h3>
+  <button onclick="triggerSignal(this)">Sponsored</button>
+</div>
+<div class="signal-card" 
+     data-id="sig-501" 
+     data-emotion="🔥Urgent" 
+     data-unlock="https://oraclesignal.site/unlock/flame" 
+     data-contributor="0xF1A2B3C4" 
+     data-tier="Tier 1">
+  <h3>Flame Unlock</h3>
+  <button onclick="triggerCryptoUnlock(this)">Unlock</button>
+</div>
+
+<div class="signal-card" 
+     data-id="sig-502" 
+     data-emotion="🧬Sovereign" 
+     data-unlock="https://oraclesignal.site/unlock/sovereign" 
+     data-contributor="0xC4B3A2F1" 
+     data-tier="Tier 2">
+  <h3>Sovereign Drop</h3>
+  <button onclick="triggerCryptoUnlock(this)">Unlock</button>
+</div>
+
+<div class="signal-card" 
+     data-id="sig-503" 
+     data-emotion="💰Profitable" 
+     data-unlock="https://oraclesignal.site/unlock/vault" 
+     data-contributor="0x9E8D7C6B" 
+     data-tier="Tier 3">
+  <h3>Contributor Vault</h3>
+  <button onclick="triggerCryptoUnlock(this)">Unlock</button>
+</div>
+<div class="onboard-card" 
+     data-tier="Tier 1" 
+     data-emotion="🔥Urgent" 
+     data-unlock="https://oraclesignal.site/onboard/flame" 
+     data-contributor="0xF1A2B3C4">
+  <h3>Flame Entry</h3>
+  <button onclick="triggerOnboarding(this)">Begin</button>
+</div>
+
+<div class="onboard-card" 
+     data-tier="Tier 2" 
+     data-emotion="🧠Insightful" 
+     data-unlock="https://oraclesignal.site/onboard/ignite" 
+     data-contributor="0xC4B3A2F1">
+  <h3>Ignite Path</h3>
+  <button onclick="triggerOnboarding(this)">Begin</button>
+</div>
+
+<div class="onboard-card" 
+     data-tier="Tier 3" 
+     data-emotion="💰Profitable" 
+     data-unlock="https://oraclesignal.site/onboard/vault" 
+     data-contributor="0x9E8D7C6B">
+  <h3>Vault Access</h3>
+  <button onclick="triggerOnboarding(this)">Begin</button>
+</div>
+<div class="vault-card" 
+     data-vault="vault-001" 
+     data-tier="Tier 1" 
+     data-emotion="🔥Urgent" 
+     data-unlock="https://oraclesignal.site/vault/flame" 
+     data-contributor="0xF1A2B3C4">
+  <h3>Flame Entry Vault</h3>
+  <button onclick="triggerVaultUnlock(this)">Access</button>
+</div>
+
+<div class="vault-card" 
+     data-vault="vault-002" 
+     data-tier="Tier 2" 
+     data-emotion="🧠Insightful" 
+     data-unlock="https://oraclesignal.site/vault/ignite" 
+     data-contributor="0xC4B3A2F1">
+  <h3>Ignition Vault</h3>
+  <button onclick="triggerVaultUnlock(this)">Access</button>
+</div>
+
+<div class="vault-card" 
+     data-vault="vault-003" 
+     data-tier="Tier 3" 
+     data-emotion="💰Profitable" 
+     data-unlock="https://oraclesignal.site/vault/sovereign" 
+     data-contributor="0x9E8D7C6B">
+  <h3>Sovereign Vault</h3>
+  <button onclick="triggerVaultUnlock(this)">Access</button>
+</div>
+<div class="signal-card" 
+     data-id="sig-601" 
+     data-emotion="💰Profitable" 
+     data-affiliate="https://shopify.com/theme?id=onedrop123" 
+     data-contributor="0xA1B2C3D4">
+  <h3>OneDrop Theme</h3>
+  <button onclick="triggerSignal(this)">Unlock</button>
+</div>
+
+<div class="signal-card" 
+     data-id="sig-602" 
+     data-emotion="🔥Urgent" 
+     data-unlock="https://oraclesignal.site/unlock/console" 
+     data-contributor="0xD4C3B2A1">
+  <h3>Ignition Console Unlock</h3>
+  <button onclick="triggerUnlock(this)">Access</button>
+</div>
+
+<div class="signal-card" 
+     data-id="sig-603" 
+     data-emotion="🧠Insightful" 
+     data-affiliate="https://brandb.com/deal?id=xyz789" 
+     data-contributor="0x9E8D7C6B">
+  <h3>Flame Route Auction</h3>
+  <button onclick="triggerSignal(this)">Sponsored</button>
+</div>
+<!-- Tiered Emotional Overlays -->
+<div class="overlay-card" 
+     data-contributor="0xF1A2B3C4" 
+     data-emotion="🔥Urgent" 
+     data-preview="https://oraclesignal.site/preview/flame">
+  <h3>Flame Entry</h3>
+  <button onclick="triggerOverlay(this)">View</button>
+</div>
+
+<div class="overlay-card" 
+     data-contributor="0xC4B3A2F1" 
+     data-emotion="🧠Insightful" 
+     data-preview="https://oraclesignal.site/preview/ignite">
+  <h3>Ignition Path</h3>
+  <button onclick="triggerOverlay(this)">View</button>
+</div>
+
+<div class="overlay-card" 
+     data-contributor="0x9E8D7C6B" 
+     data-emotion="💰Profitable" 
+     data-preview="https://oraclesignal.site/preview/sovereign">
+  <h3>Sovereign Vault</h3>
+  <button onclick="triggerOverlay(this)">View</button>
+</div>
+<div class="affiliate-vault" 
+     data-emotion="💰Profitable" 
+     data-affiliate="https://brandC.com/deal?id=sovereign" 
+     data-sponsor="BrandC">
+  <h3>Sovereign Vault – Sponsored by BrandC</h3>
+  <button onclick="triggerAffiliateVault(this)">Access</button>
+</div>
+<div class="product-card" data-emotion="🔥Urgent" data-tier="Tier 1">
+  <h3>Signal Sovereign Tee</h3>
+  <p>$28.00 – Sponsored by BrandA</p>
+  <a href="https://brandA.com/deal?id=signal-tee" target="_blank">Buy Now</a>
+</div>

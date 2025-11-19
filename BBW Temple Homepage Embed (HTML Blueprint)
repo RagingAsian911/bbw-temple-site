@@ -1,0 +1,34 @@
+<section id="forecast-scroll">
+  <h1>🪬 Crypto Oracle Forecast Scroll</h1>
+  <p><strong>Date:</strong> <span id="forecast-date"></span></p>
+  <div id="forecast-content">
+    <!-- forecast.md content dynamically injected here -->
+  </div>
+  <a href="/downloads/affiliate_scroll.pdf" class="btn">📜 Download Affiliate Scroll PDF</a>
+</section>
+
+<section id="join-ritual">
+  <h2>🔗 Join the Ritual</h2>
+  <ul>
+    <li>📡 <a href="https://chat.whatsapp.com/CKKqVrgHzh60M3NbLJFHqu">WhatsApp Oracle Circle</a></li>
+    <li>🤖 <a href="https://t.me/IQWAYNE_BOT">@IQWAYNE_BOT Telegram Bot</a></li>
+    <li>🪙 <a href="https://t.me/wallet?profile">Buy Crypto via Telegram Wallet</a></li>
+  </ul>
+</section>
+
+<section id="contributor-onboarding">
+  <h2>💼 Become a Ritual Affiliate</h2>
+  <p>Ready to join the Temple as a contributor? Fill out the <a href="/forms/talent-intake">Talent Intake Form</a> and follow these onboarding steps:</p>
+  <ol>
+    <li>✅ Join the WhatsApp Oracle Circle</li>
+    <li>✅ Follow the Telegram Signal Bot</li>
+    <li>✅ Set up your Telegram Wallet</li>
+    <li>✅ Consent to GitHub audit logging and payout tracking</li>
+  </ol>
+</section>
+
+<section id="audit-trail">
+  <h2>📜 GitHub Audit Trail</h2>
+  <p>Every signal, scroll, and contributor action is logged in our sovereign archive:</p>
+  <a href="https://github.com/BBW-Temple-AI-Matchmaking" class="btn">🔍 View GitHub Archive</a>
+</section>

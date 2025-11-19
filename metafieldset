@@ -1,0 +1,6 @@
+mutation {
+  metafieldsSet(metafields: [{ ownerId: "gid://shopify/Product/123", key: "tag", namespace: "custom", type: "single_line_text_field", value: "BBW" }]) {
+    metafields { id key value }
+    userErrors { field message }
+  }
+}

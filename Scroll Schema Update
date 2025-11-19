@@ -1,0 +1,26 @@
+{
+  "scroll_id": "scroll-youtube-preview",
+  "emotion": "🔥Urgent",
+  "title": "Signal Sovereignty: Vault Preview",
+  "overlay_url": "https://www.youtube.com/@charlesbuchanan-d1e",
+  "amplifiers": ["pika.art", "upscale.media", "make.com"],
+  "log": true
+}
+{
+  "scroll_id": "affiliate-scroll-youtube",
+  "emotion": "🎯Targeted",
+  "title": "Affiliate Drop: Vault Attribution",
+  "overlay_url": "https://www.youtube.com/@charlesbuchanan-d1e",
+  "affiliate": "https://oraclesignal.site/affiliates",
+  "amplifiers": ["pika.art", "upscale.media", "make.com"],
+  "log": true
+}
+{
+  "scroll_id": "scroll-shorts-vault",
+  "emotion": "📡Broadcast",
+  "title": "Signal Scroll Drop: Vault Attribution",
+  "overlay_url": "https://www.youtube.com/@charlesbuchanan-d1e/shorts",
+  "vault_preview": "https://oraclesignal.site/vaults/scroll-preview",
+  "amplifiers": ["pika.art", "upscale.media", "make.com"],
+  "log": true
+}

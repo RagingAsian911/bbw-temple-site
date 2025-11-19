@@ -1,0 +1,38 @@
+<div id="ritual-dashboard"></div>
+
+<script>
+  async function loadRituals() {
+    const res = await fetch('/logs/contributors');
+    const data = await res.json();
+
+    const container = document.getElementById('ritual-dashboard');
+    container.innerHTML = '';
+
+    data.forEach(entry => {
+      const div = document.createElement('div');
+      div.className = 'ritual-card';
+      div.innerHTML = `
+        <h3>${entry.alias}</h3>
+        <p><strong>Emotion:</strong> ${entry.emotion}</p>
+        <p><strong>Role:</strong> ${entry.role}</p>
+        <p><strong>Signal:</strong> ${entry.signal}</p>
+        <p><strong>Ritual Tag:</strong> ${getRitualTag(entry)}</p>
+      `;
+      container.appendChild(div);
+    });
+  }
+
+  function getRitualTag(entry) {
+    const flameMap = {
+      joy: 'OneDrop 💧',
+      sorrow: 'SignalBond 🔗',
+      desire: 'FlameLoop 🔥',
+      pride: 'LegacySeal 🦁',
+      fear: 'CloakPulse 🌫️',
+      trust: 'BondRite 🫱'
+    };
+    return flameMap[entry.emotion] || 'NeutralFlow 🌀';
+  }
+
+  window.onload = loadRituals;
+</script>

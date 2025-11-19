@@ -1,0 +1,57 @@
+{% assign talents = shop.metafields.talent_console %}
+<div class="talent-dashboard">
+  <h2>Temple Contributors</h2>
+  <ul>
+    {% for talent in talents %}
+      <li>
+        <strong>{{ talent.name }}</strong> — {{ talent.emotion_tag }}
+        <br>Joined: {{ talent.join_date }}
+      </li>
+    {% endfor %}
+  </ul>
+</div>
+{% assign talents = shop.metafields.talent_console %}
+<div class="talent-dashboard">
+  <h2>Temple Contributors</h2>
+  <ul>
+    {% for talent in talents %}
+      <li>
+        <strong>{{ talent.name }}</strong> — {{ talent.emotion_tag }}
+        <br>Joined: {{ talent.join_date }}
+      </li>
+    {% endfor %}
+  </ul>
+</div>
+# Contributor Protocol
+
+## 🔐 Sovereignty Clause
+Charles retains full branded control. No direct pushes to `main`.
+
+## 🧿 Emotional Tagging
+All contributors must declare emotional tone and intent.
+
+## 🌀 Ritual Hygiene
+- Use metafields for all contributor data
+- Validate JSON before merge
+- Respect branded flow logic
+
+## 🛡️ Merge Rules
+- PRs required for all changes
+- Charles reviews all onboarding logic
+<div class="talent-dashboard">
+  <h2>Temple Contributors</h2>
+  <ul id="contributors"></ul>
+</div>
+
+<script>
+  fetch('talent-console/schema/metafields.json')
+    .then(res => res.json())
+    .then(data => {
+      const list = document.getElementById('contributors');
+      data.contributors.forEach(t => {
+        const li = document.createElement('li');
+        li.innerHTML = `<strong>${t.name}</strong> — ${t.emotion_tag}<br>Joined: ${t.join_date}`;
+        list.appendChild(li);
+      });
+    });
+</script>

@@ -1,0 +1,145 @@
+<table>
+  <thead><tr><th>Contributor</th><th>Tier</th><th>Emotion</th><th>Vault</th><th>Preview</th><th>Status</th></tr></thead>
+  <tbody id="overlay-log"></tbody>
+</table>
+
+<script>
+fetch("/api/overlays")
+  .then(res => res.json())
+  .then(data => {
+    const tbody = document.getElementById("overlay-log");
+    data.forEach(o => {
+      const row = `<tr>
+        <td>${o.contributor}</td>
+        <td>${o.tier}</td>
+        <td>${o.emotion}</td>
+        <td><a href="${o.vault}">Vault</a></td>
+        <td><a href="${o.preview}">Preview</a></td>
+        <td>Locked</td>
+      </tr>`;
+      tbody.innerHTML += row;
+    });
+  });
+</script>
+<table>
+  <thead><tr><th>Contributor</th><th>Tier</th><th>Emotion</th><th>Vault</th><th>Preview</th><th>Status</th></tr></thead>
+  <tbody id="overlay-log"></tbody>
+</table>
+
+<script>
+fetch("/api/overlays")
+  .then(res => res.json())
+  .then(data => {
+    const tbody = document.getElementById("overlay-log");
+    data.forEach(o => {
+      const row = `<tr>
+        <td>${o.contributor}</td>
+        <td>${o.tier}</td>
+        <td>${o.emotion}</td>
+        <td><a href="${o.vault}">Vault</a></td>
+        <td><a href="${o.preview}">Preview</a></td>
+        <td>Locked</td>
+      </tr>`;
+      tbody.innerHTML += row;
+    });
+  });
+</script>
+<table>
+  <thead><tr><th>Contributor</th><th>Emotion</th><th>Preview</th><th>Status</th></tr></thead>
+  <tbody id="overlay-log"></tbody>
+</table>
+
+<script>
+fetch("/api/overlays")
+  .then(res => res.json())
+  .then(data => {
+    const tbody = document.getElementById("overlay-log");
+    data.forEach(o => {
+      const row = `<tr>
+        <td>${o.contributor}</td>
+        <td>${o.emotion}</td>
+        <td><a href="${o.preview}">Preview</a></td>
+        <td>Indexed</td>
+      </tr>`;
+      tbody.innerHTML += row;
+    });
+  });
+</script>
+<table>
+  <thead><tr><th>Tier</th><th>Emotion</th><th>Preview</th><th>Status</th></tr></thead>
+  <tbody id="vault-log"></tbody>
+</table>
+
+<script>
+fetch("/api/vaults")
+  .then(res => res.json())
+  .then(data => {
+    const tbody = document.getElementById("vault-log");
+    data.forEach(v => {
+      const row = `<tr>
+        <td>${v.tier}</td>
+        <td>${v.emotion}</td>
+        <td><a href="${v.preview}">Preview</a></td>
+        <td>Routed</td>
+      </tr>`;
+      tbody.innerHTML += row;
+    });
+  });
+</script>
+<table>
+  <thead><tr><th>Vault</th><th>Emotion</th><th>Sponsor</th><th>Payout</th><th>Status</th></tr></thead>
+  <tbody id="affiliate-log"></tbody>
+</table>
+
+<script>
+fetch("/api/affiliate-vaults")
+  .then(res => res.json())
+  .then(data => {
+    const tbody = document.getElementById("affiliate-log");
+    data.forEach(v => {
+      const row = `<tr>
+        <td>${v.title}</td>
+        <td>${v.emotion}</td>
+        <td>${v.sponsor}</td>
+        <td>$${v.payout}</td>
+        <td>Triggered</td>
+      </tr>`;
+      tbody.innerHTML += row;
+    });
+  });
+</script>
+<table>
+  <thead><tr><th>Vault</th><th>Emotion</th><th>Traffic</th><th>Sponsor</th><th>Preview</th><th>Status</th></tr></thead>
+  <tbody id="overlay-log"></tbody>
+</table>
+
+<script>
+fetch("/api/vault-previews")
+  .then(res => res.json())
+  .then(data => {
+    const tbody = document.getElementById("overlay-log");
+    data.forEach(v => {
+      const row = `<tr>
+        <td>${v.vault_id}</td>
+        <td>${v.emotion}</td>
+        <td>${v.traffic_threshold}</td>
+        <td>${v.sponsor}</td>
+        <td><a href="${v.preview_url}">Preview</a></td>
+        <td>Triggered</td>
+      </tr>`;
+      tbody.innerHTML += row;
+    });
+  });
+</script>
+function logProductClick(productId, sponsor, emotion) {
+  fetch("/webhook/product-click", {
+    method: "POST",
+    headers: { "Content-Type": "application/json" },
+    body: JSON.stringify({
+      productId,
+      sponsor,
+      emotion,
+      timestamp: Date.now()
+    })
+  });
+}

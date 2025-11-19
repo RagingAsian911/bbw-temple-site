@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Contributor Dashboard</title>
+</head>
+<body>
+  <h1>Temple Contributors + Product Sync</h1>
+  <div id="contributor-list"></div>
+  <hr />
+  <div id="product-list"></div>
+
+  <script>
+    fetch('/logs/talent/contributors.json')
+      .then(res => res.json())
+      .then(data => {
+        const list = document.getElementById('contributor-list');
+        data.forEach(c => {
+          const div = document.createElement('div');
+          div.innerHTML = `<strong>${c.name}</strong> — ${c.role} (${c.emotion})`;
+          list.appendChild(div);
+        });
+      });
+
+    fetch('/scrolls/products.json')
+      .then(res => res.json())
+      .then(products => {
+        const list = document.getElementById('product-list');
+        products.forEach(p => {
+          const div = document.createElement('div');
+          div.innerHTML = `
+            <strong>${p.title}</strong> — $${p.price} [${p.emotion}]
+            <a href="${p.link}" target="_blank">Buy Now</a>
+          `;
+          list.appendChild(div);
+        });
+      });
+  </script>
+</body>
+</html>
+<table>
+  <thead><tr><th>Signal</th><th>Emotion</th><th>Contributor</th><th>Payout</th></tr></thead>
+  <tbody id="signal-log"></tbody>
+</table>
+
+<script>
+fetch("/api/signals")
+  .then(res => res.json())
+  .then(data => {
+    const tbody = document.getElementById("signal-log");
+    data.forEach(sig => {
+      const row = `<tr>
+        <td>${sig.id}</td>
+        <td>${sig.emotion}</td>
+        <td>${sig.contributor}</td>
+        <td>$${sig.payout}</td>
+      </tr>`;
+      tbody.innerHTML += row;
+    });
+  });
+</script>

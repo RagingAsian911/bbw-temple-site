@@ -1,0 +1,7 @@
+<div class="overlay-card" 
+     data-contributor="0x9E8D7C6B" 
+     data-emotion="💰Profitable" 
+     data-preview="https://oraclesignal.site/preview/sovereign">
+  <h3>Sovereign Preview</h3>
+  <button onclick="triggerOverlay(this)">View</button>
+</div>

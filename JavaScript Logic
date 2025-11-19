@@ -1,0 +1,172 @@
+function triggerSignal(el) {
+  const payload = {
+    id: el.dataset.id,
+    emotion: el.dataset.emotion,
+    affiliate: el.dataset.affiliate,
+    contributor: el.dataset.contributor,
+    timestamp: Date.now()
+  };
+
+  fetch("/webhook/signal", {
+    method: "POST",
+    headers: { "Content-Type": "application/json" },
+    body: JSON.stringify(payload)
+  });
+
+  window.open(payload.affiliate, "_blank");
+}
+
+function triggerUnlock(el) {
+  const payload = {
+    id: el.dataset.id,
+    emotion: el.dataset.emotion,
+    unlock: el.dataset.unlock,
+    contributor: el.dataset.contributor,
+    timestamp: Date.now()
+  };
+
+  fetch("/webhook/unlock", {
+    method: "POST",
+    headers: { "Content-Type": "application/json" },
+    body: JSON.stringify(payload)
+  });
+
+  window.location.href = payload.unlock;
+}
+function triggerCryptoUnlock(el) {
+  const payload = {
+    id: el.dataset.id,
+    emotion: el.dataset.emotion,
+    unlock: el.dataset.unlock,
+    contributor: el.dataset.contributor,
+    tier: el.dataset.tier,
+    timestamp: Date.now()
+  };
+
+  fetch("/webhook/crypto-unlock", {
+    method: "POST",
+    headers: { "Content-Type": "application/json" },
+    body: JSON.stringify(payload)
+  });
+
+  window.location.href = payload.unlock;
+}
+function triggerOnboarding(el) {
+  const payload = {
+    tier: el.dataset.tier,
+    emotion: el.dataset.emotion,
+    unlock: el.dataset.unlock,
+    contributor: el.dataset.contributor,
+    timestamp: Date.now()
+  };
+
+  fetch("/webhook/onboard", {
+    method: "POST",
+    headers: { "Content-Type": "application/json" },
+    body: JSON.stringify(payload)
+  });
+
+  window.location.href = payload.unlock;
+}
+function triggerVaultUnlock(el) {
+  const payload = {
+    vault_id: el.dataset.vault,
+    tier: el.dataset.tier,
+    emotion: el.dataset.emotion,
+    unlock: el.dataset.unlock,
+    contributor: el.dataset.contributor,
+    timestamp: Date.now()
+  };
+
+  fetch("/webhook/vault-unlock", {
+    method: "POST",
+    headers: { "Content-Type": "application/json" },
+    body: JSON.stringify(payload)
+  });
+
+  window.location.href = payload.unlock;
+}
+function triggerSignal(el) {
+  const payload = {
+    id: el.dataset.id,
+    emotion: el.dataset.emotion,
+    affiliate: el.dataset.affiliate,
+    contributor: el.dataset.contributor,
+    timestamp: Date.now()
+  };
+
+  fetch("/webhook/signal", {
+    method: "POST",
+    headers: { "Content-Type": "application/json" },
+    body: JSON.stringify(payload)
+  });
+
+  window.open(payload.affiliate, "_blank");
+}
+
+function triggerUnlock(el) {
+  const payload = {
+    id: el.dataset.id,
+    emotion: el.dataset.emotion,
+    unlock: el.dataset.unlock,
+    contributor: el.dataset.contributor,
+    timestamp: Date.now()
+  };
+
+  fetch("/webhook/unlock", {
+    method: "POST",
+    headers: { "Content-Type": "application/json" },
+    body: JSON.stringify(payload)
+  });
+
+  window.location.href = payload.unlock;
+}
+function triggerOverlay(el) {
+  const payload = {
+    contributor: el.dataset.contributor,
+    emotion: el.dataset.emotion,
+    preview: el.dataset.preview,
+    timestamp: Date.now()
+  };
+
+  fetch("/webhook/overlay", {
+    method: "POST",
+    headers: { "Content-Type": "application/json" },
+    body: JSON.stringify(payload)
+  });
+
+  window.open(payload.preview, "_blank");
+}
+function triggerTrafficOverlay(el) {
+  const payload = {
+    emotion: el.dataset.emotion,
+    preview: el.dataset.preview,
+    affiliate: el.dataset.affiliate,
+    timestamp: Date.now()
+  };
+
+  fetch("/webhook/traffic-overlay", {
+    method: "POST",
+    headers: { "Content-Type": "application/json" },
+    body: JSON.stringify(payload)
+  });
+
+  window.open(payload.preview, "_blank");
+  window.open(payload.affiliate, "_blank");
+}
+function triggerAffiliateVault(el) {
+  const payload = {
+    emotion: el.dataset.emotion,
+    affiliate: el.dataset.affiliate,
+    sponsor: el.dataset.sponsor,
+    timestamp: Date.now()
+  };
+
+  fetch("/webhook/affiliate-vault", {
+    method: "POST",
+    headers: { "Content-Type": "application/json" },
+    body: JSON.stringify(payload)
+  });
+
+  window.open(payload.affiliate, "_blank");
+}

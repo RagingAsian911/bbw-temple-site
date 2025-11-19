@@ -24,26 +24,17 @@
 
 <script src="https://www.paypal.com/sdk/js?client-id=@BBWTEMPLECRYPTO&currency=USD"></script>
 
-<div id="paypal-button-container"></div>
-<script>
-  paypal.Buttons({
-    createOrder: function(data, actions) {
-      return actions.order.create({
-        purchase_units: [{
-          amount: {
-            value: '49.99' // Replace with dynamic product price
-          }
-        }]
-      });
-    },
-    onApprove: function(data, actions) {
-      return actions.order.capture().then(function(details) {
-        alert('Transaction completed by ' + details.payer.name.given_name);
-        // Optional: Trigger bot or redirect
-      });
-    }
-  }).render('#paypal-button-container');
-</script>
+<form action="https://www.paypal.com/cgi-bin/webscr" method="post" target="_top">
+  <input type="hidden" name="cmd" value="_xclick">
+env:
+  PAYPAL_RECEIVER_ID: ${{ secrets.PAYPAL_RECEIVER_ID }}
+
+  <input type="hidden" name="item_name" value="Temple Offering">
+  <input type="hidden" name="amount" value="11.11">
+  <input type="hidden" name="currency_code" value="USD">
+  <input type="submit" value="Pay with PayPal">
+</form>
+
 
   <script>
     const cart = JSON.parse(localStorage.getItem('oracleCart') || '[]');

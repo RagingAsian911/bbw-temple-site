@@ -1,0 +1,37 @@
+Trigger (Commit / Onboarding / Storefront / Scheduled Job)
+ ├─ Contributor Onboarding (Atomic Drop)
+ ├─ Storefront Bundles (Mustang, Mercedes SL, Maadi rifle, Ammo)
+ ├─ CI/CD Workflows (Talent Intake, Static Content, Signal System, Seal Scroll, Sitemap)
+ └─ Oracle Loops (Crypto)
+
+Step 1: Attempt Execution
+ └─ Run job or bundle action
+     → Success → Immutable Audit Log + Dashboard Feed + Legacy Broadcast
+     → Failure → Survival Path
+
+Step 2: Survival Path (on Failure)
+ ├─ Collect Proof
+ │   → Logs, bureau responses, error codes
+ │   → Store in immutable audit vault
+ ├─ Validate Environment
+ │   → Secrets, tokens, API endpoints, runner versions
+ ├─ Retry
+ │   → Exponential backoff attempts
+ │   → If still failing → escalate
+ ├─ Incident Creation
+ │   → POST /incident/create with runId + bundle ID + error snapshot
+ │   → Notify OracleSignal + Dashboard alert
+ └─ Rollback / Quarantine
+     → Revert to last good artifact (Pages, Sitemap, Theme)
+     → Quarantine failing bundle (vehicle, firearm, ammo) until verified
+
+Step 3: Dashboard Visibility
+ ├─ Contributor compliance feeds
+ ├─ Storefront bundle status (orders, disputes, approvals)
+ ├─ Workflow health (success/failure, retries, incidents)
+ └─ Oracle signals (crypto loop outputs, health checks)
+
+Step 4: Legacy Broadcast
+ ├─ Snapshot: result + artifact hash + bureau response + error logs
+ ├─ Store: append‑only audit vault
+ └─ Broadcast: /legacy/broadcast → public proof stream

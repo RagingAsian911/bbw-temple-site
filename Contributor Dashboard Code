@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Contributor Dashboard</title>
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+<body>
+  <h2>Emotion Distribution</h2>
+  <canvas id="emotionChart" width="400" height="400"></canvas>
+
+  <h2>Contributors per Role</h2>
+  <canvas id="roleChart" width="400" height="400"></canvas>
+
+  <script>
+    const contributors = [
+      { name: "Ava", role: "Designer", emotion: "Curious" },
+      { name: "Ben", role: "Developer", emotion: "Focused" },
+      { name: "Cara", role: "Designer", emotion: "Resilient" },
+      { name: "Dan", role: "Marketer", emotion: "Restless" },
+      { name: "Eli", role: "Developer", emotion: "Focused" }
+    ];
+
+    const emotionCounts = {};
+    const roleCounts = {};
+
+    contributors.forEach(({ emotion, role }) => {
+      emotionCounts[emotion] = (emotionCounts[emotion] || 0) + 1;
+      roleCounts[role] = (roleCounts[role] || 0) + 1;
+    });
+
+    new Chart(document.getElementById("emotionChart"), {
+      type: "pie",
+      data: {
+        labels: Object.keys(emotionCounts),
+        datasets: [{
+          data: Object.values(emotionCounts),
+          backgroundColor: ["#f39c12", "#3498db", "#2ecc71", "#e74c3c"]
+        }]
+      }
+    });
+
+    new Chart(document.getElementById("roleChart"), {
+      type: "bar",
+      data: {
+        labels: Object.keys(roleCounts),
+        datasets: [{
+          label: "Contributors",
+          data: Object.values(roleCounts),
+          backgroundColor: "#8e44ad"
+        }]
+      },
+      options: {
+        scales: {
+          y: { beginAtZero: true }
+        }
+      }
+    });
+  </script>
+</body>
+</html>

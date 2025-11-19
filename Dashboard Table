@@ -1,0 +1,24 @@
+<table>
+  <thead><tr><th>Vault</th><th>Tier</th><th>Emotion</th><th>Sponsor</th><th>Bid</th><th>Payout</th><th>Status</th></tr></thead>
+  <tbody id="auction-log"></tbody>
+</table>
+
+<script>
+fetch("/api/sponsor-auctions")
+  .then(res => res.json())
+  .then(data => {
+    const tbody = document.getElementById("auction-log");
+    data.forEach(a => {
+      const row = `<tr>
+        <td>${a.vaultId}</td>
+        <td>${a.tier}</td>
+        <td>${a.emotion}</td>
+        <td>${a.sponsor}</td>
+        <td>$${a.bid}</td>
+        <td>${a.payout_address}</td>
+        <td>Logged</td>
+      </tr>`;
+      tbody.innerHTML += row;
+    });
+  });
+</script>

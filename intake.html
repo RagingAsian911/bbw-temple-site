@@ -1,0 +1,40 @@
+<form id="intake-form">
+  <input type="text" name="alias" placeholder="Alias" required />
+  <select name="emotion" required>
+    <option value="">Emotion</option>
+    <option value="joy">Joy</option>
+    <option value="sorrow">Sorrow</option>
+    <option value="desire">Desire</option>
+    <option value="pride">Pride</option>
+    <option value="fear">Fear</option>
+    <option value="trust">Trust</option>
+  </select>
+  <select name="role" required>
+    <option value="">Role</option>
+    <option value="creator">Creator</option>
+    <option value="supporter">Supporter</option>
+    <option value="analyst">Analyst</option>
+    <option value="ritualist">Ritualist</option>
+    <option value="scout">Scout</option>
+  </select>
+  <input type="text" name="signal" placeholder="Signal Code" required />
+  <button type="submit">Submit</button>
+</form>
+
+<script>
+  document.getElementById('intake-form').onsubmit = async (e) => {
+    e.preventDefault();
+    const form = new FormData(e.target);
+    const payload = Object.fromEntries(form.entries());
+
+    const res = await fetch('/logs/talent', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify(payload)
+    });
+
+    const msg = await res.text();
+    alert(msg);
+  };
+</script>
+

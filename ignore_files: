@@ -1,0 +1,3 @@
+config/settings_data.json
+locales/*.json
+shopify theme pull --store your-store.myshopify.com

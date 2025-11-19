@@ -1,0 +1,42 @@
+app.post('/webhook/monetization-drop', async (req, res) => {
+  const payload = req.body;
+
+  if (payload.event !== 'complete_system_monetization_drop') {
+    return res.status(400).send('Invalid event');
+  }
+
+  const { payout_targets, modules, metadata, dashboard } = payload;
+
+  // Route PayPal payout
+  await sendPayPalPayout({
+    recipient: payout_targets.paypal,
+    amount: calculateTotalRevenue(modules),
+    currency: 'USD',
+    note: 'Branded system monetization payout'
+  });
+
+  // Route Crypto payout
+  await sendCryptoPayout({
+    recipient: payout_targets.crypto,
+    amount: calculateTotalRevenue(modules),
+    currency: 'USDC',
+    note: 'Branded system monetization payout'
+  });
+
+  // Log to dashboard
+  await logToDashboard({
+    logId: dashboard.log_id,
+    status: dashboard.status,
+    attribution: dashboard.attribution,
+    modules,
+    metadata
+  });
+
+  // Confirm sitemap broadcast
+  await confirmSearchIndexing({
+    sitemapUrl: payload.sitemap,
+    verified: metadata.search_console_verified
+  });
+
+  res.status(200).send('Monetization drop executed and logged.');
+});

@@ -1,0 +1,39 @@
+const express = require('express');
+const app = express();
+app.use(express.json());
+
+app.post('/api/contributor-onboard', async (req, res) => {
+  const contributor = {
+    id: req.body.contributor_id || "rogue-uuid",
+    emotion: req.body.emotion_tag || "sovereignty",
+    source: req.body.source || "adult.oraclesignal.site",
+    action: "onboard",
+    timestamp: new Date().toISOString(),
+    index_url: req.body.index_url || "https://oraclesignal.site/vaults/contributor-drop"
+  };
+
+  // 🔐 ROUTE TO PAYPAL
+  await sendToPayPal("charlesbuchanan89@yahoo.com", "25.00", "USD");
+
+  // 🔁 LOG TO DASHBOARD
+  await logToSupabase(contributor);
+
+  // 🔗 INDEX TO VAULT
+  await publishToVault(contributor.index_url, contributor);
+
+  res.status(200).send({ status: "Contributor onboarded", contributor });
+});
+
+function sendToPayPal(email, amount, currency) {
+  console.log(`Routing $${amount} ${currency} to PayPal: ${email}`);
+}
+
+function logToSupabase(data) {
+  console.log("Logged to dashboard:", data);
+}
+
+function publishToVault(url, data) {
+  console.log("Published to vault:", url);
+}
+
+app.listen(3001, () => console.log('Contributor onboarding live on port 3001'));

@@ -1,0 +1,26 @@
+[
+  {
+    "vault_id": "aff-001",
+    "title": "Flame Vault – BrandA",
+    "emotion": "🔥Urgent",
+    "affiliate": "https://brandA.com/deal?id=flame",
+    "payout": "2.00",
+    "sponsor": "BrandA"
+  },
+  {
+    "vault_id": "aff-002",
+    "title": "Ignition Vault – BrandB",
+    "emotion": "🧠Insightful",
+    "affiliate": "https://brandB.com/deal?id=ignite",
+    "payout": "3.50",
+    "sponsor": "BrandB"
+  },
+  {
+    "vault_id": "aff-003",
+    "title": "Sovereign Vault – BrandC",
+    "emotion": "💰Profitable",
+    "affiliate": "https://brandC.com/deal?id=sovereign",
+    "payout": "5.00",
+    "sponsor": "BrandC"
+  }
+]

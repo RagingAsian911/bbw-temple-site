@@ -1,0 +1,11 @@
+function applyFilters() {
+  const tier = document.getElementById("tierFilter").value;
+  const emotion = document.getElementById("emotionFilter").value;
+  const cards = document.querySelectorAll(".vault-card");
+
+  cards.forEach(card => {
+    const matchTier = !tier || card.dataset.tier === tier;
+    const matchEmotion = !emotion || card.dataset.emotion === emotion;
+    card.style.display = matchTier && matchEmotion ? "block" : "none";
+  });
+}

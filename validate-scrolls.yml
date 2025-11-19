@@ -1,28 +1,3 @@
-name: Scroll Validator
-
-on:
-  push:
-    paths:
-      - '**/*.liquid'
-
-jobs:
-  validate_scrolls:
-    runs-on: ubuntu-latest
-    steps:
-      - name: Checkout repo
-        uses: actions/checkout@v3
-
-      - name: Run Emotional Tag Validator
-        run: |
-          find . -name "*.liquid" > scrolls.txt
-          while IFS= read -r file; do
-            if ! grep -q "emotional_tags" "$file"; then
-              echo "⚠️ $file is missing emotional_tags"
-            fi
-            if ! grep -q "dating_archetype" "$file"; then
-              echo "⚠️ $file is missing dating_archetype"
-            fi
-            if ! grep -q "remix_intent" "$file"; then
-              echo "⚠️ $file is missing remix_intent"
-            fi
-          done < scrolls.txt
+git add .github/workflows/main.yml .github/workflows/validate-scrolls.yml
+git commit -m "Restore main and scroll validation workflows"
+git push origin main

@@ -11,3 +11,385 @@ git commit --allow-empty -m "Seal Final Invocation v1.0.0–OneDrop"
 git tag -a v1.0.0–OneDrop -m "Final Invocation: Sovereign Archive Sealed"
 git push origin main
 git push origin v1.0.0–OneDrop
+name: Deploy Sitemap
+
+- name:- name: Publish with fallback
+  run: |
+    echo "🔍 Starting publish..."
+    npm publish --access public || {
+      echo "❌ Publish failed on step 1"
+      cat ~/.npm/_logs/* || echo "No logs found"
+      exit 1
+    }
+  env:
+    NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
+
+
+>>>>>>>+origin/Autozone
+
+    branches: [ main ]
+  workflow_dispatch:
+<<<<<<< Autjobs:
+  deploy-sitemap:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Broadcast sitemap
+        run: echo "✅ Sitemap deployed and routed to PayPal: $PAYPAL_ACCOUNT"
+        env:
+          PAYPAL_ACCOUNT: ${{ secrets.PAYPAL_ACCOUNT }}
+>>>>>>>-Autozone
+:
+  deploy:
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Checkout Repo
+      uses: actions/checkout@v3
+
+    - name: Set Up Node.js
+      uses: actions/setup-node@v3
+      with:
+        node-version: '18'
+
+    - name: Install Dependencies
+      run: npm install
+
+    - name: Trigger Payload Execution
+      run: |
+        curl -X POST https://oraclesignal.site/api/trigger \
+        -H "Content-Type: application/json" \
+        -d '{
+          "source": "bot",
+          "contributor_id": "rogue-uuid",
+          "emotion_tag": "rage",
+          "action": "onboard",
+          "timestamp": "'$(date -Iseconds)'",
+          "payout_target": "stripe",
+          "index_url": "https://oraclesignal.site/vaults/first-drop"
+        }'
+
+    - name: Confirm Deployment
+      run: echo "Payload routed to OracleSignal.site"
+- name: Route Payload to OracleSignal
+  run: |
+    curl -X POST https://oraclesignal.site/api/trigger \
+    -H "Content-Type: application/json" \
+    -d '{
+      "source": "dashboard",
+      "contributor_id": "rogue-uuid",
+      "emotion_tag": "hope",
+      "action": "upload",
+      "timestamp": "'$(date -Iseconds)'",
+      "payout_target": "coinbase",
+      "index_url": "https://oraclesignal.site/vaults/rogue-drop"
+    }'git clone https://github.com/RagingAsian911/bbw-temple-site.git
+- name: Route Payload to OracleSignal
+  run: |
+    curl -X POST https://oraclesignal.site/api/trigger \
+    -H "Content-Type: application/json" \
+    -d '{
+      "source": "dashboard",
+      "contributor_id": "rogue-uuid",
+      "emotion_tag": "hope",
+      "action": "upload",
+      "timestamp": "'$(date -Iseconds)'",
+      "payout_target": "coinbase",
+      "index_url": "https://oraclesignal.site/vaults/rogue-drop"
+    }'
+- name: Route Payload to OracleSignal
+  run: |
+    curl -X POST https://oraclesignal.site/api/trigger \
+    -H "Content-Type: application/json" \
+    -d '{
+      "source": "github",
+      "contributor_id": "raging-asian-911",
+      "emotion_tag": "signal",
+      "action": "push",
+      "timestamp": "'$(date -Iseconds)'",
+      "payout_target": "coinbase",
+      "index_url": "https://oraclesignal.site/vaults/github-drop"
+    }'
+const express = require('express');
+const app = express();
+app.use(express.json());
+
+app.post('/api/drop-oneclick', async (req, res) => {
+  const drop = {
+    contributor_id: req.body.contributor_id || "rogue-uuid",
+    emotion_tag: req.body.emotion_tag || "sovereignty",
+    source: req.body.source || "storefronts.oraclesignal.site",
+    index_url: req.body.index_url || "https://oraclesignal.site/vaults/drop",
+    timestamp: new Date().toISOString()
+  };
+
+  // 🔐 ROUTE TO PAYPAL
+  await sendToPayPal("charlesbuchanan89@yahoo.com", "25.00", "USD");
+
+  // 🔁 LOG TO DASHBOARD
+  await logToSupabase(drop);
+
+  // 🔗 INDEX TO VAULT
+  await publishToVault(drop.index_url, drop);
+
+  res.status(200).send({ status: "Drop executed", drop });
+});
+
+function sendToPayPal(email, amount, currency) {
+  console.log(`Routing $${amount} ${currency} to PayPal: ${email}`);
+}
+
+function logToSupabase(data) {
+  console.log("Logged to dashboard:", data);
+}
+
+function publishToVault(url, data) {
+  console.log("Published to vault:", url);
+}
+
+app.listen(3002, () => console.log('One-click drop live on port 3002'));<form action="https://oraclesignal.site/api/drop-oneclick" method="POST">
+  <input type="hidden" name="contributor_id" value="rogue-uuid">
+  <input type="hidden" name="emotion_tag" value="sovereignty">
+  <input type="hidden" name="source" value="storefronts.oraclesignal.site">
+  <input type="hidden" name="index_url" value="https://oraclesignal.site/vaults/drop">
+  <input type="hidden" name="timestamp" value="">
+  <button type="submit">Trigger Drop</button>
+</form>
+
+<script>
+  document.querySelector('input[name="timestamp"]').value = new Date().toISOString();
+</script>
+name: Deploy Drop Logic
+
+on:
+  push:
+    branches: [ main ]
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repo
+        uses: actions/checkout@v3
+
+      - name: Install dependencies
+        run: npm install
+
+      - name: Start drop server
+        run: node api/drop-oneclick.js
+publish_dir: ./public
+verifySearchConsole(dnsConfig.domain);
+registry-url: 'https://registry.npmjs.org' # for public npm
+# or
+registry-url: 'https://npm.pkg.github.com/' # for GitHub Packages
+env:
+  NODE_AUTH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
+steps:
+  - uses: actions/setup-node@v3
+    with:
+      node-version: '18'
+      registry-url: 'https://npm.pkg.github.com/'
+      scope: '@your-org'  # if using scoped packages
+
+  - run: npm ci
+  - run: npm publish
+>>>>>>> origin/Autozone
+<<<<<<<-Autozone
+cd path/to/bbw-temple-site
+git status
+git commit -m "feat: sealed Ünsal install bundle"
+git push origin main
+# In each repo (run from your local machine)
+git fetch origin
+git checkout main
+
+# Seal release with OneDrop tag
+git commit --allow-empty -m "Seal Final Invocation v1.0.0–OneDrop"
+git tag -a v1.0.0–OneDrop -m "Final Invocation: Sovereign Archive Sealed"
+git push origin main
+git push origin v1.0.0–OneDrop
+name: Deploy Sitemap
+
+- name:- name: Publish with fallback
+  run: |
+    echo "🔍 Starting publish..."
+    npm publish --access public || {
+      echo "❌ Publish failed on step 1"
+      cat ~/.npm/_logs/* || echo "No logs found"
+      exit 1
+    }
+  env:
+    NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
+
+
+>>>>>>>+origin/Autozone
+
+    branches: [ main ]
+  workflow_dispatch:
+<<<<<<< Autjobs:
+  deploy-sitemap:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Broadcast sitemap
+        run: echo "✅ Sitemap deployed and routed to PayPal: $PAYPAL_ACCOUNT"
+        env:
+          PAYPAL_ACCOUNT: ${{ secrets.PAYPAL_ACCOUNT }}
+>>>>>>>-Autozone
+:
+  deploy:
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Checkout Repo
+      uses: actions/checkout@v3
+
+    - name: Set Up Node.js
+      uses: actions/setup-node@v3
+      with:
+        node-version: '18'
+
+    - name: Install Dependencies
+      run: npm install
+
+    - name: Trigger Payload Execution
+      run: |
+        curl -X POST https://oraclesignal.site/api/trigger \
+        -H "Content-Type: application/json" \
+        -d '{
+          "source": "bot",
+          "contributor_id": "rogue-uuid",
+          "emotion_tag": "rage",
+          "action": "onboard",
+          "timestamp": "'$(date -Iseconds)'",
+          "payout_target": "stripe",
+          "index_url": "https://oraclesignal.site/vaults/first-drop"
+        }'
+
+    - name: Confirm Deployment
+      run: echo "Payload routed to OracleSignal.site"
+- name: Route Payload to OracleSignal
+  run: |
+    curl -X POST https://oraclesignal.site/api/trigger \
+    -H "Content-Type: application/json" \
+    -d '{
+      "source": "dashboard",
+      "contributor_id": "rogue-uuid",
+      "emotion_tag": "hope",
+      "action": "upload",
+      "timestamp": "'$(date -Iseconds)'",
+      "payout_target": "coinbase",
+      "index_url": "https://oraclesignal.site/vaults/rogue-drop"
+    }'git clone https://github.com/RagingAsian911/bbw-temple-site.git
+- name: Route Payload to OracleSignal
+  run: |
+    curl -X POST https://oraclesignal.site/api/trigger \
+    -H "Content-Type: application/json" \
+    -d '{
+      "source": "dashboard",
+      "contributor_id": "rogue-uuid",
+      "emotion_tag": "hope",
+      "action": "upload",
+      "timestamp": "'$(date -Iseconds)'",
+      "payout_target": "coinbase",
+      "index_url": "https://oraclesignal.site/vaults/rogue-drop"
+    }'
+- name: Route Payload to OracleSignal
+  run: |
+    curl -X POST https://oraclesignal.site/api/trigger \
+    -H "Content-Type: application/json" \
+    -d '{
+      "source": "github",
+      "contributor_id": "raging-asian-911",
+      "emotion_tag": "signal",
+      "action": "push",
+      "timestamp": "'$(date -Iseconds)'",
+      "payout_target": "coinbase",
+      "index_url": "https://oraclesignal.site/vaults/github-drop"
+    }'
+const express = require('express');
+const app = express();
+app.use(express.json());
+
+app.post('/api/drop-oneclick', async (req, res) => {
+  const drop = {
+    contributor_id: req.body.contributor_id || "rogue-uuid",
+    emotion_tag: req.body.emotion_tag || "sovereignty",
+    source: req.body.source || "storefronts.oraclesignal.site",
+    index_url: req.body.index_url || "https://oraclesignal.site/vaults/drop",
+    timestamp: new Date().toISOString()
+  };
+
+  // 🔐 ROUTE TO PAYPAL
+  await sendToPayPal("charlesbuchanan89@yahoo.com", "25.00", "USD");
+
+  // 🔁 LOG TO DASHBOARD
+  await logToSupabase(drop);
+
+  // 🔗 INDEX TO VAULT
+  await publishToVault(drop.index_url, drop);
+
+  res.status(200).send({ status: "Drop executed", drop });
+});
+
+function sendToPayPal(email, amount, currency) {
+  console.log(`Routing $${amount} ${currency} to PayPal: ${email}`);
+}
+
+function logToSupabase(data) {
+  console.log("Logged to dashboard:", data);
+}
+
+function publishToVault(url, data) {
+  console.log("Published to vault:", url);
+}
+
+app.listen(3002, () => console.log('One-click drop live on port 3002'));<form action="https://oraclesignal.site/api/drop-oneclick" method="POST">
+  <input type="hidden" name="contributor_id" value="rogue-uuid">
+  <input type="hidden" name="emotion_tag" value="sovereignty">
+  <input type="hidden" name="source" value="storefronts.oraclesignal.site">
+  <input type="hidden" name="index_url" value="https://oraclesignal.site/vaults/drop">
+  <input type="hidden" name="timestamp" value="">
+  <button type="submit">Trigger Drop</button>
+</form>
+
+<script>
+  document.querySelector('input[name="timestamp"]').value = new Date().toISOString();
+</script>
+name: Deploy Drop Logic
+
+on:
+  push:
+    branches: [ main ]
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repo
+        uses: actions/checkout@v3
+
+      - name: Install dependencies
+        run: npm install
+
+      - name: Start drop server
+        run: node api/drop-oneclick.js
+publish_dir: ./public
+verifySearchConsole(dnsConfig.domain);
+registry-url: 'https://registry.npmjs.org' # for public npm
+# or
+registry-url: 'https://npm.pkg.github.com/' # for GitHub Packages
+env:
+  NODE_AUTH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
+steps:
+  - uses: actions/setup-node@v3
+    with:
+      node-version: '18'
+      registry-url: 'https://npm.pkg.github.com/'
+      scope: '@your-org'  # if using scoped packages
+
+  - run: npm ci
+  - run: npm publish
+>>>>>>> origin/Autozone

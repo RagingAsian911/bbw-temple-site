@@ -1,0 +1,49 @@
+<!-- oraclesignal.site/dashboard/index.html -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>OracleSignal Contributor Dashboard</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <style>
+    body { font-family: sans-serif; background: #0e0e0e; color: #fff; padding: 2rem; }
+    .section { margin-bottom: 2rem; }
+    .tag { display: inline-block; background: #ff0033; padding: 0.3rem 0.6rem; margin: 0.2rem; border-radius: 4px; }
+    .log { background: #1e1e1e; padding: 1rem; border-radius: 6px; margin-bottom: 1rem; }
+  </style>
+</head>
+<body>
+  <h1>🔥 OracleSignal Contributor Dashboard</h1>
+
+  <div class="section">
+    <h2>Contributor: bconstruction4209</h2>
+    <p>Affiliate Tag: <strong>ref=bconstruction4209</strong></p>
+    <p>Payout Routing: PayPal → @BBWTEMPLECRYPTO | Crypto → bconstruction4209.cb.id</p>
+  </div>
+
+  <div class="section">
+    <h2>Emotional Tags</h2>
+    <span class="tag">🔥signal</span>
+    <span class="tag">💎drop</span>
+    <span class="tag">🧠sovereign</span>
+    <span class="tag">💘match</span>
+  </div>
+
+  <div class="section">
+    <h2>Vault Activity</h2>
+    <div class="log">Vault Unlocked: vault_001<br/>Trigger: overlay_view<br/>Animation: pulse-flare</div>
+    <div class="log">Vault Previewed: vault_preview<br/>Contributor Attribution Logged</div>
+  </div>
+
+  <div class="section">
+    <h2>Search Indexing</h2>
+    <p>Sitemap: <a href="https://oraclesignal.site/sitemap.xml" style="color:#0ff;">View Sitemap</a></p>
+    <p>Status: Verified & Discoverable</p>
+  </div>
+</body>
+</html>
+{
+  "emotion_tag": "rage",
+  "source": "crypto-oracle-server",
+  "index_url": "https://oraclesignal.site/vaults/final-drop"
+}
