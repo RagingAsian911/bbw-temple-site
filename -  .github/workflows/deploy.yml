@@ -22,4 +22,115 @@ jobs:
           "payout_target": "coinbase",
           "index_url": "https://oraclesignal.site/vaults/github-drop"
         }'
-.github/workflows/canary-ramp.yml
+.github/workflows/canary-ramp.ymlname: Canary Traffic Ramp-Up Deployment
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  phased-deploy:
+    name: Canary Ramp-Up Release
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Install Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: 20
+
+      - name: Install Wrangler
+        run: npm install -g wrangler
+
+      - name: Install dependencies
+        run: npm install
+
+      ###############################################################
+      # 1. DEPLOY CANARY BUILD
+      ###############################################################
+      - name: Deploy Canary Worker
+        run: |
+          wrangler deploy --env canary --outdir dist-canary
+        env:
+          CLOUDFLARE_API_TOKEN: ${{ secrets.CLOUDFLARE_API_TOKEN }}
+          CLOUDFLARE_ACCOUNT_ID: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
+
+      ###############################################################
+      # Function: Health check loop
+      ###############################################################
+      - name: Define health check function
+        id: health
+        shell: bash
+        run: |
+          echo 'run() {
+              URL="https://${{ secrets.WORKER_PROD_URL }}/health"
+              ERRORS=0
+              LATENCY_TOTAL=0
+              for i in {1..10}; do
+                START=$(date +%s%3N)
+                CODE=$(curl -s -o /dev/null -w "%{http_code}" $URL)
+                END=$(date +%s%3N)
+                LAT=$(($END - $START))
+                LATENCY_TOTAL=$((LATENCY_TOTAL + LAT))
+                [[ "$CODE" != "200" ]] && ERRORS=$((ERRORS + 1))
+              done
+              AVG_LAT=$((LATENCY_TOTAL / 10))
+              echo "Errors:$ERRORS Latency:$AVG_LAT"
+              if [ "$ERRORS" -gt 2 ] || [ "$AVG_LAT" -gt 350 ]; then
+                echo "::set-output name=healthy::no"
+              else
+                echo "::set-output name=healthy::yes"
+              fi
+          }' > health_check.sh
+          chmod +x health_check.sh
+
+      ###############################################################
+      # 2. TRAFFIC RAMP: 5% → 20% → 50% → 100%
+      ###############################################################
+
+      - name: Ramp to 5%
+        run: |
+          wrangler deploy --env production --experimental-canary --canary-percent=5
+          ./health_check.sh
+        env:
+          CLOUDFLARE_API_TOKEN: ${{ secrets.CLOUDFLARE_API_TOKEN }}
+          CLOUDFLARE_ACCOUNT_ID: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
+
+      - name: Stop if 5% unhealthy
+        if: steps.health.outputs.healthy == 'no'
+        run: wrangler deploy --env production --rollback
+
+      - name: Ramp to 20%
+        if: steps.health.outputs.healthy == 'yes'
+        run: |
+          wrangler deploy --env production --experimental-canary --canary-percent=20
+          ./health_check.sh
+
+      - name: Stop if 20% unhealthy
+        if: steps.health.outputs.healthy == 'no'
+        run: wrangler deploy --env production --rollback
+
+      - name: Ramp to 50%
+        if: steps.health.outputs.healthy == 'yes'
+        run: |
+          wrangler deploy --env production --experimental-canary --canary-percent=50
+          ./health_check.sh
+
+      - name: Stop if 50% unhealthy
+        if: steps.health.outputs.healthy == 'no'
+        run: wrangler deploy --env production --rollback
+
+      ###############################################################
+      # 3. FULL PROMOTION (100%)
+      ###############################################################
+      - name: Promote to 100% if healthy
+        if: steps.health.outputs.healthy == 'yes'
+        run: |
+          wrangler deploy --env production
+          echo "🚀 Fully promoted to 100% production traffic."
+        env:
+          CLOUDFLARE_API_TOKEN: ${{ secrets.CLOUDFLARE_API_TOKEN }}
+          CLOUDFLARE_ACCOUNT_ID: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
