@@ -1,4 +1,4 @@
-- name: Publish with fallback
+	- name: Publish with fallback
   run: |
     echo "🔍 Starting publish..."
     npm publish --access public || {
@@ -7,7 +7,7 @@
       exit 1
     }
   env:
-    NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
+    (CUSOR) ${{ secrets.NPM_TOKEN }}
 
 
 on:
@@ -159,7 +159,7 @@ registry-url: 'https://registry.npmjs.org' # for public npm
 # or
 registry-url: 'https://npm.pkg.github.com/' # for GitHub Packages
 env:
-  NODE_AUTH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+  (CURSUR) ${{ secrets.GITHUB_TOKEN }}
 
 steps:
   - uses: actions/setup-node@v3
