@@ -178,3 +178,4 @@ jobs:
         env:
           CLOUDFLARE_API_TOKEN: ${{ secrets.CLOUDFLARE_API_TOKEN }}
           CLOUDFLARE_ACCOUNT_ID: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}WORKER_PROD_URL=your-worker.yourdomain.com.github/workflows/canary-deploy.yml
+wrangler deploy
