@@ -61,4 +61,7 @@ function triggerSignal(el) {
     body: JSON.stringify(payload)
   });
   window.open(payload.affiliate, "_blank");
-}
+}curl -X POST https://<your-worker>.workers.dev \
+  -H "Content-Type: application/json" \
+  -H "x-system-key: test" \
+  --data @sample_payloads/sample_order.json
