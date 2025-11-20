@@ -178,4 +178,9 @@ jobs:
         env:
           CLOUDFLARE_API_TOKEN: ${{ secrets.CLOUDFLARE_API_TOKEN }}
           CLOUDFLARE_ACCOUNT_ID: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}WORKER_PROD_URL=your-worker.yourdomain.com.github/workflows/canary-deploy.yml
-wrangler deploy wrangler r2 bucket create ORACLE_AUDIT
+wrangler deploy wrangler r2 bucket create ORACLE_AUDIT git checkout -b main-production
+git checkout -b dev
+git checkout -b sandbox
+git push -u origin main-production
+git push -u origin dev
+git push -u origin sandbox
