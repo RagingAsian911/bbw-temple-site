@@ -183,4 +183,9 @@ git checkout -b dev
 git checkout -b sandbox
 git push -u origin main-production
 git push -u origin dev
-git push -u origin sandbox
+git push -u origin sandbox<key>NSUserActivityTypes</key>
+<array>
+    <string>com.example.myapp.create-shape</string>
+    <string>com.example.myapp.edit-shape</string>
+    <string>com.example.myapp.edit-document-properties</string>
+</array>
