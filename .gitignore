@@ -16,6 +16,45 @@ _site/
 # counterproductive to check this file into the repository.
 # Details at https://github.com/github/pages-gem/issues/768
 Gemfile.lock
+# 🔐 Ritual Privacy Shield
+
+# Secrets and keys
+.env
+secrets.json
+wallet-config.yml
+
+# Ritual drafts and private scrolls
+private-scrolls/
+*.draft.liquid
+
+# System clutter
+.DS_Store
+Thumbs.db
+
+# Logs and temp
+*.log
+*.tmp
+
+# Node / Python / Ruby
+node_modules/
+__pycache__/
+.bundle/
+# 🧾 Contributor Audit Log
+
+This scroll tracks all ritual actions across the BBW Temple system.
+
+## 🔥 Ritual Events
+
+| Date       | Contributor     | Action              | Branch         | Notes                      |
+|------------|-----------------|---------------------|----------------|----------------------------|
+| 2025-10-26 | RagingAsian911  | Verified commit     | main           | Sealed Ünsal install bundle |
+| 2025-10-26 | Charles-Buchanan| Scroll inspection   | main           | Verified schema and docs   |
+
+## 🧙 Guidelines
+
+- All force-pushes must be logged with intent
+- Deleted branches must be noted with reason
+- Emotional scrolls require dual review
 # .gitignore
 .env
 secrets.json
