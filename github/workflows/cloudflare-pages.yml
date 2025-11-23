@@ -1,0 +1,49 @@
+name: Deploy to Cloudflare Pages
+
+on:
+  push:
+    branches: [ "main" ]
+  workflow_dispatch:
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Checkout repo
+      uses: actions/checkout@v4
+
+    - name: Setup Node
+      uses: actions/setup-node@v4
+      with:
+        node-version: 18
+
+    - name: Install dependencies
+      run: |
+        if [ -f package-lock.json ]; then
+          npm install
+        else
+          yarn install
+        fi
+
+    - name: Inject business assets
+      run: |
+        mkdir -p public/assets
+        cp -r "/mnt/data/Build_X_FULL_master_bundle_unzipped/"* public/assets/ || echo "No assets found"
+
+    - name: Build site
+      run: |
+        if npm run | grep -q "build"; then
+          npm run build
+        else
+          yarn build
+        fi
+
+    # Cloudflare Pages Deployment
+    - name: Publish to Cloudflare Pages
+      uses: cloudflare/pages-action@v1
+      with:
+        apiToken: ${{ secrets.CLOUDFLARE_API_TOKEN }}
+        accountId: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
+        projectName: oraclesignal
+        directory: dist
