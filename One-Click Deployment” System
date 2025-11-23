@@ -1,0 +1,15 @@
+/deployment/
+  README_DEPLOY.md
+  env.template
+  run_full_deploy.sh
+  build_brand_assets.sh
+  validate_assets.sh
+  send_audit.sh
+  load_branding.py
+  oracle_secret_scan.sh
+
+/.github/workflows/
+  oneclick-pages.yml
+  oneclick-render.yml
+  oneclick-secret-scan.yml
+  oneclick-audit-export.yml
