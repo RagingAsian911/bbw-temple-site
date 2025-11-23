@@ -1,0 +1,1 @@
+git archive -o deploy/deploy-30747c9d.zip 30747c9dac8482f7e3230d35fab6e70d3d98c85cunzip -l deploy/deploy-30747c9d.zip
