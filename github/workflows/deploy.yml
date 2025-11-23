@@ -1,0 +1,78 @@
+name: One-Click Website Deploy
+
+on:
+  push:
+    branches: [ "main" ]
+  workflow_dispatch:
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+    # --------------------------------------------------
+    # 1) CHECKOUT REPO
+    # --------------------------------------------------
+    - name: Checkout repository
+      uses: actions/checkout@v4
+
+    # --------------------------------------------------
+    # 2) SETUP NODE (for your BBW Temple Site build)
+    # --------------------------------------------------
+    - name: Setup Node
+      uses: actions/setup-node@v4
+      with:
+        node-version: 18
+
+    # --------------------------------------------------
+    # 3) INSTALL DEPENDENCIES
+    # --------------------------------------------------
+    - name: Install dependencies
+      run: |
+        if [ -f package-lock.json ]; then
+          npm install
+        else
+          yarn install
+        fi
+
+    # --------------------------------------------------
+    # 4) INJECT BUSINESS ASSETS (from ChatGPT storage)
+    # --------------------------------------------------
+    - name: Inject business assets
+      run: |
+        mkdir -p public/assets
+        echo "Copying assets from Build_X_FULL_master_bundle_unzipped..."
+        cp -r "/mnt/data/Build_X_FULL_master_bundle_unzipped/"* public/assets/ || echo "⚠️ No assets found, continuing..."
+
+    # --------------------------------------------------
+    # 5) GENERATE BRAND ENV FILE
+    # --------------------------------------------------
+    - name: Generate environment config
+      run: |
+        echo "BUSINESS_NAME='Buchanan Construction'" > .env
+        echo "PRIMARY_BRAND='OracleSignal'" >> .env
+        echo "Generated .env"
+
+    # --------------------------------------------------
+    # 6) BUILD SITE
+    # --------------------------------------------------
+    - name: Build site
+      run: |
+        if npm run | grep -q "build"; then
+          npm run build
+        else
+          yarn build
+        fi
+
+    # --------------------------------------------------
+    # 7) UPLOAD ARTIFACT FOR ONE-CLICK DOWNLOAD
+    # --------------------------------------------------
+    - name: Upload production build
+      uses: actions/upload-artifact@v4
+      with:
+        name: site-build
+        path: |
+          dist
+          build
+          public
+          out
