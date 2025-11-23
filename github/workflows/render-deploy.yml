@@ -1,0 +1,47 @@
+name: Deploy to Render Web Service
+
+on:
+  push:
+    branches: [ "main" ]
+  workflow_dispatch:
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Checkout repo
+      uses: actions/checkout@v4
+
+    - name: Setup Node
+      uses: actions/setup-node@v4
+      with:
+        node-version: 18
+
+    - name: Install dependencies
+      run: |
+        if [ -f package-lock.json ]; then
+          npm install
+        else
+          yarn install
+        fi
+
+    - name: Inject business assets
+      run: |
+        mkdir -p public/assets
+        cp -r "/mnt/data/Build_X_FULL_master_bundle_unzipped/"* public/assets/ || echo "No assets found"
+
+    - name: Build site
+      run: |
+        if npm run | grep -q "build"; then
+          npm run build
+        else
+          yarn build
+        fi
+
+    # -------- Render Deployment --------
+    - name: Deploy to Render
+      uses: johnbeynon/render-deploy-action@v1
+      with:
+        service-id: ${{ secrets.RENDER_SERVICE_ID }}
+        api-key: ${{ secrets.RENDER_API_KEY }}
