@@ -188,4 +188,5 @@ git push -u origin sandbox<key>NSUserActivityTypes</key>
     <string>com.example.myapp.create-shape</string>
     <string>com.example.myapp.edit-shape</string>
     <string>com.example.myapp.edit-document-properties</string>
-</array>
+</array>env:
+  BRANDING_PDF_URL: ${{ secrets.BRANDING_PDF_URL || 'file:///mnt/data/Build_X_FULL_package.pdf' }}
