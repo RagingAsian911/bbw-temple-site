@@ -1,0 +1,118 @@
+# 🌐 Buchanan Digital Network  
+### The Unified Social + Creator Hub  
+**Powered by OracleSignal Holdings**
+
+Welcome to the central hub for all business, creator, adult-industry, and digital assets connected to the Buchanan ecosystem.
+
+---
+
+## 🚀 Quick Navigation  
+### **Official Brands**
+- **OracleSignal** — Signals • Automation • Code  
+- **BBW Temple** — Adult store platform  
+- **Adult Talent Network** — Recruiting + onboarding  
+- **Buchanan Construction** — Legal + business anchor  
+
+---
+
+## 🔗 Social Platforms (Fully Integrated)
+
+### **YouTube**
+🎥 https://www.youtube.com/@charlesbuchanan21  
+- Shorts Pipeline  
+- Monetization Optimized  
+- Connected to OracleSignal Hub
+
+### **TikTok**
+🔥 https://www.tiktok.com/t/ZP8U84gs3/  
+- Auto-clip ready  
+- Shortform campaigns prepared
+
+### **Instagram**
+📸 https://instagram.com/charlesbuchanan21  
+
+### **Threads**
+🧵 https://threads.net/@charlesbuchanan21  
+
+### **Facebook**
+📘 facebook.com/charlesbuchanan21  
+
+### **Discord Community**
+💬 https://discord.gg/XVs3XGQGc  
+
+---
+
+## 🛒 Commerce & Monetization Links
+
+### **WarriorPlus**
+💰 Marketplace / Affiliate  
+https://warriorplus.com/dashboard
+
+### **Systeme.io**
+📦 Funnels + Lists  
+https://systeme.io/dashboard
+
+### **Upmind**
+🧾 Billing + Service Hub  
+https://xxo0pgsgmltc.upmind.app/admin
+
+---
+
+## 🖥 Deployed + Connected Repositories
+
+### **Crypto Oracle Server**
+https://github.com/RagingAsian911/crypto-oracle-server
+
+- Webhooks  
+- CI/CD GitHub Workflows  
+- Render Ready Build  
+- Cloudflare Worker Compatible
+
+### **BBW Temple Site**
+https://github.com/RagingAsian911/bbw-temple-site
+
+- Adult shop structure  
+- Images + assets  
+- Auto-deploy template ready  
+
+---
+
+## 📁 Asset Inventory (Import-Ready)
+- Build_X_FULL master bundle  
+- Branding kit  
+- Talent Network funnel  
+- Social datasets (friends, follows, etc.)  
+- Cloudflare Worker templates  
+- GitHub Actions deploy templates  
+- Render service configs  
+
+---
+
+## 🔧 One-Drop Installer (Paste into your GitHub Actions)
+
+```yaml
+name: One-Drop Install
+
+on:
+  workflow_dispatch:
+
+jobs:
+  install:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repo
+        uses: actions/checkout@v4
+
+      - name: Deploy Social Hub
+        run: |
+          mkdir -p site
+          echo "<!DOCTYPE html><html><head><meta charset='UTF-8'><title>Buchanan Social Hub</title></head><body>" > site/index.html
+          echo "<h1>Buchanan Social + Creator Hub</h1>" >> site/index.html
+          echo "<p>All platforms deployed automatically.</p>" >> site/index.html
+          echo "</body></html>" >> site/index.html
+
+      - name: Upload artifact
+        uses: actions/upload-artifact@v3
+        with:
+          name: one-drop-social
+          path: site/
