@@ -1,4 +1,4 @@
-name: One Drop — One-Click Deploy
+ name: One Drop — One-Click Deploy
 
 # Triggers: push to main, manual dispatch, hourly schedule (optional)
 on:
@@ -214,4 +214,4 @@ jobs:
           HMAC=$(echo -n "$PAYLOAD" | openssl dgst -sha256 -hmac "$AUDIT_SECRET" -hex | awk '{print $NF}')
           PAYLOAD=$(echo "$PAYLOAD" | jq --arg h "$HMAC" '. + {hmac:$h}')
           echo "posting audit finished event"
-          curl -s -X POST "$LOG_API/event" -H "Content-Type: application/json" -d "$PAYLOAD" || echo "Audit finished post failed"
+          curl -s -X POST "$LOG_API/event" -H "Content-Type: application/json" -d "$PAYLOAD" || echo "Audit finished post failed" BRANDING_PDF_URL=file:///mnt/data/Build_X_FULL_package.pdf
