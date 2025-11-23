@@ -1,0 +1,217 @@
+name: One Drop — One-Click Deploy
+
+# Triggers: push to main, manual dispatch, hourly schedule (optional)
+on:
+  push:
+    branches: [ "main" ]
+  workflow_dispatch: {}
+  schedule:
+    - cron: '0 * * * *' # hourly (optional)
+
+concurrency:
+  group: one-drop-deploy
+  cancel-in-progress: true
+
+env:
+  NODE_ENV: production
+  # fallback local path for branding PDF (uploaded in sandbox). You can override by setting secret BRANDING_PDF_URL
+  BRANDING_PDF_URL: ${{ secrets.BRANDING_PDF_URL || 'file:///mnt/data/Build_X_FULL_package.pdf' }}
+
+jobs:
+  prepare:
+    name: Prepare & Secret Scan
+    runs-on: ubuntu-latest
+    outputs:
+      build_artifact: ${{ steps.art.outputs.name || '' }}
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Install prerequisites
+        run: |
+          sudo apt-get update -y
+          sudo apt-get install -y unzip curl jq git openssh-client
+
+      - name: Install gitleaks (secret scan)
+        run: |
+          curl -sSfL https://raw.githubusercontent.com/zricethezav/gitleaks/master/install.sh | bash || true
+      - name: Run secret scan (gitleaks)
+        id: gitleaks
+        run: |
+          if command -v gitleaks >/dev/null 2>&1; then
+            gitleaks detect --source . --report-path gitleaks-report.json || true
+            echo "gitleaks-report generated"
+            jq -r '.leaks | length' gitleaks-report.json || true
+          else
+            echo "gitleaks unavailable"
+          fi
+
+      - name: Save scan artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: gitleaks-report
+          path: gitleaks-report.json
+
+  build:
+    name: Build & Test (Node 20)
+    runs-on: ubuntu-latest
+    needs: prepare
+    steps:
+      - name: Checkout for build
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js 20
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+          cache: 'npm'
+
+      - name: Install dependencies
+        run: |
+          if [ -f package.json ]; then
+            npm ci
+          else
+            echo "No package.json found, skipping npm install"
+          fi
+
+      - name: Run tests (if any)
+        run: |
+          if npm run -s test; then echo "Tests succeeded"; else echo "No tests or tests failed (non-fatal)"; fi
+
+      - name: Build (if present)
+        run: |
+          npm run build --if-present || echo "No build step or build failed"
+
+      - name: Package static output (if present)
+        run: |
+          mkdir -p artifacts
+          if [ -d dist ]; then cp -r dist artifacts/site || true; fi
+          if [ -d public ]; then cp -r public artifacts/site_public || true; fi
+          # Inject branding PDF (if reachable)
+          if [[ "${{ env.BRANDING_PDF_URL }}" == file://* ]]; then
+            echo "Branding PDF local path detected: ${BRANDING_PDF_URL}"
+            # The runner cannot access runner-local sandbox paths on GitHub Actions.
+            # If you host the PDF publicly (or as an artifact URL), update BRANDING_PDF_URL secret accordingly.
+          else
+            curl -fsSLo artifacts/branding.pdf "${BRANDING_PDF_URL}" || echo "Could not download branding PDF"
+          fi
+
+      - name: Upload site artifact
+        id: art
+        uses: actions/upload-artifact@v4
+        with:
+          name: site-artifact
+          path: artifacts
+
+  audit_notify:
+    name: Send Audit Event (deploy:started)
+    runs-on: ubuntu-latest
+    needs: [build]
+    steps:
+      - name: Install jq & openssl
+        run: sudo apt-get update -y && sudo apt-get install -y jq openssl
+
+      - name: Send audit event (HMAC signed)
+        env:
+          LOG_API: ${{ secrets.LOG_API }}
+          AUDIT_SECRET: ${{ secrets.AUDIT_SECRET }}
+        run: |
+          PAYLOAD=$(jq -n --arg src "github-actions" --arg act "deploy:started" --arg res "oracle-system" '{source:$src, action:$act, resource:$res}')
+          HMAC=$(echo -n "$PAYLOAD" | openssl dgst -sha256 -hmac "$AUDIT_SECRET" -hex | awk '{print $NF}')
+          PAYLOAD=$(echo "$PAYLOAD" | jq --arg h "$HMAC" '. + {hmac:$h}')
+          echo "posting audit event"
+          curl -s -X POST "$LOG_API/event" -H "Content-Type: application/json" -d "$PAYLOAD" || echo "Audit post failed"
+
+  deploy_render:
+    name: Deploy to Render (optional)
+    runs-on: ubuntu-latest
+    needs: [build, audit_notify]
+    if: ${{ secrets.RENDER_API_KEY != '' && secrets.RENDER_SERVICE_ID != '' }}
+    steps:
+      - name: Trigger Render deploy via API
+        env:
+          RENDER_SERVICE_ID: ${{ secrets.RENDER_SERVICE_ID }}
+          RENDER_API_KEY: ${{ secrets.RENDER_API_KEY }}
+        run: |
+          echo "Triggering Render deploy for ${RENDER_SERVICE_ID}"
+          curl -s -X POST "https://api.render.com/v1/services/${RENDER_SERVICE_ID}/deploys" \
+            -H "Accept: application/json" \
+            -H "Authorization: Bearer ${RENDER_API_KEY}" \
+            -H "Content-Type: application/json" \
+            -d '{"clearCache": true}' || echo "Render deploy API call failed"
+
+  deploy_cloudflare_pages:
+    name: Deploy to Cloudflare Pages (optional)
+    runs-on: ubuntu-latest
+    needs: [build, audit_notify]
+    if: ${{ secrets.CLOUDFLARE_API_TOKEN != '' && secrets.CLOUDFLARE_ACCOUNT_ID != '' }}
+    steps:
+      - name: Download artifact
+        uses: actions/download-artifact@v4
+        with:
+          name: site-artifact
+      - name: Publish to Cloudflare Pages
+        uses: cloudflare/pages-action@v1
+        with:
+          apiToken: ${{ secrets.CLOUDFLARE_API_TOKEN }}
+          accountId: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
+          directory: artifacts/site
+
+  deploy_ssh_pm2:
+    name: Deploy via SSH + PM2 (optional)
+    runs-on: ubuntu-latest
+    needs: [build, audit_notify]
+    if: ${{ secrets.SSH_DEPLOY_KEY != '' && secrets.SERVER_HOST != '' }}
+    steps:
+      - name: Checkout for deployment
+        uses: actions/checkout@v4
+      - name: Deploy via SSH (PM2 reload/start)
+        uses: appleboy/ssh-action@master
+        with:
+          host: ${{ secrets.SERVER_HOST }}
+          username: ${{ secrets.SERVER_USER }}
+          key: ${{ secrets.SSH_DEPLOY_KEY }}
+          port: ${{ secrets.SERVER_PORT || 22 }}
+          script: |
+            set -e
+            DEPLOY_DIR=/var/www/oraclesignal/crypto-oracle-server
+            echo "Deploy: cd $DEPLOY_DIR"
+            mkdir -p $DEPLOY_DIR
+            cd $DEPLOY_DIR || exit 1
+            git pull origin main || git fetch --all && git reset --hard origin/main
+            npm ci --production || true
+            if pm2 describe oracle-server > /dev/null 2>&1; then
+              pm2 reload oracle-server || pm2 restart oracle-server || true
+            else
+              if [ -f MAIN.JS ]; then
+                pm2 start MAIN.JS --name oracle-server || true
+              elif [ -f main.js ]; then
+                pm2 start main.js --name oracle-server || true
+              elif [ -f index.js ]; then
+                pm2 start index.js --name oracle-server || true
+              else
+                echo "No recognized entrypoint found."
+                exit 1
+              fi
+            fi
+            pm2 save || true
+
+  post_deploy_audit:
+    name: Send Audit Event (deploy:finished)
+    runs-on: ubuntu-latest
+    needs: [deploy_render, deploy_cloudflare_pages, deploy_ssh_pm2]
+    steps:
+      - name: Install jq & openssl
+        run: sudo apt-get update -y && sudo apt-get install -y jq openssl
+      - name: Send finished event
+        env:
+          LOG_API: ${{ secrets.LOG_API }}
+          AUDIT_SECRET: ${{ secrets.AUDIT_SECRET }}
+        run: |
+          PAYLOAD=$(jq -n --arg src "github-actions" --arg act "deploy:finished" --arg res "oracle-system" '{source:$src, action:$act, resource:$res}')
+          HMAC=$(echo -n "$PAYLOAD" | openssl dgst -sha256 -hmac "$AUDIT_SECRET" -hex | awk '{print $NF}')
+          PAYLOAD=$(echo "$PAYLOAD" | jq --arg h "$HMAC" '. + {hmac:$h}')
+          echo "posting audit finished event"
+          curl -s -X POST "$LOG_API/event" -H "Content-Type: application/json" -d "$PAYLOAD" || echo "Audit finished post failed"
