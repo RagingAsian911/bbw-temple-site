@@ -1,0 +1,40 @@
+name: Temple AutoDeploy + Monetization Engine
+
+# 🚀 Runs when you push to main OR run manually
+on:
+  push:
+    branches: ["main"]
+  workflow_dispatch:
+
+# 👇 THIS is what GitHub was blocking before
+permissions:
+  contents: write       # ← allows workflow to push to repo
+  actions: write
+  pages: write
+
+jobs:
+  deploy-and-log:
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Clone repository
+      uses: actions/checkout@v4
+
+    # ---------------------------------------
+    # Create a commit file as proof of success
+    # ---------------------------------------
+    - name: Generate commit artifact
+      run: |
+        mkdir -p temple_output
+        echo "Temple automation run $(date)" > temple_output/run.log
+
+    # ---------------------------------------
+    # Commit + push back to main (this was blocked before)
+    # ---------------------------------------
+    - name: Commit changes back to repo
+      run: |
+        git config --global user.email "actions@github.com"
+        git config --global user.name "Temple Automation"
+        git add .
+        git commit -m "Temple AutoDeploy executed 🚀" || echo "No changes to commit"
+        git push origin main
