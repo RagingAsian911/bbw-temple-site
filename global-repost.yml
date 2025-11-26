@@ -33,3 +33,30 @@ jobs:
         run: |
           curl -X POST https://api.${{ github.event.inputs.platform }}.com/post \
           -d "message=$(cat ${{ github.event.inputs.trigger }}.md)"
+name: Temple YouTube Autopilot
+
+on:
+  schedule:
+    - cron: "0 */8 * * *"  # run every 8 hours
+  workflow_dispatch:       # allow manual run from Actions tab
+
+jobs:
+  generate-content:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repo
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.x'
+
+      - name: Run Temple autopilot script
+        env:
+          YT_CHANNEL_HANDLE: ${{ secrets.YT_CHANNEL_HANDLE }}
+          TEMPLE_URL: ${{ secrets.TEMPLE_URL }}
+          PAYPAL_EMAIL: ${{ secrets.PAYPAL_EMAIL }}
+        run: |
+          python youtube_autopilot.py
