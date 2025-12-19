@@ -13,4 +13,7 @@ services:
       - VIRTUAL_HOST=bbwtemplesite.org.uk
       - LETSENCRYPT_HOST=bbwtemplesite.org.uk
       - LETSENCRYPT_EMAIL=admin@bbwtemplesite.org.uk
+COPY entrypoint.sh ./entrypoint.sh
+RUN chmod +x ./entrypoint.sh
+ENTRYPOINT ["./entrypoint.sh"]
 
