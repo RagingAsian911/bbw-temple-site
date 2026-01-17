@@ -14,7 +14,7 @@ jobs:
 
       - name: 🧬 Parse Oracle Stream
         run: |
-          curl https://api.your-signal-source.com/888-feed > signals.json
+          curl https://api.your-signal-source.com/signal feed> signals.json
           python parse_signals.py signals.json
 
       - name: 📜 Generate Forecast Scroll
@@ -24,7 +24,7 @@ jobs:
       - name: 🚀 Push to BBW Temple
         run: |
           git config user.name "Charles Buchanan"
-          git config user.email "charles@bbwtemple.com"
+          git config user.email "charlesanthonybuchanansr@oraclesignal.site"
           git add forecast.md
           git commit -m "🪬 Oracle Forecast Update"
           git push
