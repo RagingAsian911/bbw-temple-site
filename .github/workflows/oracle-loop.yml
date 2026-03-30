@@ -9,13 +9,13 @@ jobs:
   forecast-scroll:
     runs-on: ubuntu-latest
     steps:
-      - name: 🔥 Pull Forecast Script
-     - name: Fetch investor signals
+      - uses: actions/checkout@v4
+
+- name: Fetch investor signals
   run: |
     set -euxo pipefail
-    curl -fsS "https://RagingAsian911/bbw-temple-sitesignal-feed" > signals.json
+    curl -fsS "https://YOUR-REAL-FEED-URL/signal-feed" > signals.json
     test -s signals.json
-
       - name: 📜 Generate Forecast Scroll
         run: |
           python generate_scroll.py --source signals.json --output forecast.md
