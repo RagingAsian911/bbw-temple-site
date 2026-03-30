@@ -13,7 +13,7 @@ jobs:
      - name: Fetch investor signals
   run: |
     set -euxo pipefail
-    curl -fsS "https://YOUR-REAL-ENDPOINT/signal-feed" > signals.json
+    curl -fsS "https://RagingAsian911/bbw-temple-sitesignal-feed" > signals.json
     test -s signals.json
 
       - name: 📜 Generate Forecast Scroll
