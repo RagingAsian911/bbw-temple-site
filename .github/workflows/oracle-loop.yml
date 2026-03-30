@@ -10,12 +10,11 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: 🔥 Pull Forecast Script
-        uses: actions/checkout@v3
-
-      - name: 🧬 Parse Oracle Stream
-        run: |
-          curl https://api.your-signal-source.com/signal feed> signals.json
-          python parse_signals.py signals.json
+     - name: Fetch investor signals
+  run: |
+    set -euxo pipefail
+    curl -fsS "https://YOUR-REAL-ENDPOINT/signal-feed" > signals.json
+    test -s signals.json
 
       - name: 📜 Generate Forecast Scroll
         run: |
